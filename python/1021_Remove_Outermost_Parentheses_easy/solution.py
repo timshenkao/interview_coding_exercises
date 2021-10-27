@@ -34,11 +34,15 @@ class Solution:
         final_str = ''
         for elem in s:
             if elem == '(':
+                # we see opening parentheses, i.e. one more nesting level
                 depth += 1
                 if depth > 1:
+                    # we need to save opening parentheses from inner levels
                     final_str += elem
             elif elem == ')':
+                # we see closing parentheses, i.e. we exit nesting level
                 depth -= 1
                 if depth > 0:
+                    # for outermost parentheses, depth level is 0
                     final_str += elem
         return final_str
