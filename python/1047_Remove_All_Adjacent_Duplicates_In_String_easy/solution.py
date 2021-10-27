@@ -28,7 +28,10 @@ class Solution:
         final_symbols = []
         for elem in s:
             if final_symbols and elem == final_symbols[-1]:
+                # remove last symbol from stack / temporary list if it's equal to current one
                 final_symbols.pop()
             else:
+                # if stack / temporary list is empty or current symbol is not equal to the last one in stack / temporary
+                # list
                 final_symbols.append(elem)
         return ''.join(final_symbols)
