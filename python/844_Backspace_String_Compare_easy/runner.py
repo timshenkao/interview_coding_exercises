@@ -1,0 +1,69 @@
+# Copyright (c) 2021 - present, Timur Shenkao
+# All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+##############################################################################
+from solution import Solution
+
+
+def main():
+    solution = Solution()
+
+    s = "ab#c"
+    t = "ad#c"
+    print(s, '    ', t)
+    print(solution.backspace_compare(s, t))
+
+    s = "ab##"
+    t = "c#d#"
+    print(s, '    ', t)
+    print(solution.backspace_compare(s, t))
+
+    s = "a##c"
+    t = "#a#c"
+    print(s, '    ', t)
+    print(solution.backspace_compare(s, t))
+
+    s = "a#c"
+    t = "b"
+    print(s, '    ', t)
+    print(solution.backspace_compare(s, t))
+
+    s = "bxj##tw"
+    t = "bxo#j##tw"
+    print(s, '    ', t)
+    print(solution.backspace_compare(s, t))
+
+    s = "bxj##tw"
+    t = "bxj###tw"
+    print(s, '    ', t)
+    print(solution.backspace_compare(s, t))
+
+    s = "hd#dp#czsp#####"
+    t = "hd#dp#czsp######"
+    print(s, '    ', t)
+    print(solution.backspace_compare(s, t))
+
+    s = "ab#cc#"
+    t = "ad#c"
+    print(s, '    ', t)
+    print(solution.backspace_compare(s, t))
+
+    s = "aaa###a"
+    t = "aaaa###a"
+    print(s, '    ', t)
+    print(solution.backspace_compare(s, t))
+
+
+if __name__ == '__main__':
+    main()

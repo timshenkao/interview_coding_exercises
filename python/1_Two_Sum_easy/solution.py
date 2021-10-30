@@ -25,7 +25,7 @@ from typing import List
 class Solution:
     def two_sum_brute(self, arr: List[int], target: int) -> List[int]:
         """ Time complexity: O(N ^ 2). We iterate through array in nested loops.
-            Space complexity: O(1). We create copy of array and sorting may require O(N) as well.
+            Space complexity: O(1).
         """
         for i in range(len(arr)):
             for j in range(len(arr)):
