@@ -13,9 +13,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ##############################################################################
+from solution import Solution
+
 
 def main():
-    pass
+    solution = Solution()
+
+    print(solution.my_sqrt(8))
+    print(solution.my_sqrt(16))
+    print(solution.my_sqrt(25))
+    print(solution.my_sqrt(20))
 
 
 if __name__ == '__main__':
