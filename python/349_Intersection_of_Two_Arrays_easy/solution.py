@@ -14,9 +14,16 @@
 # limitations under the License.
 ##############################################################################
 
-def main():
-    pass
+from typing import List
+
+# 349. Intersection of Two Arrays https://leetcode.com/problems/intersection-of-two-arrays/
+# Given two integer arrays nums1 and nums2, return an array of their intersection.
+# Each element in the result must be unique and you may return the result in any order.
 
 
-if __name__ == '__main__':
-    main()
+class Solution:
+    def intersection_brute(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        """ Time complexity: O(N).
+            Space complexity: O(N). We create additional sets and then convert intersection to list.
+        """
+        return list(set(nums1).intersection(set(nums2)))
