@@ -82,7 +82,7 @@ class Solution:
         t_length = len(t)
 
         # matrix to store the history of matches/deletions
-        dp_matrix = [ [0] * (t_length + 1) for _ in range(s_length + 1)]
+        dp_matrix = [[0] * (t_length + 1) for _ in range(s_length + 1)]
 
         # DP compute, we fill the matrix column by column, bottom up
         for col in range(1, t_length + 1):
