@@ -24,8 +24,8 @@ from typing import List
 
 class Solution:
     def max_sub_array_kadane(self, nums: List[int]) -> int:
-        """ Time complexity: O(). Kadane's algorithm: it's a variant of dynamic programming.
-            Space complexity: O().
+        """ Time complexity: O(n). Kadane's algorithm: it's a variant of dynamic programming.
+            Space complexity: O(1).
         """
         # empty array
         if not nums:
