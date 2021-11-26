@@ -19,20 +19,20 @@ from solution import Solution
 def main():
     solution = Solution()
 
-    wordsDict = ["practice", "makes", "perfect", "coding", "makes"]
-    word1 = "coding"
-    word2 = "practice"
-    print(solution.shortest_distance(wordsDict, word1, word2))
+    nums = [0, 1, 2, 4, 5, 7]
+    print(solution.summary_ranges(nums))
 
-    wordsDict = ["practice", "makes", "perfect", "coding", "makes"]
-    word1 = "makes"
-    word2 = "coding"
-    print(solution.shortest_distance(wordsDict, word1, word2))
+    nums = [0, 2, 3, 4, 6, 8, 9]
+    print(solution.summary_ranges(nums))
 
-    wordsDict = ["a","a","b","b"]
-    word1 = "a"
-    word2 = "b"
-    print(solution.shortest_distance(wordsDict, word1, word2))
+    nums = []
+    print(solution.summary_ranges(nums))
+
+    nums = [-1]
+    print(solution.summary_ranges(nums))
+
+    nums = [0]
+    print(solution.summary_ranges(nums))
 
 
 if __name__ == '__main__':
