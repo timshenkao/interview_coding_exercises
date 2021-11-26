@@ -51,7 +51,7 @@ class Solution:
         while remnant:
             # flip current bit
             num = num ^ bitmask
-            # shift bitmask left to handle the next bit on next iteration
+            # shift bitmask left to handle the next bit on the next iteration
             bitmask = bitmask << 1
             # update "flag", remove rightmost bit
             remnant = remnant >> 1
