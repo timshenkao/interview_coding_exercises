@@ -19,20 +19,17 @@ from solution import Solution
 def main():
     solution = Solution()
 
-    wordsDict = ["practice", "makes", "perfect", "coding", "makes"]
-    word1 = "coding"
-    word2 = "practice"
-    print(solution.shortest_distance(wordsDict, word1, word2))
+    nums = [3, 2, 1]
+    print(solution.third_max(nums))
 
-    wordsDict = ["practice", "makes", "perfect", "coding", "makes"]
-    word1 = "makes"
-    word2 = "coding"
-    print(solution.shortest_distance(wordsDict, word1, word2))
+    nums = [2, 1]
+    print(solution.third_max(nums))
 
-    wordsDict = ["a","a","b","b"]
-    word1 = "a"
-    word2 = "b"
-    print(solution.shortest_distance(wordsDict, word1, word2))
+    nums = [2, 2, 3, 1]
+    print(solution.third_max(nums))
+
+    nums = [3, 3, 4, 3, 4, 3, 0, 3, 3]
+    print(solution.third_max(nums))
 
 
 if __name__ == '__main__':
