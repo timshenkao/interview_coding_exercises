@@ -24,6 +24,29 @@ class ListNode:
         self.next_node = next_node
 
 
+def generate_list(values: List[int]) -> Optional[ListNode]:
+    if not values:
+        return None
+    temp = head = None
+    # creating nodes in reverse order
+    for i in reversed(range(len(values))):
+        head = ListNode(values[i], temp)
+        temp = head
+    return head
+
+
+def locate_node(head: ListNode, value: int) -> Optional[ListNode]:
+    """ Given the head of a singly-linked list and value, return ListNode that contains the value.
+    """
+    temp = head
+    while temp:
+        if temp.val == value:
+            return temp
+        temp = temp.next_node
+    return None
+
+
+# PRINT FUNCTIONS
 def print_list(head: Optional[ListNode]) -> None:
     print()
     if head:
@@ -35,14 +58,9 @@ def print_list(head: Optional[ListNode]) -> None:
         print('node: ', head, '; value: ', None, '; next node: ', None)
 
 
-def generate_list(values: List[int]) -> Optional[ListNode]:
-    if not values:
-        return None
-
-    temp = head = None
-    # creating nodes in reverse order
-    for i in reversed(range(len(values))):
-        head = ListNode(values[i], temp)
-        temp = head
-
-    return head
+def print_node(node: Optional[ListNode]) -> None:
+    print()
+    if node:
+        print('node: ', node, '; value: ', node.val, '; next node: ', node.next_node)
+    else:
+        print('node: ', node, '; value: ', None, '; next node: ', None)
