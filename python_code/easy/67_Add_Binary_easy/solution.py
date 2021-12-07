@@ -26,13 +26,36 @@ class Solution:
         """ Time complexity: O().
             Space complexity: O().
         """
-        transfer = 0
+        # constants
+        ZERO = '0'
+        ONE = '1'
+
+        # find out which string is longer
         if len(a) > len(b):
             longer, shorter = a, b
         else:
             longer, shorter = b, a
+        longer_pointer, shorter_pointer = len(longer) - 1, len(shorter) - 1
 
-        longer_pointer, shorter_pointer = len(longer), len(shorter)
+        transfer = 0
+        result = list()
+        # iterate through longer string and check shorter string as well
         while longer_pointer >= 0:
+            if longer[longer_pointer] == ONE:
+                transfer += 1
             if shorter_pointer >= 0:
+                if shorter[shorter_pointer] == ONE:
+                    transfer += 1
+                shorter_pointer -= 1
 
+            if transfer % 2 == 1:
+                result.append(ONE)
+            else:
+                result.append(ZERO)
+            transfer //= 2
+            longer_pointer -= 1
+
+        if transfer == 1:
+            result.append(ONE)
+        result.reverse()
+        return ''.join(result)
