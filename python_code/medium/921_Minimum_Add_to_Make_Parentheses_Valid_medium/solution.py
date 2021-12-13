@@ -14,9 +14,6 @@
 # limitations under the License.
 ##############################################################################
 
-from typing import List
-
-
 #  921. Minimum Add to Make Parentheses Valid  https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/
 # A parentheses string is valid if and only if:
 #     It is the empty string,
@@ -35,8 +32,8 @@ CLOSING = ')'
 
 class Solution:
     def min_add_to_make_valid(self, s: str) -> int:
-        """ Time complexity: O().
-            Space complexity: O().
+        """ Time complexity: O(n).
+            Space complexity: O(1).
         """
         # empty string is a valid string
         if not s:
