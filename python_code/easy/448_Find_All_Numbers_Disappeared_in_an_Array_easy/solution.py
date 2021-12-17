@@ -44,7 +44,7 @@ class Solution:
         """
         # the idea is not to sort the array but to mark positions in the original array
         # by inverting the sign (multiplying by -1) or adding some number > n
-        mark = len(arr) + 1 # mark can be any integer greater n
+        mark = len(arr) + 1  # mark can be any integer greater n
 
         for i in range(len(arr)):
             # Take integer and use it as index

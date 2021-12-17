@@ -30,37 +30,48 @@ from typing import List
 VISITED = '+'
 
 class Solution:
+    def _backtrack(self, row: int, col: int, board: List[List[str]], suffix: str) -> bool:
+        # recursion end case: we find match for each letter in the word
+        if len(suffix) == 0:
+            return True
+
+        m = len(board)
+        n = len(board[0])
+
+        # Check the current status, before jumping into backtracking
+        if row < 0 or row == m or col < 0 or col == n or board[row][col] != suffix[0]:
+            return False
+
+        # mark the choice before exploring further.
+        board[row][col] = VISITED
+        # explore the 4 neighbor directions
+        for row_offset, col_offset in [(0, 1), (-1, 0), (0, -1), (1, 0)]:
+            # word found in the board; no cleanup
+            if self._backtrack(row + row_offset, col + col_offset, board, suffix[1:]):
+                return True
+
+        # revert the marking
+        board[row][col] = suffix[0]
+
+        # Tried all directions, and did not find any match
+        return False
+
     def exist(self, board: List[List[str]], word: str) -> bool:
-        """ Time complexity: O().
-            Space complexity: O().
+        """ Time complexity: O(m * n * (3 ^ L)). L is the length of the word.
+                             There could be m * n invocations of backtracking function in the worst case from exist()
+                             function.
+                             When backtracking, there is 4 directions initially, but choices are reduced to 3 later
+                             (we won't go back to where we come from).
+                             Execution trace after the first step could be visualized as a 3-ary tree, each of the
+                             branches represent a potential exploration in the corresponding direction.
+                             Therefore, in the worst case, the total number of invocation of backtracking function would
+                              be the number of nodes in a full 3-nary tree, which is about 3^L.
+            Space complexity: O(L).
         """
         m = len(board)
         n = len(board[0])
-        curr_i = curr_j = 0
-        for i in range(m):
-            for j in range(n):
-                if word[0] == board[i][j]:
-                    curr_i, curr_j = i, j
-                    board[i][j] = VISITED
-                    break
-
-        print(curr_i, curr_j)
-        if curr_i == 0 and curr_j == 0 and board[curr_i][curr_j] != word[0]:
-            return False
-
-        for ch in word[1:]:
-            if (0 <= curr_i - 1 < m) and (0 <= curr_j < n) and board[curr_i - 1][curr_j] == ch:
-                board[curr_i - 1][curr_j] = VISITED
-                curr_i -= 1
-            elif (0 <= curr_i + 1 < m) and (0 <= curr_j < n) and board[curr_i + 1][curr_j] == ch:
-                board[curr_i + 1][curr_j] = VISITED
-                curr_i += 1
-            elif (0 <= curr_i < m) and (0 <= curr_j - 1 < n) and board[curr_i][curr_j - 1] == ch:
-                board[curr_i][curr_j - 1] = VISITED
-                curr_j -= 1
-            elif (0 <= curr_i < m) and (0 <= curr_j + 1 < n) and board[curr_i][curr_j + 1] == ch:
-                board[curr_i][curr_j + 1] = VISITED
-                curr_j += 1
-            else:
-                return False
-        return True
+        for row in range(m):
+            for col in range(n):
+                if self._backtrack(row, col, board, word):
+                    return True
+        return False
