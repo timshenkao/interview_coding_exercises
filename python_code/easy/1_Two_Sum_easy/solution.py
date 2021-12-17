@@ -61,7 +61,6 @@ class Solution:
         # Pairs value:index
         lookup = {}
         # iterate through array once
-        #
         for i in range(len(arr)):
             if target - arr[i] in lookup:
                 # exercise description says:
