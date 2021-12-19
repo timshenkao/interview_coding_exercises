@@ -49,13 +49,15 @@ def locate_node(head: ListNode, value: int) -> Optional[ListNode]:
 # PRINT FUNCTIONS
 def print_list(head: Optional[ListNode]) -> None:
     print()
+    i = 0
     if head:
         while head.next_node:
-            print('node: ', head, '; value: ', head.val, '; next node: ', head.next_node)
+            print('node ', i, ': ', head, '; value: ', head.val, '; next node: ', head.next_node)
             head = head.next_node
-        print('node: ', head, '; value: ', head.val, '; next node: ', head.next_node)
+            i += 1
+        print('node ', i, ': ', head, '; value: ', head.val, '; next node: ', head.next_node)
     else:
-        print('node: ', head, '; value: ', None, '; next node: ', None)
+        print('node 0: ', head, '; value: ', None, '; next node: ', None)
 
 
 def print_node(node: Optional[ListNode]) -> None:
