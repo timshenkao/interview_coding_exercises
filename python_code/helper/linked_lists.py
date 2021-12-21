@@ -19,7 +19,7 @@ from typing import List, Optional
 
 class ListNode:
     # Definition for singly-linked list.
-    def __init__(self, val=0, next_node=None):
+    def __init__(self, val: int = 0, next_node=None):
         self.val = val
         self.next_node = next_node
 
@@ -32,6 +32,25 @@ def generate_list(values: List[int]) -> Optional[ListNode]:
     for i in reversed(range(len(values))):
         head = ListNode(values[i], temp)
         temp = head
+    return head
+
+
+def generate_list_cycle(values: List[int], pos: int) -> Optional[ListNode]:
+    if not values:
+        return None
+    head = generate_list(values)
+    if pos >= 0:
+        # get pointer to an internal node
+        i = 0
+        curr_node = head
+        while i < pos:
+            i += 1
+            curr_node = curr_node.next_node
+        # get pointer to the tail node
+        tail = curr_node
+        while tail.next_node:
+            tail = tail.next_node
+        tail.next_node = curr_node
     return head
 
 
@@ -51,11 +70,17 @@ def print_list(head: Optional[ListNode]) -> None:
     print()
     i = 0
     if head:
+        visited_nodes = set()
         while head.next_node:
+            if head not in visited_nodes:
+                print('node ', i, ': ', head, '; value: ', head.val, '; next node: ', head.next_node)
+                visited_nodes.add(head)
+                head = head.next_node
+                i += 1
+            else:
+                break
+        if not head.next_node:
             print('node ', i, ': ', head, '; value: ', head.val, '; next node: ', head.next_node)
-            head = head.next_node
-            i += 1
-        print('node ', i, ': ', head, '; value: ', head.val, '; next node: ', head.next_node)
     else:
         print('node 0: ', head, '; value: ', None, '; next node: ', None)
 
