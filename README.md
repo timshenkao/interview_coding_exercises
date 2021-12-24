@@ -13,5 +13,7 @@ Java
 ----
 
 Run via Maven (example):
-`mvn package
-java -cp javacode/target/javacode-1.0-SNAPSHOT.jar com.shenkao.exercises.medium.LinkedListCycleIImedium142.Runner`
+
+`mvn package`
+
+`java -cp javacode/target/javacode-1.0-SNAPSHOT.jar com.shenkao.exercises.medium.LinkedListCycleIImedium142.Runner`

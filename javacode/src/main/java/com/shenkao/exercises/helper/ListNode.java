@@ -19,17 +19,16 @@ public class ListNode {
      public int val;
      public ListNode nextNode;
 
-     ListNode() {
-         val = 0;
-         nextNode = null;
-     }
-    ListNode(int x) {
-        val = x;
-        nextNode = null;
-    }
     ListNode(int x, ListNode next) {
         val = x;
         nextNode = next;
     }
-}
 
+    ListNode(int x) {
+        this(0, null);
+    }
+
+     ListNode() {
+        this(0);
+     }
+}
