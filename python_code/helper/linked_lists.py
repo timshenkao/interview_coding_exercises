@@ -24,6 +24,15 @@ class ListNode:
         self.next_node = next_node
 
 
+class MultiDoubleListNode:
+    # Definition for multilevel doubly-linked list.
+    def __init__(self, val: int = 0, next_node=None, prev_node=None, child_node=None):
+        self.val = val
+        self.next_node = next_node
+        self.prev_node = prev_node
+        self.child_node = child_node
+
+
 def generate_list(values: List[int]) -> Optional[ListNode]:
     if not values:
         return None
@@ -51,6 +60,37 @@ def generate_list_cycle(values: List[int], pos: int) -> Optional[ListNode]:
         while tail.next_node:
             tail = tail.next_node
         tail.next_node = curr_node
+    return head
+
+
+def generate_multi_double_list(values: List[int]) -> Optional[MultiDoubleListNode]:
+    if not values:
+        return None
+
+    prev = temp = head = None
+    i = 0
+    while i <= len(values) - 1:
+        if values[i] is not None:
+            temp = MultiDoubleListNode(values[i], prev_node=prev)
+            if prev:
+                prev.next_node = temp
+            prev = temp
+            if i == 0:
+                head = temp
+            i += 1
+        else:
+            none_count = -1
+            while i <= len(values) - 1 and values[i] is None:
+                none_count += 1
+                i += 1
+
+            child_node = generate_multi_double_list(values[i:])
+            prev = head
+            while none_count:
+                prev = prev.next_node
+                none_count -= 1
+            prev.child_node = child_node
+            break
     return head
 
 
@@ -91,3 +131,26 @@ def print_node(node: Optional[ListNode]) -> None:
         print('node: ', node, '; value: ', node.val, '; next node: ', node.next_node)
     else:
         print('node: ', node, '; value: ', None, '; next node: ', None)
+
+
+def print_multi_double_list(head: Optional[MultiDoubleListNode]) -> None:
+    print()
+    i = 0
+    children = list()
+    if head:
+        while head.next_node:
+            print('node ', i, ': ', head, '; value: ', head.val, '; next node: ', head.next_node,
+                  '; previous node: ', head.prev_node, '; child node: ', head.child_node)
+            head = head.next_node
+            i += 1
+            # if node has a child, add it to list of children
+            if head.child_node:
+                children.append(head.child_node)
+        print('node ', i, ': ', head, '; value: ', head.val, '; next node: ', head.next_node,
+              '; previous node: ', head.prev_node, '; child node: ', head.child_node)
+        # print children lists
+        while children:
+            print_multi_double_list(children.pop(0))
+    else:
+        print('node 0: ', head, '; value: ', None, '; next node: ', None, '; previous node: ', None,
+              '; child node: ', None)
