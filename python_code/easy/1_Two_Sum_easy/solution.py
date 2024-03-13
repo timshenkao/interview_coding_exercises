@@ -40,13 +40,16 @@ class Solution:
         right_index = len(arr) - 1
 
         # create copy of array and sort
+        # TC: O(N * log N) SC: O(N)
         arr_copy = sorted(arr)
+        # TC: O(N) SC: O(1)
         while arr_copy[left_index] + arr_copy[right_index] != target:
             if arr_copy[left_index] + arr_copy[right_index] > target:
                 right_index -= 1
             else:
                 left_index += 1
 
+        # TC: O(N) SC: O(1)
         result = []
         for i in range(len(arr)):
             if arr[i] == arr_copy[left_index] or arr[i] == arr_copy[right_index]:
@@ -62,6 +65,7 @@ class Solution:
         lookup = {}
         # iterate through array once
         for i in range(len(arr)):
+            # finding key in dictionary is O(1)
             if target - arr[i] in lookup:
                 # exercise description says:
                 # "You may assume that each input would have exactly one solution"
