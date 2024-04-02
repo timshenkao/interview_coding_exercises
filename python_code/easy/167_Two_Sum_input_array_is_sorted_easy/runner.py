@@ -19,25 +19,18 @@ from solution import Solution
 def main():
     solution = Solution()
 
-    numbers = [2, 7, 11, 15]
-    target = 9
-    print('arr: ', numbers, ' target: ', target)
-    print(solution.two_sum(numbers, target))
-
-    numbers = [2, 3, 4]
-    target = 6
-    print('arr: ', numbers, ' target: ', target)
-    print(solution.two_sum(numbers, target))
-
-    numbers = [-1, 0]
-    target = -1
-    print('arr: ', numbers, ' target: ', target)
-    print(solution.two_sum(numbers, target))
-
-    numbers = [5, 25, 75]
-    target = 100
-    print('arr: ', numbers, ' target: ', target)
-    print(solution.two_sum(numbers, target))
+    tests = {
+        1: [9, [2, 7, 11, 15]],
+        2: [6, [2, 3, 4]],
+        3: [6, [3, 3]],
+        4: [-8, [-5, -4, -3, -2, -1]],
+        5: [-1, [-1, 0]],
+        6: [100, [5, 25, 75]]
+    }
+    for _, test in tests.items():
+        print('array: ', test[1], 'target: ', test[0])
+        print('optimal ', solution.two_sum(test[1], test[0]))
+        print(' ')
 
 
 if __name__ == '__main__':

@@ -27,8 +27,8 @@ from typing import List
 
 class Solution:
     def two_sum(self, arr: List[int], target: int) -> List[int]:
-        """ Time complexity: O().
-            Space complexity: O().
+        """ Time complexity: O(N).
+            Space complexity: O(1).
         """
         left_index = 0
         right_index = len(arr) - 1

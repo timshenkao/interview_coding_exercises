@@ -19,23 +19,18 @@ from solution import Solution
 def main():
     solution = Solution()
 
-    s = "()"
-    print(solution.is_valid(s))
-
-    s = "()[]{}"
-    print(solution.is_valid(s))
-
-    s = "(]"
-    print(solution.is_valid(s))
-
-    s = "([)]"
-    print(solution.is_valid(s))
-
-    s = "{[]}"
-    print(solution.is_valid(s))
-
-    s = "(([]){})"
-    print(solution.is_valid(s))
+    tests = {
+        1: '()',
+        2: '()[]{}',
+        3: '(]',
+        4: '([)]',
+        5: '{[]}',
+        6: '(([]){})'
+    }
+    for _, test in tests.items():
+        print(test)
+        print(solution.is_valid(test))
+        print(' ')
 
 
 if __name__ == '__main__':
