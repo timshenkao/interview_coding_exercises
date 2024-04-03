@@ -15,22 +15,9 @@
 ##############################################################################
 
 hashtable
-Time:
-�
-(
-    �
-)
-O(n)
-Space:
-�
-(
-    �
-)
-O(n)
+Time: O(n)
+Space: O(n)
 
-C++
-Java
-Python
 
 class Solution:
     def taskSchedulerII(self, tasks: List[int], space: int) -> int:

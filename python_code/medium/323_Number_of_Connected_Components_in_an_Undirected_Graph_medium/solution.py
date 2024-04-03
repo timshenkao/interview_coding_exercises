@@ -31,35 +31,10 @@ class Solution:
                 dfs(i)
         return res
 
-    Approach 1: BFS¶
-    Time:
-    �
-    (
-        ∣
-        �
-        ∣
-        +
-        ∣
-        �
-        ∣
-    )
-    O(∣V∣+∣E∣)
-    Space:
-    �
-    (
-        ∣
-        �
-        ∣
-        +
-        ∣
-        �
-        ∣
-    )
-    O(∣V∣+∣E∣)
+    Approach 1: BFS
+    Time:     O(∣V∣+∣E∣)
+    Space:     O(∣V∣+∣E∣)
 
-    C++
-    Java
-    Python
 
     class Solution:
         def countComponents(self, n: int, edges: List[List[int]]) -> int:
@@ -90,35 +65,9 @@ class Solution:
             return ans
 
 
-Approach 2: DFS¶
-Time:
-�
-(
-    ∣
-    �
-    ∣
-    +
-    ∣
-    �
-    ∣
-)
-O(∣V∣+∣E∣)
-Space:
-�
-(
-    ∣
-    �
-    ∣
-    +
-    ∣
-    �
-    ∣
-)
-O(∣V∣+∣E∣)
-
-C++
-Java
-Python
+Approach 2: DFS
+Time: O(∣V∣+∣E∣)
+Space: O(∣V∣+∣E∣)
 
 class Solution:
     def countComponents(self, n: int, edges: List[List[int]]) -> int:
@@ -144,35 +93,9 @@ class Solution:
 
         return ans
 
-Approach 3: UF¶
-Time:
-�
-(
-    ∣
-    �
-    ∣
-    +
-    ∣
-    �
-    ∣
-)
-O(∣V∣+∣E∣)
-Space:
-�
-(
-    ∣
-    �
-    ∣
-    +
-    ∣
-    �
-    ∣
-)
-O(∣V∣+∣E∣)
-
-C++
-Java
-Python
+Approach 3: UF
+Time: O(∣V∣+∣E∣)
+Space: O(∣V∣+∣E∣)
 
 class UnionFind:
     def __init__(self, n: int):

@@ -61,12 +61,7 @@ class Trie:
 # param_3 = obj.startsWith(prefix)
 
 
-Time:
-Space:
 
-C++
-Java
-Python
 
 class TrieNode:
     def __init__(self):

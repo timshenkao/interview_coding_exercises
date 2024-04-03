@@ -33,33 +33,10 @@ class BSTIterator:
             node = node.left
 
 
-Approach 1: Recursive¶
-Time: Constructor:
-�
-(
-    �
-)
-O(n), next():
-�
-(
-    1
-)
-O(1), hasNext():
-�
-(
-    1
-)
-O(1)
-Space:
-�
-(
-    �
-)
-O(n)
+Approach 1: Recursive
+Time: Constructor: O(n), next(): O(1), hasNext(): O(1)
+Space: O(n)
 
-C++
-Java
-Python
 
 class BSTIterator:
     def __init__(self, root: Optional[TreeNode]):
@@ -81,33 +58,9 @@ class BSTIterator:
         self.vals.append(root.val)
         self._inorder(root.right)
 
-Approach 2: Iterative¶
-Time: Constructor:
-�
-(
-    ℎ
-)
-O(h), next():
-�
-(
-    ℎ
-)
-O(h), hasNext():
-�
-(
-    1
-)
-O(1)
-Space:
-�
-(
-    ℎ
-)
-O(h)
-
-C++
-Java
-Python
+Approach 2: Iterative
+Time: Constructor: O(h), next(): O(h), hasNext(): O(1)
+Space: O(h)
 
 class BSTIterator:
     def __init__(self, root: Optional[TreeNode]):

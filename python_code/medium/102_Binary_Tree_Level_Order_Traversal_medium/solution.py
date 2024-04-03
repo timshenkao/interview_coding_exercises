@@ -35,22 +35,9 @@ class Solution:
 
 
 BFS
-Time:
-�
-(
-    �
-)
-O(n)
-Space:
-�
-(
-    �
-)
-O(n)
+Time: O(n)
+Space: O(n)
 
-C++
-Java
-Python
 
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:

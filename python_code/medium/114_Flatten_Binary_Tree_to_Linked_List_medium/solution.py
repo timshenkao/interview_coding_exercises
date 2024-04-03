@@ -35,23 +35,10 @@ class Solution:
         traverse(root)
 
 DFS
-Approach 1: Recursive¶
-Time:
-�
-(
-    �
-)
-O(n)
-Space:
-�
-(
-    ℎ
-)
-O(h)
+Approach 1: Recursive
+Time: O(n)
+Space: O(h)
 
-C++
-Java
-Python
 
 class Solution:
     def flatten(self, root: Optional[TreeNode]) -> None:
@@ -73,23 +60,10 @@ class Solution:
             rightmost = rightmost.right
         rightmost.right = right
 
-Approach 2: Iterative (stack)¶
-Time:
-�
-(
-    �
-)
-O(n)
-Space:
-�
-(
-    ℎ
-)
-O(h)
+Approach 2: Iterative (stack)
+Time: O(n)
+Space: O(h)
 
-C++
-Java
-Python
 
 class Solution:
     def flatten(self, root: Optional[TreeNode]) -> None:
@@ -109,22 +83,9 @@ class Solution:
             root.left = None
 
 Approach 3: Morris-like¶
-Time:
-�
-(
-    �
-)
-O(n)
-Space:
-�
-(
-    1
-)
-O(1)
+Time: O(n)
+Space: O(1)
 
-C++
-Java
-Python
 
 class Solution:
     def flatten(self, root: Optional[TreeNode]) -> None:

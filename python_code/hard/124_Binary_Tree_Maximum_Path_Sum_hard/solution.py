@@ -29,22 +29,9 @@ class Solution:
 
 DFS
 DP
-Time:
-�
-(
-    �
-)
-O(n)
-Space:
-�
-(
-    ℎ
-)
-O(h)
+Time: O(n)
+Space: O(h)
 
-C++
-Java
-Python
 
 class Solution:
     def maxPathSum(self, root: Optional[TreeNode]) -> int:

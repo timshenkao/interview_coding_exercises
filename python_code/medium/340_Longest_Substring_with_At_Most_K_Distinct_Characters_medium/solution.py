@@ -31,28 +31,11 @@ class Solution:
         return res
 
 
-Approach 1: Sliding Window¶
-Time:
-�
-(
-    �
-)
-O(n)
-Space:
-�
-(
-    128
-)
-=
-�
-(
-    1
-)
-O(128)=O(1)
+Approach 1: Sliding Window
+Time: O(n)
+Space: O(128)=O(1)
 
-C++
-Java
-Python
+
 
 class Solution:
     def lengthOfLongestSubstringKDistinct(self, s: str, k: int) -> int:

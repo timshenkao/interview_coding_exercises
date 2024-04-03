@@ -34,7 +34,7 @@ class Solution:
         return validate(root, -float("inf"),float("inf"))
 
 DFS
-Approach 1: Recursive¶
+Approach 1: Recursive
 Time: O(n)
 Space: O(n)
 
@@ -54,23 +54,11 @@ class Solution:
 
         return isValidBST(root, None, None)
 
-Approach 2: Iterative (stack)¶
-Time:
-�
-(
-    �
-)
-O(n)
-Space:
-�
-(
-    �
-)
-O(n)
+Approach 2: Iterative (stack)
+Time: O(n)
+Space: O(n)
 
-C++
-Java
-Python
+
 
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:

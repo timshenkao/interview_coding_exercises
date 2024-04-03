@@ -34,23 +34,10 @@ class Solution:
         return res
 
 
-Approach 1: BFS¶
-Time:
-�
-(
-    �
-)
-O(n)
-Space:
-�
-(
-    �
-)
-O(n)
+Approach 1: BFS
+Time: O(n)
+Space: O(n)
 
-C++
-Java
-Python
 
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
@@ -74,23 +61,10 @@ class Solution:
         return ans
 
 
-Approach 2: DFS¶
-Time:
-�
-(
-    �
-)
-O(n)
-Space:
-�
-(
-    ℎ
-)
-O(h)
+Approach 2: DFS
+Time: O(n)
+Space: O(h)
 
-C++
-Java
-Python
 
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:

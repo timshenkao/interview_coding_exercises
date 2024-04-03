@@ -36,23 +36,10 @@ class Solution:
         return q
 
 
-Approach 1: Recursive¶
-Time:
-�
-(
-    ℎ
-)
-O(h)
-Space:
-�
-(
-    ℎ
-)
-O(h)
+Approach 1: Recursive
+Time: O(h)
+Space: O(h)
 
-C++
-Java
-Python
 
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
@@ -65,23 +52,10 @@ class Solution:
         return left or right
 
 
-Approach 2: Iterative¶
-Time:
-�
-(
-    �
-)
-O(n)
-Space:
-�
-(
-    �
-)
-O(n)
+Approach 2: Iterative
+Time: O(n)
+Space: O(n)
 
-C++
-Java
-Python
 
 class Solution:
     def lowestCommonAncestor(self, root: Optional[TreeNode], p: Optional[TreeNode], q: Optional[TreeNode]) -> Optional[TreeNode]:

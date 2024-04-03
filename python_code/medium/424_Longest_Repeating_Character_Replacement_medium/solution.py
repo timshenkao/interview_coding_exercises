@@ -31,27 +31,8 @@ class Solution:
         return end-start
 
 Approach 1: Regular Window¶
-Time:
-�
-(
-    �
-)
-O(n)
-Space:
-�
-(
-    26
-)
-=
-�
-(
-    1
-)
-O(26)=O(1)
-
-C++
-Java
-Python
+Time: O(n)
+Space: O(26)=O(1)
 
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
@@ -71,27 +52,8 @@ class Solution:
         return ans
 
 Approach 2: Lazy Window¶
-Time:
-�
-(
-    �
-)
-O(n)
-Space:
-�
-(
-    26
-)
-=
-�
-(
-    1
-)
-O(26)=O(1)
-
-C++
-Java
-Python
+Time: O(n)
+Space: O(26)=O(1)
 
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:

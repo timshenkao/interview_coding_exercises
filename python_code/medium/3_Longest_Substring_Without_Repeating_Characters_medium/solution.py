@@ -27,7 +27,7 @@ class Solution:
             chars[s[i]] = i
         return mx
 
-Approach 1: Sliding window¶
+Approach 1: Sliding window
 Time: O(n)
 Space: O(128)=O(1)
 
@@ -46,28 +46,10 @@ class Solution:
 
         return ans
 
-Approach 2: Last seen¶
-Time:
-�
-(
-    �
-)
-O(n)
-Space:
-�
-(
-    128
-)
-=
-�
-(
-    1
-)
-O(128)=O(1)
+Approach 2: Last seen
+Time: O(n)
+Space: O(128)=O(1)
 
-C++
-Java
-Python
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:

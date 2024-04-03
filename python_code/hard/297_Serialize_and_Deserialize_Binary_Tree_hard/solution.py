@@ -45,23 +45,11 @@ class Codec:
         return root
 
 
-Approach 1: BFS¶
-Time:
-�
-(
-    �
-)
-O(n)
-Space:
-�
-(
-    �
-)
-O(n)
+Approach 1: BFS
+Time: O(n)
+Space: O(n)
 
-C++
-Java
-Python
+
 
 class Codec:
     def serialize(self, root: 'TreeNode') -> str:
@@ -104,23 +92,10 @@ class Codec:
         return root
 
 
-Approach 2: DFS¶
-Time:
-�
-(
-    �
-)
-O(n)
-Space:
-�
-(
-    �
-)
-O(n)
+Approach 2: DFS
+Time: O(n)
+Space:  O(n)
 
-C++
-Java
-Python
 
 class Codec:
     def serialize(self, root: 'TreeNode') -> str:

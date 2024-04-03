@@ -29,26 +29,9 @@ class Solution:
         return res
 
 
-    Approach 1: BFS¶
-    Time:
-    �
-    (
-        �
-        �
-    )
-    O(mn)
-    Space:
-    �
-    (
-        min
-        ⁡
-        (
-        �
-        ,
-        �
-    )
-    )
-    O(min(m,n))
+    Approach 1: BFS
+    Time:    O(mn)
+    Space:     O(min(m,n))
 
 
 
@@ -84,25 +67,10 @@ class Solution:
             return ans
 
 
-Approach 2: DFS¶
-Time:
-�
-(
-    �
-    �
-)
-O(mn)
-Space:
-�
-(
-    �
-    �
-)
-O(mn)
+Approach 2: DFS
+Time: O(mn)
+Space: O(mn)
 
-C++
-Java
-Python
 
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:

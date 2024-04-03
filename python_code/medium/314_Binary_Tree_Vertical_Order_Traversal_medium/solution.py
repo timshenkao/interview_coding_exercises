@@ -37,22 +37,9 @@ class Solution:
 
 
 
-Time:
-�
-(
-    �
-)
-O(n)
-Space:
-�
-(
-    �
-)
-O(n)
+Time: O(n)
+Space: O(n)
 
-C++
-Java
-Python
 
 class Solution:
     def verticalOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
