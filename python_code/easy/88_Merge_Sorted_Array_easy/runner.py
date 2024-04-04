@@ -19,26 +19,20 @@ from solution import Solution
 def main():
     solution = Solution()
 
-    nums1 = [1, 2, 3, 0, 0, 0]
-    m = 3
-    nums2 = [2, 5, 6]
-    n = 3
-    solution.merge(nums1, m, nums2, n)
-    print(nums1)
-
-    nums1 = [1]
-    m = 1
-    nums2 = []
-    n = 0
-    solution.merge(nums1, m, nums2, n)
-    print(nums1)
-
-    nums1 = [0]
-    m = 0
-    nums2 = [1]
-    n = 1
-    solution.merge(nums1, m, nums2, n)
-    print(nums1)
+    tests = {
+        1: [[1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3],
+        2: [[1], 1, [], 0],
+        3: [[0], 0, [1], 1],
+    }
+    for _, test in tests.items():
+        print('initial data: ')
+        print('array 1: ', test[0])
+        print('m = ', test[1])
+        print('array 2: ', test[2])
+        print('n = ', test[3])
+        solution.merge(test[0], test[1], test[2], test[3])
+        print('merged ', test[0])
+        print(' ')
 
 
 if __name__ == '__main__':

@@ -19,20 +19,16 @@ from solution import Solution
 def main():
     solution = Solution()
 
-    nums = []
-    print(solution.three_sum(nums))
-    nums = []
-    print(solution.three_sum_no_sort(nums))
-
-    nums = [-1, 0, 1, 2, -1, -4]
-    print(solution.three_sum(nums))
-    nums = [-1, 0, 1, 2, -1, -4]
-    print(solution.three_sum_no_sort(nums))
-
-    nums = [0]
-    print(solution.three_sum(nums))
-    nums = [0]
-    print(solution.three_sum_no_sort(nums))
+    tests = {
+        1: [],
+        2: [-1, 0, 1, 2, -1, -4],
+        3: [0]
+    }
+    for _, test in tests.items():
+        print('array: ', test)
+        print('three sum: ', solution.three_sum(test.copy()))
+        print('three sum no sort: ', solution.three_sum_no_sort(test.copy()))
+        print(' ')
 
 
 if __name__ == '__main__':

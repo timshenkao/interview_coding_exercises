@@ -29,7 +29,7 @@ def main():
     }
     for _, test in tests.items():
         print('array: ', test[1], 'target: ', test[0])
-        print('optimal ', solution.two_sum(test[1], test[0]))
+        print('two sum indices: ', solution.two_sum(test[1], test[0]))
         print(' ')
 
 

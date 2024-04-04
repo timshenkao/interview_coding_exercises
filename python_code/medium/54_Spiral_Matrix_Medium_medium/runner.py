@@ -19,11 +19,14 @@ from solution import Solution
 def main():
     solution = Solution()
 
-    matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-    print(solution.spiral_order(matrix))
-
-    matrix = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
-    print(solution.spiral_order(matrix))
+    tests = {
+        1: [[1, 2, 3], [4, 5, 6], [7, 8, 9]],
+        2: [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
+    }
+    for _, test in tests.items():
+        print('matrix: ', test)
+        print('spiral order: ', solution.spiral_order(test))
+        print(' ')
 
 
 if __name__ == '__main__':
