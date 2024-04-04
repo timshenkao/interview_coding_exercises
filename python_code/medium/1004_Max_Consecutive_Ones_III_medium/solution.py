@@ -14,30 +14,39 @@
 # limitations under the License.
 ##############################################################################
 
-class Solution:
-    def longestOnes(self, A: List[int], K: int) -> int:
-        zeros, res = [-1] + [i for i, c in enumerate(A) if not c] + [len(A)], 0
-        for j in range(K + 1, len(zeros)):
-            res = max(res, zeros[j] - zeros[j - K - 1] - 1)
-        return res or K and len(A)
+from typing import List
+
+# 1004. Max Consecutive Ones III https://leetcode.com/problems/max-consecutive-ones-iii/
+# Given a binary array nums and an integer k, return the maximum number of consecutive 1's in the array
+# if you can flip at most k 0's.
+# 1 <= nums.length <= 10^5
+# nums[i] is either 0 or 1.
+# 0 <= k <= nums.length
 
 
 class Solution:
+    def longest_ones(self, nums: List[int], k: int) -> int:
+        # enumerate() returns iterator
+        # Time complexity: O(n) as we iterate
+        # Space complexity: O(n) as we create additional list
+        zeros, res = [-1] + [i for i, c in enumerate(nums) if not c] + [len(nums)], 0
+        for j in range(k + 1, len(zeros)):
+            res = max(res, zeros[j] - zeros[j - k - 1] - 1)
+        return res or k and len(nums)
 
-
-Time: O(n)
-Space: O(1)
-    def longestOnes(self, nums: List[int], k: int) -> int:
+    def longest_ones_optimal(self, nums: List[int], k: int) -> int:
+        # Time complexity: O(n)
+        # Space complexity: O(1)
+        # enumerate() returns iterator
         ans = 0
-
-        l = 0
+        j = 0
         for r, num in enumerate(nums):
             if num == 0:
                 k -= 1
             while k < 0:
-                if nums[l] == 0:
+                if nums[j] == 0:
                     k += 1
-                l += 1
-            ans = max(ans, r - l + 1)
+                j += 1
+            ans = max(ans, r - j + 1)
 
         return ans
