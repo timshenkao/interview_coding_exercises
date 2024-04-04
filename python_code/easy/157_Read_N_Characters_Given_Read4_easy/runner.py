@@ -21,24 +21,24 @@ def main():
 
     file = "abc"
     n = 4
-    buf = [''] * n
+    buf = [""] * n
     print(solution.read(buf, n))
 
     file = "abcde"
     n = 5
-    buf = [''] * n
+    buf = [""] * n
     print(solution.read(buf, n))
 
     file = "abcdABCD1234"
     n = 12
-    buf = [''] * n
+    buf = [""] * n
     print(solution.read(buf, n))
 
     file = "leetcode"
     n = 5
-    buf = [''] * n
+    buf = [""] * n
     print(solution.read(buf, n))
     
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

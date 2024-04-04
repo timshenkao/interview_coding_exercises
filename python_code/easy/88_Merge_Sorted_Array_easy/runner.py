@@ -25,15 +25,15 @@ def main():
         3: [[0], 0, [1], 1],
     }
     for _, test in tests.items():
-        print('initial data: ')
-        print('array 1: ', test[0])
-        print('m = ', test[1])
-        print('array 2: ', test[2])
-        print('n = ', test[3])
+        print("initial data: ")
+        print("array 1: ", test[0])
+        print("m = ", test[1])
+        print("array 2: ", test[2])
+        print("n = ", test[3])
         solution.merge(test[0], test[1], test[2], test[3])
-        print('merged ', test[0])
-        print(' ')
+        print("merged ", test[0])
+        print(" ")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

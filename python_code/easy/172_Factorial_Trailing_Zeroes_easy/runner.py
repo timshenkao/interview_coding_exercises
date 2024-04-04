@@ -44,5 +44,5 @@ def main():
     print(solution.trailing_zeroes(n))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

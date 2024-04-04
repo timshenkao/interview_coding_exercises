@@ -31,7 +31,7 @@ class Solution:
             Space complexity: O(n). In the worst case scenario, we add all symbols to the final string.
         """
         depth = 0
-        final_str = ''
+        final_str = ""
         for elem in s:
             if elem == '(':
                 # we see opening parentheses, i.e. one more nesting level

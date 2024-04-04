@@ -35,5 +35,5 @@ def main():
     print(solution.matrix_reshape(mat, r, c))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

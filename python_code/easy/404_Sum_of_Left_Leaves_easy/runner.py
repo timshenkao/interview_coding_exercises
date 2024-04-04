@@ -31,5 +31,5 @@ def main():
     print(solution.sum_of_left_leaves_iteration(root))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

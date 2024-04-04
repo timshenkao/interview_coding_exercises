@@ -34,4 +34,4 @@ class Solution:
                 # if stack / temporary list is empty or current symbol is not equal to the last one in stack / temporary
                 # list
                 final_symbols.append(elem)
-        return ''.join(final_symbols)
+        return "".join(final_symbols)

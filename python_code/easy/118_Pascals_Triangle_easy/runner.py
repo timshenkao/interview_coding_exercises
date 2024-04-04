@@ -29,5 +29,5 @@ def main():
     print(solution.generate(num_rows))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

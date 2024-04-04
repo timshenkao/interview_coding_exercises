@@ -32,5 +32,5 @@ def main():
     print(solution.min_add_to_make_valid(s))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

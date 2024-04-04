@@ -75,5 +75,5 @@ class Solution:
                     digit -= 1
             elif digit == 9:
                 temp_result.append(roman_digits[0] + roman_digits[2])
-            total_result.append(''.join(temp_result))
-        return ''.join(reversed(total_result))
+            total_result.append("".join(temp_result))
+        return "".join(reversed(total_result))

@@ -32,5 +32,5 @@ def main():
     print(solution.can_construct(ransom_note, magazine))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

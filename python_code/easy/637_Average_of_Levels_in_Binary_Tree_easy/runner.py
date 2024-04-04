@@ -29,5 +29,5 @@ def main():
     print(solution.average_of_levels(root))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

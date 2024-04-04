@@ -47,5 +47,5 @@ def main():
     print_list(solution.head)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

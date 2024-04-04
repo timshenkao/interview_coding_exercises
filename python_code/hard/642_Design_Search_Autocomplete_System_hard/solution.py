@@ -22,39 +22,39 @@ class AutocompleteSystem:
         for i, s in enumerate(sentences):
             self.s = s
             self.rank[s] = times[i] - 1
-            self.input('#')
+            self.input("#")
 
     def move(self, c):
         if c not in self.cur:
             self.cur[c] = {}
         self.cur = self.cur[c]
-        if 'sentences' not in self.cur:
-            self.cur['sentences'] = []
+        if "sentences" not in self.cur:
+            self.cur["sentences"] = []
 
     def addSentence(self):
         self.cur = self.root
         for c in self.s:
             self.move(c)
             self.search()
-            heapq.heappush(self.cur['sentences'], [-self.rank[self.s], self.s])
+            heapq.heappush(self.cur["sentences"], [-self.rank[self.s], self.s])
 
     def search(self):
         q, used, i = [], set(), 0
-        while i < 3 and self.cur['sentences']:
-            r, s = heapq.heappop(self.cur['sentences'])
+        while i < 3 and self.cur["sentences"]:
+            r, s = heapq.heappop(self.cur["sentences"])
             if s not in used:
                 used.add(s)
                 q.append([r, s])
                 i += 1
         for r, s in q:
-            heapq.heappush(self.cur['sentences'], [r, s])
+            heapq.heappush(self.cur["sentences"], [r, s])
         return [s for r, s in q]
 
     def input(self, c: str) -> List[str]:
-        if c == '#':
+        if c == "#":
             self.rank[self.s] += 1
             self.addSentence()
-            self.s = ''
+            self.s = ""
             self.cur = self.root
             return []
         else:
@@ -102,8 +102,8 @@ class AutocompleteSystem:
             self._insert(sentence, time)
 
     def input(self, c: str) -> List[str]:
-        if c == '#':
-            self._insert(''.join(self.s), 1)
+        if c == "#":
+            self._insert("".join(self.s), 1)
             self.curr = self.root
             self.s = []
             return []

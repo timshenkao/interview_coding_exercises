@@ -41,5 +41,5 @@ def main():
     print(solution.is_perfect_square(num))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

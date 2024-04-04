@@ -35,5 +35,5 @@ def main():
     print(solution.summary_ranges(nums))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

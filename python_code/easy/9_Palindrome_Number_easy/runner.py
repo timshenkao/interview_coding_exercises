@@ -45,5 +45,5 @@ def main():
     print(solution.is_palindrome_reverted_number(x))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -32,7 +32,7 @@ class Solution:
         if lower == upper:
             return str(lower)
         else:
-            return '->'.join([str(lower), str(upper)])
+            return "->".join([str(lower), str(upper)])
 
     def find_missing_ranges(self, nums: List[int], lower: int, upper: int) -> List[str]:
         """ Time complexity: O(n). n - number of elements in array

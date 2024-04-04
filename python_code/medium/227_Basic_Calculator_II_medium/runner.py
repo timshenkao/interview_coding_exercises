@@ -32,5 +32,5 @@ def main():
     print(solution.calculate_no_stack(s))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

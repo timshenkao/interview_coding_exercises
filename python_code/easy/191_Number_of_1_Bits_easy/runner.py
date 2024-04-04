@@ -24,5 +24,5 @@ def main():
     print(solution.hamming_weight_flip_last(n))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

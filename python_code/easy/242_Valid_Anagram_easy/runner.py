@@ -19,14 +19,15 @@ from solution import Solution
 def main():
     solution = Solution()
 
-    s = "anagram"
-    t = "nagaram"
-    print(solution.is_anagram(s, t))
+    tests = {
+        1: ["anagram", "nagaram"],
+        2: ["rat", "car"]
+    }
+    for _, test in tests.items():
+        print("strings: ", test[0], test[1])
+        print("result: ", solution.is_anagram(test[0], test[1]))
+        print(" ")
 
-    s = "rat"
-    t = "car"
-    print(solution.is_anagram(s, t))
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

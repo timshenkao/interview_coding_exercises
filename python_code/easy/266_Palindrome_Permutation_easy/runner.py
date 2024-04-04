@@ -29,5 +29,5 @@ def main():
     print(solution.can_permute_palindrome(s))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

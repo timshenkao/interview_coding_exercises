@@ -51,6 +51,6 @@ class Solution:
             longest_pointer -= 1
         # there could be unhandled transfer when the first digit in the largest string is 9
         if transfer:
-            result.append('1')
+            result.append("1")
 
-        return ''.join([result[i] for i in reversed(range(len(result)))])
+        return "".join([result[i] for i in reversed(range(len(result)))])

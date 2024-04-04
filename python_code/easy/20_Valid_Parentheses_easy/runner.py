@@ -20,18 +20,18 @@ def main():
     solution = Solution()
 
     tests = {
-        1: '()',
-        2: '()[]{}',
-        3: '(]',
-        4: '([)]',
-        5: '{[]}',
-        6: '(([]){})'
+        1: "()",
+        2: "()[]{}",
+        3: "(]",
+        4: "([)]",
+        5: "{[]}",
+        6: "(([]){})"
     }
     for _, test in tests.items():
         print(test)
         print(solution.is_valid(test))
-        print(' ')
+        print(" ")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -32,5 +32,5 @@ def main():
     print(solution.contains_nearby_duplicate(nums, k))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

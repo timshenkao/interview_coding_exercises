@@ -28,10 +28,10 @@ def main():
         6: [100, [5, 25, 75]]
     }
     for _, test in tests.items():
-        print('array: ', test[1], 'target: ', test[0])
-        print('two sum indices: ', solution.two_sum(test[1], test[0]))
-        print(' ')
+        print("array: ", test[1], "target: ", test[0])
+        print("two sum indices: ", solution.two_sum(test[1], test[0]))
+        print(" ")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

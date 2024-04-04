@@ -32,5 +32,5 @@ def main():
     print(solution.is_palindrome(s))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

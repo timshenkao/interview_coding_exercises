@@ -22,14 +22,14 @@ def main():
     logs1 = ["dig1 8 1 5 1","let1 art can","dig2 3 6","let2 own kit dig","let3 art zero"]
     logs2 = ["a1 9 2 3 1","g1 act car","zo4 4 7","ab1 off key dog","a8 act zoo"]
 
-    print('Using first comparator')
+    print("Using first comparator")
     print(solution.reorder_log_files_comparator(logs1))
     print(solution.reorder_log_files_comparator(logs2))
 
-    print('Using second comparator')
+    print("Using second comparator")
     print(solution.reorder_log_files_comparator(logs1))
     print(solution.reorder_log_files_comparator2(logs2))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

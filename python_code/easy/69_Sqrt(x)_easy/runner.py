@@ -25,5 +25,5 @@ def main():
     print(solution.my_sqrt(20))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

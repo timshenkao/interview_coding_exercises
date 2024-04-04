@@ -43,11 +43,11 @@ class Solution:
         """
         temp_list = []
         for i in ops:
-            if i == 'C':
+            if i == "C":
                 temp_list.pop()
-            elif i == 'D':
+            elif i == "D":
                 temp_list.append(2 * temp_list[-1])
-            elif i == '+':
+            elif i == "+":
                 temp_list.append(temp_list[-1] + temp_list[-2])
             else:
                 temp_list.append(int(i))

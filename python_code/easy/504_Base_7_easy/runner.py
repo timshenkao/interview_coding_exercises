@@ -32,5 +32,5 @@ def main():
     print(solution.convert_to_base7(num))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

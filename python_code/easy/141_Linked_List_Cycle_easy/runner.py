@@ -29,5 +29,5 @@ def main():
     print(solution.has_cycle(head))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

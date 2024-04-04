@@ -32,5 +32,5 @@ def main():
     print(solution.connect_sticks(sticks))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -29,5 +29,5 @@ def main():
     print(solution.length_of_last_word(s))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -31,7 +31,7 @@ class Solution:
         if lower == upper:
             return str(lower)
         else:
-            return '->'.join([str(lower), str(upper)])
+            return "->".join([str(lower), str(upper)])
 
     def summary_ranges(self, nums: List[int]) -> List[str]:
         """ Time complexity: O(n).

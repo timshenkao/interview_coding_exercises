@@ -40,7 +40,7 @@ class Solution:
         def _result_append(node: Optional[TreeNode], path_to_node: str) -> None:
             if node:
                 if path_to_node:
-                    path_to_current_node = path_to_node + '->' + str(node.val)
+                    path_to_current_node = path_to_node + "->" + str(node.val)
                 # if it's root of the tree
                 else:
                     path_to_current_node = str(node.val)
@@ -51,7 +51,7 @@ class Solution:
                 _result_append(node.left, path_to_current_node)
                 _result_append(node.right, path_to_current_node)
 
-        _result_append(root, '')
+        _result_append(root, "")
         return result
 
     def binary_tree_paths_iteration(self, root: Optional[TreeNode]) -> List[str]:
@@ -70,7 +70,7 @@ class Solution:
             if not curr_node.left and not curr_node.right:
                 result.append(curr_path)
             if curr_node.left:
-                temp_stack.append((curr_node.left, curr_path + '->' + str(curr_node.left.val)))
+                temp_stack.append((curr_node.left, curr_path + "->" + str(curr_node.left.val)))
             if curr_node.right:
-                temp_stack.append((curr_node.right, curr_path + '->' + str(curr_node.right.val)))
+                temp_stack.append((curr_node.right, curr_path + "->" + str(curr_node.right.val)))
         return result

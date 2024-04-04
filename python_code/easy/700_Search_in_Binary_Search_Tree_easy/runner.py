@@ -26,5 +26,5 @@ def main():
     print_binary_tree(solution.search_BST(root, 2), is_root=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

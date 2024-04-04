@@ -48,12 +48,12 @@ class Solution:
 
         # we iterate from right to left
         while roman_length > -1:
-            if s[roman_length] == 'I':
+            if s[roman_length] == "I":
                 number += 1 
                 roman_length -= 1
-            elif s[roman_length] == 'V':
+            elif s[roman_length] == "V":
                 # V can be preceded by I. In this case, it's 4 and we have to skip I
-                if roman_length > 0 and s[roman_length - 1] == 'I':
+                if roman_length > 0 and s[roman_length - 1] == "I":
                     number += 4 
                     roman_length -= 2
                 # V is 5 in this case
@@ -61,8 +61,8 @@ class Solution:
                     number += 5 
                     roman_length -= 1
             # X can be preceded by I. In this case, it's 9 and we have to skip I
-            elif s[roman_length] == 'X':
-                if roman_length > 0 and s[roman_length - 1] == 'I':
+            elif s[roman_length] == "X":
+                if roman_length > 0 and s[roman_length - 1] == "I":
                     number += 9 
                     roman_length -= 2
                 # X is 10 in this case
@@ -70,8 +70,8 @@ class Solution:
                     number += 10 
                     roman_length -= 1
             # L can be preceded by X. In this case, it's 40 and we have to skip X
-            elif s[roman_length] == 'L':
-                if roman_length > 0 and s[roman_length - 1] == 'X':
+            elif s[roman_length] == "L":
+                if roman_length > 0 and s[roman_length - 1] == "X":
                     number += 40 
                     roman_length -= 2
                 # L is 50 in this case
@@ -79,8 +79,8 @@ class Solution:
                     number += 50 
                     roman_length -= 1
             # C can be preceded by X. In this case, it's 90 and we have to skip X
-            elif s[roman_length] == 'C':
-                if roman_length > 0 and s[roman_length - 1] == 'X':
+            elif s[roman_length] == "C":
+                if roman_length > 0 and s[roman_length - 1] == "X":
                     number += 90 
                     roman_length -= 2
                 # C is 100 in this case
@@ -88,8 +88,8 @@ class Solution:
                     number += 100 
                     roman_length -= 1
             # D can be preceded by C. In this case, it's 400 and we have to skip C
-            elif s[roman_length] == 'D':
-                if roman_length > 0 and s[roman_length - 1] == 'C':
+            elif s[roman_length] == "D":
+                if roman_length > 0 and s[roman_length - 1] == "C":
                     number += 400 
                     roman_length -= 2
                 # D is 500 in this case
@@ -97,8 +97,8 @@ class Solution:
                     number += 500 
                     roman_length -= 1
             # M can be preceded by C. In this case, it's 900 and we have to skip C
-            elif s[roman_length] == 'M':
-                if roman_length > 0 and s[roman_length - 1] == 'C':
+            elif s[roman_length] == "M":
+                if roman_length > 0 and s[roman_length - 1] == "C":
                     number += 900 
                     roman_length -= 2
                 # D is 500 in this case

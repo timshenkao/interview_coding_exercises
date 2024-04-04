@@ -47,5 +47,5 @@ def main():
     print(solution.is_strobogrammatic(num))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

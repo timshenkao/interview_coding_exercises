@@ -35,5 +35,5 @@ def main():
     print(solution.daily_temperatures_no_stack(temperatures))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -65,4 +65,4 @@ class Solution:
                     required += 1
                 l += 1
 
-        return '' if bestLeft == -1 else s[bestLeft: bestLeft + minLength]
+        return "" if bestLeft == -1 else s[bestLeft: bestLeft + minLength]

@@ -26,11 +26,11 @@ def main():
         4: [-8, [-1, -2, -3, -4, -5]]
              }
     for _, test in tests.items():
-        print('array: ', test[1], 'target: ', test[0])
-        print('sorting ', solution.two_sum_sorting(test[1], test[0]))
-        print('optimal ', solution.two_sum_optimal(test[1], test[0]))
-        print(' ')
+        print("array: ", test[1], "target: ", test[0])
+        print("sorting ", solution.two_sum_sorting(test[1], test[0]))
+        print("optimal ", solution.two_sum_optimal(test[1], test[0]))
+        print(" ")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -25,7 +25,7 @@ class Solution:
         """
         # handle 0
         if not column_number:
-            return ''
+            return ""
 
         base = 26
         # ASCII code of A
@@ -37,4 +37,4 @@ class Solution:
             digit = (column_number + 25) % base
             column_number = (column_number - 1) // base
             result.append(chr(upper_a_code + digit))
-        return ''.join([result[i] for i in reversed(range(len(result)))])
+        return "".join([result[i] for i in reversed(range(len(result)))])

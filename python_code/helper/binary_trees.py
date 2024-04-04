@@ -62,8 +62,8 @@ def generate_binary_tree(values: List[int]) -> Optional[TreeNode]:
 
 
 def print_node(node: Optional[TreeNode]) -> None:
-    print('node: ', node, '; value: ', node.val if node else None, '; left : ', node.left if node else None,
-          '; right : ', node.right if node else None)
+    print("node: ", node, "; value: ", node.val if node else None, "; left : ", node.left if node else None,
+          "; right : ", node.right if node else None)
 
 
 def print_binary_tree(root: Optional[TreeNode], is_root: bool = False) -> None:
@@ -73,9 +73,9 @@ def print_binary_tree(root: Optional[TreeNode], is_root: bool = False) -> None:
 
     if root:
         if root.left:
-            print('left child of ', root, ' -->')
+            print("left child of ", root, " -->")
             print_binary_tree(root.left)
 
         if root.right:
-            print('right child of ', root, ' -->')
+            print("right child of ", root, " -->")
             print_binary_tree(root.right)

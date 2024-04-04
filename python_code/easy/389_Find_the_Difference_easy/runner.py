@@ -40,5 +40,5 @@ def main():
     print(solution.find_the_difference_bit_manipulation(s, t))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

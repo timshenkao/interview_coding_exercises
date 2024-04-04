@@ -29,5 +29,5 @@ def main():
     print(solution.remove_outer_parentheses(s))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

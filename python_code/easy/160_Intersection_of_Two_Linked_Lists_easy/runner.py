@@ -26,5 +26,5 @@ def main():
     print_list(solution.get_intersection_node(head1, head2))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

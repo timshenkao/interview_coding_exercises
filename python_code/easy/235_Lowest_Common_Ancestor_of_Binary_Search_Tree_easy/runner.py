@@ -41,5 +41,5 @@ def main():
     print_node(solution.lowest_common_ancestor_iteration(root, p, q))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

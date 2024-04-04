@@ -24,10 +24,10 @@ def main():
         2: [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
     }
     for _, test in tests.items():
-        print('matrix: ', test)
-        print('spiral order: ', solution.spiral_order(test))
-        print(' ')
+        print("matrix: ", test)
+        print("spiral order: ", solution.spiral_order(test))
+        print(" ")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

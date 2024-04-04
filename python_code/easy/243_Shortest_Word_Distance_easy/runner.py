@@ -35,5 +35,5 @@ def main():
     print(solution.shortest_distance(wordsDict, word1, word2))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

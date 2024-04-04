@@ -26,5 +26,5 @@ def main():
     print(solution.remove_duplicates(s))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

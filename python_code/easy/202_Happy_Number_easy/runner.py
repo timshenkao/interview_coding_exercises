@@ -28,5 +28,5 @@ def main():
     print(solution.is_happy_precalc(n))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

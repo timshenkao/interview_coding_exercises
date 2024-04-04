@@ -23,7 +23,7 @@ class Solution:
                 r += 1
             return s[l + 1:r]
         pals = [check(i, i) for i in range(len(s))] + [check(i, i + 1) for i in range(len(s) - 1) if s[i] == s[i + 1]]
-        return sorted(pals, key = len)[-1] if pals else ''
+        return sorted(pals, key = len)[-1] if pals else ""
 
 Approach 1: Naive
 Time: O(n^2)
@@ -33,7 +33,7 @@ Space: O(n)
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         if not s:
-            return ''
+            return ""
 
         # (start, end) indices of the longest palindrome in s
         indices = [0, 0]

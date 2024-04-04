@@ -28,5 +28,5 @@ def main():
     print(solution.intersection_brute(nums1, nums2))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

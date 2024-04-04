@@ -28,5 +28,5 @@ def main():
     print_binary_tree(solution.sorted_array_to_BST_preorder(nums))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -26,5 +26,5 @@ def main():
     print(solution.find_complement(num))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -32,5 +32,5 @@ def main():
     print(solution.missing_number(nums))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

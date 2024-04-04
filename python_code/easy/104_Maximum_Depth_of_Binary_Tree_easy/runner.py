@@ -39,5 +39,5 @@ def main():
     print(solution.max_depth_iteration(root))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -34,5 +34,5 @@ def main():
     print(solution.is_subsequence_dynamic_programming(s, t))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

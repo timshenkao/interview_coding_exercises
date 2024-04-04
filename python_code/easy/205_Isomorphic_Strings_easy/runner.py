@@ -32,5 +32,5 @@ def main():
     print(solution.is_isomorphic(s, t))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -55,5 +55,5 @@ def main():
     print(solution.is_power_of_four_modulo(n))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

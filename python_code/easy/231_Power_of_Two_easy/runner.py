@@ -48,5 +48,5 @@ def main():
     print(solution.is_power_of_two_bitmask(n))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

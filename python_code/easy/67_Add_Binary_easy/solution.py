@@ -27,8 +27,8 @@ class Solution:
             Space complexity: O().
         """
         # constants
-        ZERO = '0'
-        ONE = '1'
+        ZERO = "0
+        ONE = "1"
 
         # find out which string is longer
         if len(a) > len(b):
@@ -58,4 +58,4 @@ class Solution:
         if transfer == 1:
             result.append(ONE)
         result.reverse()
-        return ''.join(result)
+        return "".join(result)

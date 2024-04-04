@@ -31,9 +31,9 @@ class Solution:
         """ Time complexity: O(n). We iterate from 1 to n.
             Space complexity: O(n). We create output list of strings.
         """
-        fizz = 'Fizz'
-        buzz = 'Buzz'
-        fizz_buzz = 'FizzBuzz'
+        fizz = "Fizz"
+        buzz = "Buzz"
+        fizz_buzz = "FizzBuzz"
 
         result = list()
         for i in range(1, n + 1):
@@ -52,7 +52,7 @@ class Solution:
             Space complexity: O(n). We create output list of strings.
         """
         # Lookup for all fizzbuzz mappings
-        fizz_buzz_dict = OrderedDict({3 : "Fizz", 5 : "Buzz"})
+        fizz_buzz_dict = OrderedDict({3: "Fizz", 5: "Buzz"})
 
         result = list()
         i_result = list()
@@ -66,5 +66,5 @@ class Solution:
 
             if not i_result:
                 i_result.append(str(i))
-            result.append(''.join(i_result))
+            result.append("".join(i_result))
         return result

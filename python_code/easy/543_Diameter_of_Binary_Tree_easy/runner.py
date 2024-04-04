@@ -33,5 +33,5 @@ def main():
     print(solution.diameter_of_binary_tree_recursion(root))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

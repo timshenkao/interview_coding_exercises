@@ -21,7 +21,7 @@
 # 1 <= s.length <= 10000
 # s consists of only English letters and spaces ' '
 # There will be at least one word in s
-SPACE = ' '
+SPACE = " "
 
 
 class Solution:

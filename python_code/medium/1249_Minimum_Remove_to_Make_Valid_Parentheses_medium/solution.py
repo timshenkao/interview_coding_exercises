@@ -39,7 +39,7 @@ class Solution:
         """
         # empty string is a valid string
         if not s:
-            return ''
+            return ""
 
         # no need for stack; keep indices of parentheses to remove
         unclosed_openings = list()
@@ -63,4 +63,4 @@ class Solution:
             if (i not in unclosed_openings) and (i not in unopened_closings):
                 result.append(s[i])
 
-        return ''.join(result)
+        return "".join(result)

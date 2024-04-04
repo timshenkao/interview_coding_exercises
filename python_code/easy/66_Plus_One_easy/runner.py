@@ -40,5 +40,5 @@ def main():
     print(solution.plus_one_in_place(digits))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

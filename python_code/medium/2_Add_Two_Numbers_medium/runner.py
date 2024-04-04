@@ -34,5 +34,5 @@ def main():
     print_list(solution.add_two_numbers(generate_list(l1), generate_list(l2)))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

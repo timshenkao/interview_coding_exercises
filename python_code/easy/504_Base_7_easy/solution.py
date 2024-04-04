@@ -25,7 +25,7 @@ class Solution:
             Space complexity: O(n). We create list of calculated digits in base 7
         """
         if num == 0:
-            return '0'
+            return "0"
 
         result = []
         transfer = 0
@@ -48,5 +48,5 @@ class Solution:
             result.append(str(1))
         # append negative sign
         if sign:
-            result.append('-')
-        return ''.join([result[i] for i in reversed(range(len(result)))])
+            result.append("-")
+        return "".join([result[i] for i in reversed(range(len(result)))])

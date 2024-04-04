@@ -34,5 +34,5 @@ def main():
     print(solution.is_balanced(root))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -20,25 +20,25 @@ def main():
     solution = Solution()
 
     s = "III"
-    print(s, ' --> ', solution.roman_to_integer_brute(s))
-    print(s, ' --> ', solution.roman_to_integer_optimal(s))
+    print(s, " --> ", solution.roman_to_integer_brute(s))
+    print(s, " --> ", solution.roman_to_integer_optimal(s))
 
     s = "IV"
-    print(s, ' --> ', solution.roman_to_integer_brute(s))
-    print(s, ' --> ', solution.roman_to_integer_optimal(s))
+    print(s, " --> ", solution.roman_to_integer_brute(s))
+    print(s, " --> ", solution.roman_to_integer_optimal(s))
 
     s = "IX"
-    print(s, ' --> ', solution.roman_to_integer_brute(s))
-    print(s, ' --> ', solution.roman_to_integer_optimal(s))
+    print(s, " --> ", solution.roman_to_integer_brute(s))
+    print(s, " --> ", solution.roman_to_integer_optimal(s))
 
     s = "LVIII"
-    print(s, ' --> ', solution.roman_to_integer_brute(s))
-    print(s, ' --> ', solution.roman_to_integer_optimal(s))
+    print(s, " --> ", solution.roman_to_integer_brute(s))
+    print(s, " --> ", solution.roman_to_integer_optimal(s))
 
     s = "MCMXCIV"
-    print(s, ' --> ', solution.roman_to_integer_brute(s))
-    print(s, ' --> ', solution.roman_to_integer_optimal(s))
+    print(s, " --> ", solution.roman_to_integer_brute(s))
+    print(s, " --> ", solution.roman_to_integer_optimal(s))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

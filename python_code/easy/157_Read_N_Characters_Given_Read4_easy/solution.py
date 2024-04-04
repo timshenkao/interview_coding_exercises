@@ -45,7 +45,7 @@ class Solution:
         """
         read_symbols_total = 0
         read_symbols = 4
-        buf4 = [''] * 4
+        buf4 = [""] * 4
 
         while read_symbols_total < n and read_symbols == 4:
             read_symbols = read4(buf4)

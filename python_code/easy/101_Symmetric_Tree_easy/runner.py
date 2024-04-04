@@ -31,5 +31,5 @@ def main():
     print(solution.is_symmetric_iteration(root))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

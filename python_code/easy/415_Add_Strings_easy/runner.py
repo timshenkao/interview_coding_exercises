@@ -19,30 +19,19 @@ from solution import Solution
 def main():
     solution = Solution()
 
-    num1 = "11"
-    num2 = "123"
-    print(solution.add_strings(num1, num2))
-
-    num1 = "456"
-    num2 = "77"
-    print(solution.add_strings(num1, num2))
-
-    num1 = "0"
-    num2 = "0"
-    print(solution.add_strings(num1, num2))
-
-    num1 = "1"
-    num2 = "9"
-    print(solution.add_strings(num1, num2))
-
-    num1 = "1"
-    num2 = "19"
-    print(solution.add_strings(num1, num2))
-
-    num1 = "6994"
-    num2 = "36"
-    print(solution.add_strings(num1, num2))
+    tests = {
+        1: ["11", "123"],
+        2: ["456", "77"],
+        3: ["0", "0"],
+        4: ["1", "9"],
+        5: ["1", "19"],
+        6: ["6994", "36"]
+    }
+    for _, test in tests.items():
+        print("string numbers: ", test[0], test[1])
+        print("sum: ", solution.add_strings(test[0], test[1]))
+        print(" ")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

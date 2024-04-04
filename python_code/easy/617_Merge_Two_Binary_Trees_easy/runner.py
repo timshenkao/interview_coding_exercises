@@ -31,5 +31,5 @@ def main():
     print_binary_tree(solution.merge_trees_iteration(root1, root2), is_root=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

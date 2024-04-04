@@ -35,5 +35,5 @@ def main():
     print(solution.min_depth_bfs_iteration(root))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

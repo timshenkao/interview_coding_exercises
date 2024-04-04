@@ -44,5 +44,5 @@ def main():
     print(solution.search_insert(nums, target))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

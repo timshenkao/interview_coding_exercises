@@ -26,5 +26,5 @@ def main():
     print(solution.find_disappeared_numbers_brute(nums))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

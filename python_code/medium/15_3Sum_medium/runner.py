@@ -25,11 +25,11 @@ def main():
         3: [0]
     }
     for _, test in tests.items():
-        print('array: ', test)
-        print('three sum: ', solution.three_sum(test.copy()))
-        print('three sum no sort: ', solution.three_sum_no_sort(test.copy()))
-        print(' ')
+        print("array: ", test)
+        print("three sum: ", solution.three_sum(test.copy()))
+        print("three sum no sort: ", solution.three_sum_no_sort(test.copy()))
+        print(" ")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -29,5 +29,5 @@ def main():
     print(solution.single_number(nums))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -38,7 +38,7 @@ class Solution:
         mins = [inf, inf]
         # we keep 3 largest elements as they can be positive
         maxes = [-inf, -inf, -inf]
-        # print('1 maxes', maxes)
+
         for num in nums:
             # iterate through array, update maximum values
             if num > maxes[2]:
@@ -52,7 +52,7 @@ class Solution:
                 mins[0], mins[1] = num, mins[0]
             elif num < mins[1]:
                 mins[1] = num
-            # print('2 maxes', maxes)
+
         # largest product is either:
         #       product of 3 largest elements in array
         #       product of 1 largest element in array and 2 smallest elements (they are both negative)

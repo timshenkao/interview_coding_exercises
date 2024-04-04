@@ -32,5 +32,5 @@ def main():
     print(solution.license_key_formatting(s, k))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

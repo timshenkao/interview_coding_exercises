@@ -30,5 +30,5 @@ def main():
     print(solution.binary_tree_paths_iteration(root))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

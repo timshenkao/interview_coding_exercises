@@ -32,5 +32,5 @@ def main():
     print(solution.maximum_product(nums))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

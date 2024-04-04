@@ -38,5 +38,5 @@ def main():
     print(solution.is_same_tree_recursion(p, q))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

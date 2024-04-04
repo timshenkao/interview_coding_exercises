@@ -35,5 +35,5 @@ def main():
     print(solution.has_path_sum(root, target_sum))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

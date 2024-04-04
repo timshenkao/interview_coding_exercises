@@ -160,5 +160,5 @@ def main():
     ll2.addAtIndex(42, 86)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -36,5 +36,5 @@ def main():
     print(solution.sorted_squares(nums))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

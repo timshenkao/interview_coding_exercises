@@ -35,5 +35,5 @@ def main():
     print(solution.count_primes(n))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

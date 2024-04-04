@@ -24,5 +24,5 @@ def main():
     print(solution.most_common_word(paragraph, banned))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

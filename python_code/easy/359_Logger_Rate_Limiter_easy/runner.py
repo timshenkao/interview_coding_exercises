@@ -33,5 +33,5 @@ def main():
     # _print_logger(logger, logs)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

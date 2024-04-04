@@ -113,24 +113,24 @@ def print_list(head: Optional[ListNode]) -> None:
         visited_nodes = set()
         while head.next_node:
             if head not in visited_nodes:
-                print('node ', i, ': ', head, '; value: ', head.val, '; next node: ', head.next_node)
+                print("node ", i, ": ", head, "; value: ", head.val, "; next node: ", head.next_node)
                 visited_nodes.add(head)
                 head = head.next_node
                 i += 1
             else:
                 break
         if not head.next_node:
-            print('node ', i, ': ', head, '; value: ', head.val, '; next node: ', head.next_node)
+            print("node ", i, ": ", head, "; value: ", head.val, "; next node: ", head.next_node)
     else:
-        print('node 0: ', head, '; value: ', None, '; next node: ', None)
+        print("node 0: ", head, "; value: ", None, "; next node: ", None)
 
 
 def print_node(node: Optional[ListNode]) -> None:
     print()
     if node:
-        print('node: ', node, '; value: ', node.val, '; next node: ', node.next_node)
+        print("node: ", node, "; value: ", node.val, "; next node: ", node.next_node)
     else:
-        print('node: ', node, '; value: ', None, '; next node: ', None)
+        print("node: ", node, "; value: ", None, "; next node: ", None)
 
 
 def print_multi_double_list(head: Optional[MultiDoubleListNode]) -> None:
@@ -139,18 +139,18 @@ def print_multi_double_list(head: Optional[MultiDoubleListNode]) -> None:
     children = list()
     if head:
         while head.next_node:
-            print('node ', i, ': ', head, '; value: ', head.val, '; next node: ', head.next_node,
-                  '; previous node: ', head.prev_node, '; child node: ', head.child_node)
+            print("node ", i, ": ", head, "; value: ", head.val, "; next node: ", head.next_node,
+                  "; previous node: ", head.prev_node, "; child node: ", head.child_node)
             head = head.next_node
             i += 1
             # if node has a child, add it to list of children
             if head.child_node:
                 children.append(head.child_node)
-        print('node ', i, ': ', head, '; value: ', head.val, '; next node: ', head.next_node,
-              '; previous node: ', head.prev_node, '; child node: ', head.child_node)
+        print("node ", i, ": ", head, "; value: ", head.val, "; next node: ", head.next_node,
+              "; previous node: ", head.prev_node, "; child node: ", head.child_node)
         # print children lists
         while children:
             print_multi_double_list(children.pop(0))
     else:
-        print('node 0: ', head, '; value: ', None, '; next node: ', None, '; previous node: ', None,
-              '; child node: ', None)
+        print("node 0: ", head, "; value: ", None, "; next node: ", None, "; previous node: ", None,
+              "; child node: ", None)

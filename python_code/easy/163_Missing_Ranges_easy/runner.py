@@ -45,5 +45,5 @@ def main():
     print(solution.find_missing_ranges(nums, lower, upper))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

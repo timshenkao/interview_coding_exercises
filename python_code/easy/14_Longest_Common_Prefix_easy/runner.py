@@ -32,5 +32,5 @@ def main():
     print(solution.longest_common_prefix(strs))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

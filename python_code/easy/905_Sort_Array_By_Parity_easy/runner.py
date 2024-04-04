@@ -28,5 +28,5 @@ def main():
     print(solution.sort_array_by_parity(nums))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

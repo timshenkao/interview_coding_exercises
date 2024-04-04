@@ -41,5 +41,5 @@ def main():
     print(solution.next_greatest_letter(letters, target))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

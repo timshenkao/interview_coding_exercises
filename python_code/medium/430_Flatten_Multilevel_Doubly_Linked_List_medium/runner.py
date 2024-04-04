@@ -31,5 +31,5 @@ def main():
     print_multi_double_list(solution.flatten(head))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

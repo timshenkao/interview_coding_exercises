@@ -28,5 +28,5 @@ def main():
     print(solution.reverse_bits_shorter(n))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

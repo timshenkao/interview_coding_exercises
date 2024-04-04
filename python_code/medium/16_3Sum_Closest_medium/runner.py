@@ -32,5 +32,5 @@ def main():
     print(solution.three_sum_closest(nums, target))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

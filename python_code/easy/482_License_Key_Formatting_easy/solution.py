@@ -45,4 +45,4 @@ class Solution:
                 temp_count -= 1
 
         result.reverse()
-        return ''.join(result)
+        return "".join(result)

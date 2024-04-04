@@ -31,5 +31,5 @@ def main():
     print(solution.max_sub_array_kadane(nums))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

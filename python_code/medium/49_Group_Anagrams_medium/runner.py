@@ -32,5 +32,5 @@ def main():
     print(solution.group_anagrams_no_sorting(strs))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

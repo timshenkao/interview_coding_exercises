@@ -24,7 +24,7 @@
 # 1 <= s.length <= 104
 # s consists of parentheses only '()[]{}'.
 
-CLOSING = {')': '(', '}': '{', ']': '['}
+CLOSING = {")": "(", "}": "{", "]": "["}
 
 
 class Solution:
@@ -40,7 +40,7 @@ class Solution:
             # we see closing bracket
             if s[i] in CLOSING:
                 # pop bracket from stack
-                popped_bracket = brackets_stack.pop() if brackets_stack else ''
+                popped_bracket = brackets_stack.pop() if brackets_stack else ""
                 # if popped bracket is not opening bracket for current symbol / bracket, then string is invalid
                 if CLOSING[s[i]] != popped_bracket:
                     return False

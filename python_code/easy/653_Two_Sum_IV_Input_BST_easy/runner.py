@@ -43,5 +43,5 @@ def main():
     print(solution.find_target(root, k))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

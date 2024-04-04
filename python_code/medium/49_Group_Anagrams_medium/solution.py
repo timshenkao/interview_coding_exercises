@@ -30,7 +30,7 @@ class Solution:
     def _calculate_str_signature(self, s: str) -> str:
         # empty string
         if not s:
-            return ''
+            return ""
         # non-empty string
         temp = dict()
         # calculate frequencies of a character
@@ -42,7 +42,7 @@ class Solution:
         # signature is a character followed
         for key in sorted(temp.keys()):
             result.append(key + str(temp[key]))
-        return ''.join(result)
+        return "".join(result)
 
     def group_anagrams(self, strs: List[str]) -> List[List[str]]:
         """ Time complexity: O(N * M * log M). N - number of strings, M - length of the longest string. We iterate
@@ -53,7 +53,7 @@ class Solution:
         """
         # empty list
         if not strs:
-            return [['']]
+            return [[""]]
 
         signatures = dict()
         for elem in strs:
@@ -81,7 +81,7 @@ class Solution:
         """
         # empty list
         if not strs:
-            return [['']]
+            return [[""]]
 
         signatures = dict()
         for elem in strs:

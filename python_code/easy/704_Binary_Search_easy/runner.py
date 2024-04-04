@@ -35,5 +35,5 @@ def main():
     print(solution.search_iteration(nums, target))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

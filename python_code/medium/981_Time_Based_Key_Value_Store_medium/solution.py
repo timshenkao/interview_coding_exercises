@@ -26,7 +26,7 @@ class TimeMap:
 
     def get(self, key: str, timestamp: int) -> str:
         i = bisect.bisect(self.times[key], timestamp)
-        return self.values[key][i - 1] if i else ''
+        return self.values[key][i - 1] if i else ""
 
 
 time: Constructor: O(1), set(key: str, value: str, timestamp: int): O(1), get(key: str, timestamp: int):O(logn), where n=∣map[key]∣
@@ -44,6 +44,6 @@ class TimeMap:
 
     def get(self, key: str, timestamp: int) -> str:
         if key not in self.timestamps:
-            return ''
+            return ""
         i = bisect.bisect(self.timestamps[key], timestamp)
-        return self.values[key][i - 1] if i > 0 else ''
+        return self.values[key][i - 1] if i > 0 else ""

@@ -36,5 +36,5 @@ def main():
     print_node(solution.detect_cycle(head))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

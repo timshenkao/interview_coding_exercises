@@ -32,7 +32,7 @@ class Solution:
             Space complexity: O(1).
         """
         if not strs:
-            return ''
+            return ""
 
         min_length = MAX_LENGTH
         # find length of the shortest string within array

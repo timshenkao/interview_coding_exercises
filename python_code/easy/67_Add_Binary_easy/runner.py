@@ -19,14 +19,14 @@ from solution import Solution
 def main():
     solution = Solution()
 
-    a = '11'
-    b = '1'
+    a = "11"
+    b = "1"
     print(solution.add_binary(a, b))
 
-    a = '1010'
-    b = '1011'
+    a = "1010"
+    b = "1011"
     print(solution.add_binary(a, b))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

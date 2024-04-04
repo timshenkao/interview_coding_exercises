@@ -45,7 +45,7 @@ class Solution:
 
         out_dict = {}
         max = 0
-        max_elem = ''
+        max_elem = ""
 
         for elem in out_list:
             if elem in out_dict:

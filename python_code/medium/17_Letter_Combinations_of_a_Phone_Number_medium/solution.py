@@ -36,13 +36,13 @@ class Solution:
         if not digits:
             return []
 
-        digitToLetters = ['', '', 'abc', 'def', 'ghi',
+        digitToLetters = ["", "", 'abc', 'def', 'ghi',
                           'jkl', 'mno', 'pqrs', 'tuv', 'wxyz']
         ans = []
 
         def dfs(i: int, path: List[chr]) -> None:
             if i == len(digits):
-                ans.append(''.join(path))
+                ans.append("".join(path))
                 return
 
             for letter in digitToLetters[ord(digits[i]) - ord('0')]:
@@ -64,8 +64,8 @@ class Solution:
         if not digits:
             return []
 
-        ans = ['']
-        digitToLetters = ['', '', 'abc', 'def', 'ghi',
+        ans = [""]
+        digitToLetters = ["", "", 'abc', 'def', 'ghi',
                           'jkl', 'mno', 'pqrs', 'tuv', 'wxyz']
 
         for d in digits:

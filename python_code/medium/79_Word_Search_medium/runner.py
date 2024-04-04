@@ -32,5 +32,5 @@ def main():
     print(solution.exist(board, word))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

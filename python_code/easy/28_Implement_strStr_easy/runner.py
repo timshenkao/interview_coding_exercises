@@ -32,5 +32,5 @@ def main():
     print(solution.str_str(haystack, needle))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

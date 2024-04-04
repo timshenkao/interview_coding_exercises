@@ -28,5 +28,5 @@ def main():
     print(solution.max_profit(prices))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

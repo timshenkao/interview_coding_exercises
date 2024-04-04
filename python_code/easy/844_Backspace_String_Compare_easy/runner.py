@@ -65,5 +65,5 @@ def main():
     print(solution.backspace_compare(s, t))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

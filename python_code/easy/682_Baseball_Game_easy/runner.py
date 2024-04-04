@@ -29,5 +29,5 @@ def main():
     print(solution.cal_points_brute(ops=ops))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

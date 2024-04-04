@@ -38,5 +38,5 @@ def main():
     print(solution.convert_to_title(column_number))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

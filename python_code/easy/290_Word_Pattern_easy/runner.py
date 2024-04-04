@@ -36,5 +36,5 @@ def main():
     print(solution.word_pattern(pattern, s))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -32,5 +32,5 @@ def main():
     print(solution.third_max(nums))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

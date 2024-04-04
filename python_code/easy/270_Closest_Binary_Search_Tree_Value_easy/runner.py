@@ -30,5 +30,5 @@ def main():
     print(solution.closest_value(root, target))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

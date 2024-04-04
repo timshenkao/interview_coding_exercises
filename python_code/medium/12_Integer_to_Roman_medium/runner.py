@@ -41,5 +41,5 @@ def main():
     print(solution.int_to_roman(num))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

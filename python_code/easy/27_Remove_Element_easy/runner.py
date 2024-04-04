@@ -44,5 +44,5 @@ def main():
     print(solution.remove_element(nums, val))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

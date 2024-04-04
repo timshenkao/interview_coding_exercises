@@ -18,15 +18,15 @@ from threading import Thread
 
 
 def print_first():
-    print('first')
+    print("first")
 
 
 def print_second():
-    print('second')
+    print("second")
 
 
 def print_third():
-    print('third')
+    print("third")
 
 
 def main():
@@ -40,5 +40,5 @@ def main():
     t2.start()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -36,5 +36,5 @@ def main():
     print(solution.peak_index_in_mountain_array(arr))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -35,5 +35,5 @@ def main():
     print(solution.is_subtree(root, sub_root))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
