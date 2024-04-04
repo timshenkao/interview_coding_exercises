@@ -19,17 +19,16 @@ from solution import Solution
 def main():
     solution = Solution()
 
-    s = "A man, a plan, a canal: Panama"
-    print(solution.is_palindrome(s))
-
-    s = "race a car"
-    print(solution.is_palindrome(s))
-
-    s = " "
-    print(solution.is_palindrome(s))
-
-    s = ".,"
-    print(solution.is_palindrome(s))
+    tests = {
+        1: ["A man, a plan, a canal: Panama"],
+        2: [" "],
+        3: [".,"],
+        4: ["race a car"]
+    }
+    for _, test in tests.items():
+        print("string: ", test[0])
+        print("is palindrome: ", solution.is_palindrome(test[0]))
+        print(" ")
 
 
 if __name__ == "__main__":

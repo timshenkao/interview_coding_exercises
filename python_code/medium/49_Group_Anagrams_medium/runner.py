@@ -19,17 +19,16 @@ from solution import Solution
 def main():
     solution = Solution()
 
-    strs = ["eat","tea","tan","ate","nat","bat"]
-    print(solution.group_anagrams(strs))
-    print(solution.group_anagrams_no_sorting(strs))
-
-    strs = [""]
-    print(solution.group_anagrams(strs))
-    print(solution.group_anagrams_no_sorting(strs))
-
-    strs = ["a"]
-    print(solution.group_anagrams(strs))
-    print(solution.group_anagrams_no_sorting(strs))
+    tests = {
+        1: ["eat","tea","tan","ate","nat","bat"],
+        2: [""],
+        3: ["a"]
+    }
+    for _, test in tests.items():
+        print("strings: ", test)
+        print("group anagrams: ", solution.group_anagrams(test))
+        print("group anagrams no sorting: ", solution.group_anagrams_no_sorting(test))
+        print(" ")
 
 
 if __name__ == "__main__":

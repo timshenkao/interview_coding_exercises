@@ -19,11 +19,14 @@ from solution import Solution
 def main():
     solution = Solution()
 
-    s = "abbaca"
-    print(solution.remove_duplicates(s))
-
-    s = "azxxzy"
-    print(solution.remove_duplicates(s))
+    tests = {
+        1: ["abbaca"],
+        2: ["azxxzy"]
+    }
+    for _, test in tests.items():
+        print("string: ", test[0])
+        print("result: ", solution.remove_duplicates(test[0]))
+        print(" ")
 
 
 if __name__ == "__main__":

@@ -19,17 +19,16 @@ from solution import Solution
 def main():
     solution = Solution()
 
-    s = "abccccdd"
-    print(solution.longest_palindrome(s))
-
-    s = "a"
-    print(solution.longest_palindrome(s))
-
-    s = "bb"
-    print(solution.longest_palindrome(s))
-
-    s = ""
-    print(solution.longest_palindrome(s))
+    tests = {
+        1: ["abccccdd"],
+        2: ["a"],
+        3: ["bb"],
+        4: [""]
+    }
+    for _, test in tests.items():
+        print("string: ", test[0])
+        print("longest palindrome: ", solution.longest_palindrome(test[0]))
+        print(" ")
 
 
 if __name__ == "__main__":
