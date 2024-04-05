@@ -14,76 +14,79 @@
 # limitations under the License.
 ##############################################################################
 
+from typing import List
+import heapq
+import random
+
+# 215. Kth Largest Element in an Array https://leetcode.com/problems/kth-largest-element-in-an-array/
+#  Given an integer array nums and an integer k, return the kth largest element in the array.
+# Note that it is the kth largest element in the sorted order, not the kth distinct element.
+# Can you solve it without sorting?
+# 1 <= k <= nums.length <= 10^5
+# -10^4 <= nums[i] <= 10^4
+
+
 class Solution:
-    def findKthLargest(self, nums, k):
+    def find_kth_largest(self, nums, k):
         return heapq.nlargest(k, nums)[-1]
 
-
-
-Time: O(nlogk)
-Space: O(k)
-
-class Solution:
-    def findKthLargest(self, nums: List[int], k: int) -> int:
-        minHeap = []
-
+    def find_kth_largest2(self, nums: List[int], k: int) -> int:
+        """ Time complexity: O(nlogk)
+            Space complexity: O(k).
+        """
+        min_heap = []
         for num in nums:
-            heapq.heappush(minHeap, num)
-            if len(minHeap) > k:
-                heapq.heappop(minHeap)
+            heapq.heappush(min_heap, num)
+            if len(min_heap) > k:
+                heapq.heappop(min_heap)
+        return min_heap[0]
 
-        return minHeap[0]
-
-
-Approach 2: Quick Select¶
-Time: O(n)→O(n^2)
-Space: O(1)
-
-class Solution:
-    def findKthLargest(self, nums: List[int], k: int) -> int:
-        def quickSelect(l: int, r: int, k: int) -> int:
+    def find_kth_largest_recursive(self, nums: List[int], k: int) -> int:
+        """ Time complexity: O(n) to O(n^2)
+            Space complexity: O(1).
+            It fails on test case with 100 005 array elements and k = 50 000
+        """
+        def quick_select(l: int, r: int, z: int) -> int:
             pivot = nums[r]
+            next_swapped = l
 
-            nextSwapped = l
             for i in range(l, r):
                 if nums[i] >= pivot:
-                    nums[nextSwapped], nums[i] = nums[i], nums[nextSwapped]
-                    nextSwapped += 1
-            nums[nextSwapped], nums[r] = nums[r], nums[nextSwapped]
+                    nums[next_swapped], nums[i] = nums[i], nums[next_swapped]
+                    next_swapped += 1
+            nums[next_swapped], nums[r] = nums[r], nums[next_swapped]
 
-            count = nextSwapped - l + 1  # Number of nums >= pivot
-            if count == k:
-                return nums[nextSwapped]
-            if count > k:
-                return quickSelect(l, nextSwapped - 1, k)
-            return quickSelect(nextSwapped + 1, r, k - count)
+            count = next_swapped - l + 1  # Number of nums >= pivot
+            if count == z:
+                return nums[next_swapped]
+            if count > z:
+                return quick_select(l, next_swapped - 1, z)
+            return quick_select(next_swapped + 1, r, z - count)
 
-        return quickSelect(0, len(nums) - 1, k)
+        return quick_select(0, len(nums) - 1, k)
 
-
-Approach 3: Quick Select with random pivot
-Time: O(n) (average)
-Space: O(1)
-
-class Solution:
-    def findKthLargest(self, nums: List[int], k: int) -> int:
-        def quickSelect(l: int, r: int, k: int) -> int:
-            randIndex = random.randint(0, r - l) + l
-            nums[randIndex], nums[r] = nums[r], nums[randIndex]
+    def find_kth_largest_recursive2(self, nums: List[int], k: int) -> int:
+        """ Time complexity: O(n) to O(n^2)
+            Space complexity: O(1).
+            It fails on test case with 100 005 array elements and k = 50 000
+        """
+        def quick_select(l: int, r: int, z: int) -> int:
+            rand_index = random.randint(0, r - l) + l
+            nums[rand_index], nums[r] = nums[r], nums[rand_index]
             pivot = nums[r]
+            next_swapped = l
 
-            nextSwapped = l
             for i in range(l, r):
                 if nums[i] >= pivot:
-                    nums[nextSwapped], nums[i] = nums[i], nums[nextSwapped]
-                    nextSwapped += 1
-            nums[nextSwapped], nums[r] = nums[r], nums[nextSwapped]
+                    nums[next_swapped], nums[i] = nums[i], nums[next_swapped]
+                    next_swapped += 1
+            nums[next_swapped], nums[r] = nums[r], nums[next_swapped]
 
-            count = nextSwapped - l + 1  # Number of nums >= pivot
-            if count == k:
-                return nums[nextSwapped]
-            if count > k:
-                return quickSelect(l, nextSwapped - 1, k)
-            return quickSelect(nextSwapped + 1, r, k - count)
+            count = next_swapped - l + 1  # Number of nums >= pivot
+            if count == z:
+                return nums[next_swapped]
+            if count > z:
+                return quick_select(l, next_swapped - 1, z)
+            return quick_select(next_swapped + 1, r, z - count)
 
-        return quickSelect(0, len(nums) - 1, k)
+        return quick_select(0, len(nums) - 1, k)

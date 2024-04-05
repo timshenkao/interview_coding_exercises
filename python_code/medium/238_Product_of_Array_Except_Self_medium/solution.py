@@ -14,12 +14,20 @@
 # limitations under the License.
 ##############################################################################
 
+from typing import List
+
+# 238. Product of Array Except Self https://leetcode.com/problems/product-of-array-except-self/
+# Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements
+# of nums except nums[i].
+# The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+# You must write an algorithm that runs in O(n) time and without using the division operation.
+# 2 <= nums.length <= 10^5
+# -30 <= nums[i] <= 30
+# The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+
+
 class Solution:
-    def productExceptSelf(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[int]
-        """
+    def product_except_self(self, nums):
         m, res = 1, []
         for i in range(len(nums)):
             res.append(m)
@@ -30,34 +38,23 @@ class Solution:
             m *= nums[i]
         return res
 
-
-Approach 1: O(n) space
-Time: O(n)
-Space: O(n)
-
-
-
-class Solution:
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
+    def product_except_self2(self, nums: List[int]) -> List[int]:
+        """ Time complexity: O(N).
+            Space complexity: O(N).
+        """
         n = len(nums)
         prefix = [1] * n  # prefix product
         suffix = [1] * n  # suffix product
-
         for i in range(1, n):
             prefix[i] = prefix[i - 1] * nums[i - 1]
-
         for i in reversed(range(n - 1)):
             suffix[i] = suffix[i + 1] * nums[i + 1]
-
         return [prefix[i] * suffix[i] for i in range(n)]
 
-Approach 2: O(1) space
-Time: O(n)
-Space: O(1)
-
-
-class Solution:
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
+    def product_except_self3(self, nums: List[int]) -> List[int]:
+        """ Time complexity: O(N).
+            Space complexity: O(1).
+        """
         n = len(nums)
         ans = [1] * n
 
@@ -69,5 +66,4 @@ class Solution:
         for i, num in reversed(list(enumerate(nums))):
             ans[i] *= suffix
             suffix *= num
-
         return ans

@@ -14,51 +14,58 @@
 # limitations under the License.
 ##############################################################################
 
+from typing import List
+
+# 59. Spiral Matrix II https://leetcode.com/problems/spiral-matrix-ii/description/
+# Given a positive integer n, generate an n x n matrix filled with elements from 1 to n2 in spiral order.
+# 1 <= n <= 20
+
+
 class Solution:
-    def generateMatrix(self, n):
+    def generate_matrix(self, n):
+        """ Time complexity: O(N^2).
+            Space complexity: O(N^2).
         """
-        :type n: int
-        :rtype: List[List[int]]
-        """
-        def dirToIndex(x, y, d):
-            if d == "r": return (x, y + 1, d) if y + 1 < n and matrix[x][y + 1] == 0 else (x + 1, y, "d")
-            elif d == "d": return (x + 1, y, d) if x + 1 < n and matrix[x + 1][y] == 0 else (x, y - 1, "l")
-            elif d == "l": return (x, y - 1, d) if y > 0 and matrix[x][y - 1] == 0 else (x - 1, y, "u")
-            else: return (x - 1, y, d) if x > 0 and matrix[x - 1][y] == 0 else (x, y +1, "r")
+        def direction_to_index(x, y, d):
+            if d == "r":
+                return (x, y + 1, d) if y + 1 < n and matrix[x][y + 1] == 0 else (x + 1, y, "d")
+            elif d == "l":
+                return (x, y - 1, d) if y > 0 and matrix[x][y - 1] == 0 else (x - 1, y, "u")
+            elif d == "d":
+                return (x + 1, y, d) if x + 1 < n and matrix[x + 1][y] == 0 else (x, y - 1, "l")
+            else:
+                return (x - 1, y, d) if x > 0 and matrix[x - 1][y] == 0 else (x, y + 1, "r")
+
         matrix = [[0 for i in range(1, n + 1)] for j in range(n)]
-        num, dir, i, j = 1, "r", 0, 0
+        num, direction, i, j = 1, "r", 0, 0
         while 0 <= i < n and 0 <= j < n and matrix[i][j] == 0:
             matrix[i][j] = num
             num += 1
-            i, j, dir = dirToIndex(i, j, dir)
+            i, j, direction = direction_to_index(i, j, direction)
         return matrix
 
-    Time: O(n^2)
-Space: O(n^2)
-
-
-
-class Solution:
-    def generateMatrix(self, n: int) -> List[List[int]]:
+    def generate_matrix2(self, n: int) -> List[List[int]]:
+        """ Time complexity: O(N^2).
+            Space complexity: O(N^2).
+        """
         ans = [[0] * n for _ in range(n)]
         count = 1
 
-        for min in range(n // 2):
-            max = n - min - 1
-            for i in range(min, max):
-                ans[min][i] = count
+        for k in range(n // 2):
+            j = n - k - 1
+            for i in range(k, j):
+                ans[k][i] = count
                 count += 1
-            for i in range(min, max):
-                ans[i][max] = count
+            for i in range(k, j):
+                ans[i][j] = count
                 count += 1
-            for i in range(max, min, -1):
-                ans[max][i] = count
+            for i in range(j, k, -1):
+                ans[j][i] = count
                 count += 1
-            for i in range(max, min, -1):
-                ans[i][min] = count
+            for i in range(j, k, -1):
+                ans[i][k] = count
                 count += 1
 
         if n & 1:
             ans[n // 2][n // 2] = count
-
         return ans
