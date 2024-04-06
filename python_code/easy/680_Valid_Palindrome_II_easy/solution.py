@@ -14,13 +14,19 @@
 # limitations under the License.
 ##############################################################################
 
+# 680. Valid Palindrome II https://leetcode.com/problems/valid-palindrome-ii/description/
+# Given a string s, return true if the s can be palindrome after deleting at most one character from it.
+# 1 <= s.length <= 10^5
+# s consists of lowercase English letters.
+
+
 class Solution:
-    def validPalindrome(self, s):
-        """
-        :type s: str
-        :rtype: bool
+    def valid_palindrome(self, s):
+        """ Time complexity: O(n). Recursive depth first search.
+            Space complexity: O(n).
         """
         memo = {}
+
         def dfs(l, r, cnt):
             if (l, r, cnt) in memo:
                 return memo[(l, r, cnt)]
@@ -41,20 +47,3 @@ class Solution:
                 memo[(l, r, cnt)] = dfs(l + 1, r - 1, cnt)
                 return memo[(l, r, cnt)]
         return dfs(0, len(s) - 1, 0)
-
-
-Time: O(n)
-Space: O(1)
-
-class Solution:
-    def validPalindrome(self, s: str) -> bool:
-        def validPalindrome(l: int, r: int) -> bool:
-            return all(s[i] == s[r - i + l] for i in range(l, (l + r) // 2 + 1))
-
-        n = len(s)
-
-        for i in range(n // 2):
-            if s[i] != s[~i]:
-                return validPalindrome(i + 1, n - 1 - i) or validPalindrome(i, n - 2 - i)
-
-        return True

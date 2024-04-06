@@ -14,55 +14,59 @@
 # limitations under the License.
 ##############################################################################
 
+import collections
+
+# 3. Longest Substring Without Repeating Characters
+# https://leetcode.com/problems/longest-substring-without-repeating-characters/
+# Given a string s, find the length of the longest substring without repeating characters.
+# 0 <= s.length <= 5 * 10^4
+# s consists of English letters, digits, symbols and spaces.
+
+
 class Solution:
-    def lengthOfLongestSubstring(self, s):
-        """
-        :type s: str
-        :rtype: int
+    def length_ols(self, s):
+        """ Time complexity: O(n).
+            Space complexity: O(128) = O(256) = 1.
         """
         mx, start, chars = 0, 0, {}
         for i in range(len(s)):
-            if s[i] in chars and start <= chars[s[i]]: start = chars[s[i]] + 1
-            else: mx = max(mx, i - start + 1)
+            if s[i] in chars and start <= chars[s[i]]:
+                start = chars[s[i]] + 1
+            else:
+                mx = max(mx, i - start + 1)
             chars[s[i]] = i
         return mx
 
-Approach 1: Sliding window
-Time: O(n)
-Space: O(128)=O(1)
-
-class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:
+    def length_ols2(self, s: str) -> int:
+        """ Time complexity: O(n).
+            Space complexity: O(128) = O(256) = 1.
+        """
         ans = 0
         count = collections.Counter()
-
         l = 0
+        # TC O(n)
         for r, c in enumerate(s):
             count[c] += 1
             while count[c] > 1:
                 count[s[l]] -= 1
+                # be careful here with TC
                 l += 1
             ans = max(ans, r - l + 1)
-
         return ans
 
-Approach 2: Last seen
-Time: O(n)
-Space: O(128)=O(1)
-
-
-class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:
+    def length_ols3(self, s: str) -> int:
+        """ Time complexity: O(n).
+            Space complexity: O(128) = O(256) = 1.
+        """
         ans = 0
         # The substring s[j + 1..i] has no repeating characters.
         j = -1
-        # lastSeen[c] := the index of the last time c appeared
-        lastSeen = {}
+        # last_seen[c] := the index of the last time c appeared
+        last_seen = {}
 
         for i, c in enumerate(s):
-            # Update j to lastSeen[c], so the window must start from j + 1.
-            j = max(j, lastSeen.get(c, -1))
+            # Update j to last_seen[c], so the window must start from j + 1.
+            j = max(j, last_seen.get(c, -1))
             ans = max(ans, i - j)
-            lastSeen[c] = i
-
+            last_seen[c] = i
         return ans

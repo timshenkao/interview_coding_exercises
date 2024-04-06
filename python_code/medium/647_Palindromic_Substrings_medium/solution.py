@@ -14,43 +14,53 @@
 # limitations under the License.
 ##############################################################################
 
+# 647. Palindromic Substrings https://leetcode.com/problems/palindromic-substrings/
+# Given a string s, return the number of palindromic substrings in it.
+# A string is a palindrome when it reads the same backward as forward.
+# A substring is a contiguous sequence of characters within the string.
+# 1 <= s.length <= 1000
+# s consists of lowercase English letters.
+
+
 class Solution:
-    def countSubstrings(self, s):
+    def count_sub_strings(self, s):
+        """ Time complexity: O(N ^ 2).
+            Space complexity: O(1).
+        """
         res = 0
         for k in range(len(s)):
             i = j = k
             while 0 <= i and j < len(s):
-                if s[i] == s[j]: res += 1
-                else: break
-                i , j = i - 1, j + 1
-            i , j =k , k + 1
+                if s[i] == s[j]:
+                    res += 1
+                else:
+                    break
+                i, j = i - 1, j + 1
+
+            i, j = k, k + 1
+
             while 0 <= i and j < len(s):
-                if s[i] == s[j]: res += 1
-                else: break
-                i , j = i - 1, j + 1
+                if s[i] == s[j]:
+                    res += 1
+                else:
+                    break
+                i, j = i - 1, j + 1
         return res
 
-
-DP
-Time: O(n^2)
-Space: O(1)
-
-class Solution:
-    def countSubstrings(self, s: str) -> int:
-        def extendPalindromes(l: int, r: int) -> int:
+    def count_sub_strings2(self, s: str) -> int:
+        """ Time complexity: O(N ^ 2). The same approach but with subroutine.
+            Space complexity: O(1).
+        """
+        def _check_palindromes(l: int, r: int) -> int:
             count = 0
-
             while l >= 0 and r < len(s) and s[l] == s[r]:
                 count += 1
                 l -= 1
                 r += 1
-
             return count
 
         ans = 0
-
         for i in range(len(s)):
-            ans += extendPalindromes(i, i)
-            ans += extendPalindromes(i, i + 1)
-
+            ans += _check_palindromes(i, i)
+            ans += _check_palindromes(i, i + 1)
         return ans

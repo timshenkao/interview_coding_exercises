@@ -14,59 +14,66 @@
 # limitations under the License.
 ##############################################################################
 
+import collections
+
+# 424. Longest Repeating Character Replacement https://leetcode.com/problems/longest-repeating-character-replacement/
+# You are given a string s and an integer k. You can choose any character of the string and change it to any other
+# uppercase English character. You can perform this operation at most k times.
+# Return the length of the longest substring containing the same letter you can get after performing the above
+# operations.
+# 1 <= s.length <= 10^5
+# s consists of only uppercase English letters.
+# 0 <= k <= s.length
+
+
 class Solution:
-    def characterReplacement(self, s, k):
-        """
-        :type s: str
-        :type k: int
-        :rtype: int
+    def replace_character(self, s, k):
+        """ Time complexity: O(n).
+            Space complexity: O(26) = 1.
         """
         dic, start, end = {}, 0, 0
         for end in range(1, len(s)+1):
-            if not s[end-1] in dic: dic[s[end-1]] = 1
-            else: dic[s[end-1]] += 1
-            if end-start-max(dic.values()) > k:
+            if not s[end-1] in dic:
+                dic[s[end-1]] = 1
+            else:
+                dic[s[end-1]] += 1
+
+            if end - start - max(dic.values()) > k:
                 dic[s[start]] -= 1
                 start += 1
-        return end-start
+        return end - start
 
-Approach 1: Regular Window¶
-Time: O(n)
-Space: O(26)=O(1)
-
-class Solution:
-    def characterReplacement(self, s: str, k: int) -> int:
+    def replace_character2(self, s: str, k: int) -> int:
+        """ Time complexity: O(n).
+            Space complexity: O(26) = 1.
+        """
         ans = 0
-        maxCount = 0
+        max_count = 0
         count = collections.Counter()
-
         l = 0
         for r, c in enumerate(s):
             count[c] += 1
-            maxCount = max(maxCount, count[c])
-            while maxCount + k < r - l + 1:
+            max_count = max(max_count, count[c])
+            while max_count + k < r - l + 1:
                 count[s[l]] -= 1
+                # be careful here with TC
                 l += 1
             ans = max(ans, r - l + 1)
-
         return ans
 
-Approach 2: Lazy Window¶
-Time: O(n)
-Space: O(26)=O(1)
-
-class Solution:
-    def characterReplacement(self, s: str, k: int) -> int:
-        maxCount = 0
+    def replace_character3(self, s: str, k: int) -> int:
+        """ Time complexity: O(n).
+            Space complexity: O(26) = 1.
+        """
+        max_count = 0
         count = collections.Counter()
-
         # l and r track the maximum window instead of the valid window.
         l = 0
+        r = 0
         for r, c in enumerate(s):
             count[c] += 1
-            maxCount = max(maxCount, count[c])
-            while maxCount + k < r - l + 1:
+            max_count = max(max_count, count[c])
+            while max_count + k < r - l + 1:
                 count[s[l]] -= 1
                 l += 1
-
         return r - l + 1
