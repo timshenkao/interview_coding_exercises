@@ -14,47 +14,52 @@
 # limitations under the License.
 ##############################################################################
 
-class Solution:
-    def groupStrings(self, strings):
-        """
-        :type strings: List[str]
-        :rtype: List[List[str]]
-        """
-        table = collections.defaultdict(list)
-        for w in strings:
-            pattern = ""
-            for i in range(1, len(w)):
-                if ord(w[i]) - ord(w[i - 1]) >= 0:
-                    pattern += str(ord(w[i]) - ord(w[i - 1]))
-                else:
-                    pattern += str(ord(w[i]) - ord(w[i - 1]) + 26)
-            table[pattern].append(w)
-        return [table[pattern] for pattern in table]
+import collections
 
-
-Time: O(Σ∣strings[i]∣)
-Space: O(Σ∣strings[i]∣)
-
+# 249. Group Shifted Strings https://leetcode.com/problems/group-shifted-strings/
+# We can shift a string by shifting each of its letters to its successive letter.
+# For example, "abc" can be shifted to be "bcd".
+# We can keep shifting the string to form a sequence.
+# For example, we can keep shifting "abc" to form the sequence: "abc" -> "bcd" -> ... -> "xyz".
+# Given an array of strings strings, group all strings[i] that belong to the same shifting sequence.
+# You may return the answer in any order.
+# 1 <= strings.length <= 200
+# 1 <= strings[i].length <= 50
+# strings[i] consists of lowercase English letters.
 
 
 class Solution:
-    def groupStrings(self, strings: List[str]) -> List[List[str]]:
-        keyToStrings = collections.defaultdict(list)
+    # def group_strings(self, strings):
+    #     """ Time complexity: O(Σ∣strings[i]∣).
+    #         Space complexity: O(Σ∣strings[i]∣).
+    #     """
+    #     table = collections.defaultdict(list)
+    #     for w in strings:
+    #         pattern = ""
+    #         for i in range(1, len(w)):
+    #             if ord(w[i]) - ord(w[i - 1]) >= 0:
+    #                 pattern += str(ord(w[i]) - ord(w[i - 1]))
+    #             else:
+    #                 pattern += str(ord(w[i]) - ord(w[i - 1]) + 26)
+    #         table[pattern].append(w)
+    #     return [table[pattern] for pattern in table]
 
-        def getKey(s: str) -> str:
+    def group_strings2(self, strings):
+        """ Time complexity: O(Σ∣strings[i]∣).
+            Space complexity: O(Σ∣strings[i]∣).
+        """
+        def _get_key(s: str) -> str:
             """
             Returns the key of 's' by pairwise calculation of differences.
-            e.g. getKey("abc") -> "1,1" because diff(a, b) = 1 and diff(b, c) = 1.
+            e.g. _get_key("abc") -> "1,1" because diff(a, b) = 1 and diff(b, c) = 1.
             """
             diffs = []
-
             for i in range(1, len(s)):
                 diff = (ord(s[i]) - ord(s[i - 1]) + 26) % 26
                 diffs.append(str(diff))
+            return ",".join(diffs)
 
-            return ','.join(diffs)
-
+        key_to_strings = collections.defaultdict(list)
         for s in strings:
-            keyToStrings[getKey(s)].append(s)
-
-        return keyToStrings.values()
+            key_to_strings[_get_key(s)].append(s)
+        return key_to_strings.values()
