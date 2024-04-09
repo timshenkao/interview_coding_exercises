@@ -27,6 +27,7 @@
 # s represents a valid expression.
 # All the integers in the expression are non-negative integers in the range [0, 2^31 - 1].
 # The answer is guaranteed to fit in a 32-bit integer.
+
 SPACE = ' '
 MULT = '*'
 DIVISION = '/'
@@ -69,7 +70,10 @@ class Solution:
                 # pop previous number, divide by accumulated current number and push the result to stack
                 elif op == DIVISION:
                     temp = stack.pop()
-                    temp //= curr_num
+                    if temp >= 0 or (temp % curr_num == 0):
+                        temp //= curr_num
+                    else:
+                        temp = 1 + temp // curr_num
                     stack.append(temp)
                 # update operation symbol
                 op = s[i]
@@ -111,7 +115,10 @@ class Solution:
                 # previous operation symbol is '/'
                 # set last number to division of last number by accumulated current number
                 elif op == DIVISION:
-                    last_num //= curr_num
+                    if last_num >= 0 or (last_num % curr_num == 0):
+                        last_num //= curr_num
+                    else:
+                        last_num = 1 + last_num // curr_num
                 # update operation symbol
                 op = s[i]
                 # we handled operation symbol; next iteration we start accumulating new current number

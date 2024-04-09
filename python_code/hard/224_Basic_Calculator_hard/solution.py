@@ -14,8 +14,25 @@
 # limitations under the License.
 ##############################################################################
 
+# 224. Basic Calculator https://leetcode.com/problems/basic-calculator/
+# Given a string s representing a valid expression, implement a basic calculator to evaluate it, and return the result
+# of the evaluation.
+# Note: You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such
+# as eval().
+# 1 <= s.length <= 3 * 10^5
+# s consists of digits, '+', '-', '(', ')', and ' '.
+# s represents a valid expression.
+# '+' is not used as a unary operation (i.e., "+1" and "+(2 + 3)" is invalid).
+# '-' could be used as a unary operation (i.e., "-1" and "-(2 + 3)" is valid).
+# There will be no two consecutive operators in the input.
+# Every number and running calculation will fit in a signed 32-bit integer.
+
+
 class Solution:
     def calculate(self, s):
+        """ Time complexity: O(n) or O(n^2) ???.
+            Space complexity: O(n).
+        """
         def calc(n2, op, n1):
             return n1 + n2 if op == "+" else n1 - n2
         stack, i, num = [], 0, 0

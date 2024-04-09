@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ##############################################################################
+
 from solution import Solution
 
 
@@ -20,15 +21,13 @@ def main():
     solution = Solution()
 
     tests = {
-        # 1: "3+2*2",
-        # 2: " 3/2 ",
-        # 3: " 3+5 / 2 ",
-        4: "14-3/2"
+        1: [1,2,1],
+        2: [1,2,3,4,3]
     }
     for _, test in tests.items():
-        print("string: ", test)
-        print("calculate_stack ", solution.calculate_stack(test))
-        print("calculate_no_stack ", solution.calculate_no_stack(test))
+        print("array: ", test)
+        print("next_greater_elements ", solution.next_greater_elements(test))
+        print("next_greater_elements2 ", solution.next_greater_elements2(test))
         print(" ")
 
 
