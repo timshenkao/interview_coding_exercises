@@ -14,34 +14,40 @@
 # limitations under the License.
 ##############################################################################
 
+from collections import Counter
+
+# 438. Find All Anagrams in a String https://leetcode.com/problems/find-all-anagrams-in-a-string/
+# Given two strings s and p, return an array of all the start indices of p's anagrams in s.
+# You may return the answer in any order.
+# An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all
+# the original letters exactly once.
+# 1 <= s.length, p.length <= 3 * 10^4
+# s and p consist of lowercase English letters.
+
 
 class Solution:
-    def findAnagrams(self, s, p):
+    def find_anagrams(self, s, p):
+        """ Time complexity: O(n).
+            Space complexity: O(26) = O(1).
         """
-        :type s: str
-        :type p: str
-        :rtype: List[int]
-        """
-        out=list()
-        from collections import Counter
-        s_counter, p_counter=Counter(s[:len(p)-1]), Counter(p)
-        for i in range(len(p)-1,len(s)):
-            s_counter[s[i]]+=1
-            if s_counter==p_counter: out.append(i-len(p)+1)
-            s_counter[s[i-len(p)+1]]-=1
-            if s_counter[s[i-len(p)+1]]==0: del s_counter[s[i-len(p)+1]]
+        out = list()
+        s_counter, p_counter = Counter(s[:len(p)-1]), Counter(p)
+        for i in range(len(p)-1, len(s)):
+            s_counter[s[i]] += 1
+            if s_counter == p_counter:
+                out.append(i-len(p)+1)
+            s_counter[s[i-len(p)+1]] -= 1
+            if s_counter[s[i-len(p)+1]] == 0:
+                del s_counter[s[i-len(p)+1]]
         return out
 
-Time: O(n)
-Space: O(26)
-
-
-class Solution:
-    def findAnagrams(self, s: str, p: str) -> List[int]:
+    def find_anagrams2(self, s, p):
+        """ Time complexity: O(n).
+            Space complexity: O(26) = O(1).
+        """
         ans = []
-        count = collections.Counter(p)
+        count = Counter(p)
         required = len(p)
-
         for r, c in enumerate(s):
             count[c] -= 1
             if count[c] >= 0:

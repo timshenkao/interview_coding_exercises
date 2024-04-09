@@ -26,7 +26,7 @@ import collections
 class Solution:
     def length_ols(self, s):
         """ Time complexity: O(n).
-            Space complexity: O(128) = O(256) = 1.
+            Space complexity: O(128) = O(256) = O(1).
         """
         mx, start, chars = 0, 0, {}
         for i in range(len(s)):
@@ -56,7 +56,7 @@ class Solution:
 
     def length_ols3(self, s: str) -> int:
         """ Time complexity: O(n).
-            Space complexity: O(128) = O(256) = 1.
+            Space complexity: O(128) = O(256) = O(1).
         """
         ans = 0
         # The substring s[j + 1..i] has no repeating characters.
