@@ -39,7 +39,7 @@ class Solution:
 
     def length_ols2(self, s: str) -> int:
         """ Time complexity: O(n).
-            Space complexity: O(128) = O(256) = 1.
+            Space complexity: O(128) = O(256) = O(1).
         """
         ans = 0
         count = collections.Counter()

@@ -14,30 +14,31 @@
 # limitations under the License.
 ##############################################################################
 
+from typing import Tuple
+
+# 5. Longest Palindromic Substring https://leetcode.com/problems/longest-palindromic-substring/
+# Given a string s, return the longest palindromic substring in s.
+# 1 <= s.length <= 1000
+# s consist of only digits and English letters.
+
 
 class Solution:
-    def longestPalindrome(self, s: str) -> str:
+    def longest_palindrome(self, s: str) -> str:
+        """ Time complexity: O(n^2).
+            Space complexity: O(n).
+        """
         def check(l, r):
             while 0 <= l <= r < len(s) and s[l] == s[r]:
                 l -= 1
                 r += 1
             return s[l + 1:r]
         pals = [check(i, i) for i in range(len(s))] + [check(i, i + 1) for i in range(len(s) - 1) if s[i] == s[i + 1]]
-        return sorted(pals, key = len)[-1] if pals else ""
+        return sorted(pals, key=len)[-1] if pals else ""
 
-Approach 1: Naive
-Time: O(n^2)
-Space: O(n)
-
-
-class Solution:
-    def longestPalindrome(self, s: str) -> str:
-        if not s:
-            return ""
-
-        # (start, end) indices of the longest palindrome in s
-        indices = [0, 0]
-
+    def longest_palindrome2(self, s: str) -> str:
+        """ Time complexity: O(n^2).
+            Space complexity: O(n).
+        """
         def extend(s: str, i: int, j: int) -> Tuple[int, int]:
             """
             Returns the (start, end) indices of the longest palindrome extended from
@@ -50,6 +51,10 @@ class Solution:
                 j += 1
             return i + 1, j - 1
 
+        if not s:
+            return ""
+        # (start, end) indices of the longest palindrome in s
+        indices = [0, 0]
         for i in range(len(s)):
             l1, r1 = extend(s, i, i)
             if r1 - l1 > indices[1] - indices[0]:
@@ -58,42 +63,34 @@ class Solution:
                 l2, r2 = extend(s, i, i + 1)
                 if r2 - l2 > indices[1] - indices[0]:
                     indices = l2, r2
-
         return s[indices[0]:indices[1] + 1]
 
-
-Approach 2:
-Time: O(n)
-Space: O(n)
-
-
-class Solution:
-    def longestPalindrome(self, s: str) -> str:
+    def longest_palindrome3(self, s: str) -> str:
+        """ Time complexity: O(n).
+            Space complexity: O(n).
+        """
         # '@' and '$' signs serve as sentinels appended to each end to avoid bounds
         # checking.
         t = '#'.join('@' + s + '$')
         n = len(t)
-        # t[i - maxExtends[i]..i) ==
-        # t[i + 1..i + maxExtends[i]]
-        maxExtends = [0] * n
+        # t[i - max_extends[i]..i) ==
+        # t[i + 1..i + max_extends[i]]
+        max_extends = [0] * n
         center = 0
-
         for i in range(1, n - 1):
-            rightBoundary = center + maxExtends[center]
-            mirrorIndex = center - (i - center)
-            maxExtends[i] = rightBoundary > i and \
-                            min(rightBoundary - i, maxExtends[mirrorIndex])
+            right_boundary = center + max_extends[center]
+            mirror_index = center - (i - center)
+            max_extends[i] = right_boundary > i and min(right_boundary - i, max_extends[mirror_index])
 
             # Attempt to expand the palindrome centered at i.
-            while t[i + 1 + maxExtends[i]] == t[i - 1 - maxExtends[i]]:
-                maxExtends[i] += 1
+            while t[i + 1 + max_extends[i]] == t[i - 1 - max_extends[i]]:
+                max_extends[i] += 1
 
-            # If a palindrome centered at i expand past `rightBoundary`, adjust
+            # If a palindrome centered at i expand past `right_boundary`, adjust
             # center based on expanded palindrome.
-            if i + maxExtends[i] > rightBoundary:
+            if i + max_extends[i] > right_boundary:
                 center = i
 
-        # Find `maxExtend` and `bestCenter`.
-        maxExtend, bestCenter = max((extend, i)
-                                    for i, extend in enumerate(maxExtends))
-        return s[(bestCenter - maxExtend) // 2:(bestCenter + maxExtend) // 2]
+        # Find `max_extend` and `best_center`.
+        max_extend, best_center = max((extend, i) for i, extend in enumerate(max_extends))
+        return s[(best_center - max_extend) // 2:(best_center + max_extend) // 2]

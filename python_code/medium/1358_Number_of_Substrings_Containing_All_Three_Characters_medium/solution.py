@@ -14,45 +14,41 @@
 # limitations under the License.
 ##############################################################################
 
-Approach 1: Sliding window
-Time: O(n)
-Space: O(3)=O(1)
+# 1358. Number of Substrings Containing All Three Characters
+# https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/
+# Given a string s consisting only of characters a, b and c.
+# Return the number of substrings containing at least one occurrence of all these characters a, b and c.
+# 3 <= s.length <= 5 x 10^4
+# s only consists of a, b or c characters.
 
 
 class Solution:
     # Similar to 3. Longest SubWithout Repeating Characters
-    def numberOfSubstrings(self, s: str) -> int:
+    def number_of_substrings(self, s: str) -> int:
+        """ Time complexity: O(n).
+            Space complexity: O(1).
+        """
         ans = 0
-        count = {c: 0 for c in 'abc'}
-
+        count = {c: 0 for c in "abc"}
         l = 0
         for c in s:
             count[c] += 1
             while min(count.values()) > 0:
                 count[s[l]] -= 1
                 l += 1
-            # s[0..r], s[1..r], ..., s[l - 1..r] are satified strings.
+            # s[0..r], s[1..r], ..., s[l - 1..r] are satisfied strings.
             ans += l
-
         return ans
 
-
-
-Approach 2: Last seen
-Time: O(n)
-Space: O(3)=O(1)
-
-
-class Solution:
-    # Similar to 3. Longest SubWithout Repeating Characters
-    def numberOfSubstrings(self, s: str) -> int:
+    def number_of_substrings2(self, s: str) -> int:
+        """ Time complexity: O(n).
+            Space complexity: O(1).
+        """
         ans = 0
-        # lastSeen[c] := the index of the last time c appeared
-        lastSeen = {c: -1 for c in 'abc'}
-
+        # last_seen[c] - the index of the last time c appeared
+        last_seen = {c: -1 for c in 'abc'}
         for i, c in enumerate(s):
-            lastSeen[c] = i
-            # s[0..i], s[1..i], s[min(lastSeen)..i] are satisfied strings.
-            ans += 1 + min(lastSeen.values())
-
+            last_seen[c] = i
+            # s[0..i], s[1..i], s[min(last_seen)..i] are satisfied strings.
+            ans += 1 + min(last_seen.values())
         return ans
