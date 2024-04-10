@@ -21,8 +21,10 @@ from python_code.helper.linked_lists import generate_list, print_list
 def main():
     solution = Solution()
 
-    ###########################################################
     head1 = generate_list([1, 2, 3, 4, 5, 6])
+    print_list(solution.reverse_list(head1))
+
+    head1 = generate_list([1, 2, 3, 4, 5])
     print_list(solution.reverse_list(head1))
 
 

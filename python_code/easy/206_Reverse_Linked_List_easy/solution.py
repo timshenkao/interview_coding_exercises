@@ -20,6 +20,8 @@ from python_code.helper.linked_lists import ListNode
 
 # 206. Reverse Linked List  https://leetcode.com/problems/reverse-linked-list/
 # Given the head of a singly linked list, reverse the list, and return the reversed list.
+# The number of nodes in the list is the range [0, 5000].
+# -5000 <= Node.val <= 5000
 
 
 class Solution:
@@ -35,8 +37,8 @@ class Solution:
         prev = None
         # iterate through the list and invert pointers
         while curr:
-            temp = curr
-            curr = curr.next_node
-            temp.next_node = prev
-            prev = temp
+            next = curr.next_node
+            curr.next_node = prev
+            prev = curr
+            curr = next
         return prev

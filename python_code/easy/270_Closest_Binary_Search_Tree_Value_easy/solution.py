@@ -20,6 +20,7 @@ from python_code.helper.binary_trees import TreeNode
 
 # 270. Closest Binary Search Tree Value https://leetcode.com/problems/closest-binary-search-tree-value/
 # Given the root of a binary search tree and a target value, return the value in the BST that is closest to the target.
+# If there are multiple answers, print the smallest.
 # The number of nodes in the tree is in the range [1, 10 ^ 4].
 # 0 <= Node.val <= 10 ^ 9
 # -10 ^ 9 <= target <= 10 ^ 9
@@ -43,6 +44,6 @@ class Solution:
         closest = root.val
         # modification of binary search
         while root:
-            closest = min(root.val, closest, key=lambda x: abs(target - x))
+            closest = min(root.val, closest, key=lambda x: (abs(target - x), x))
             root = root.left if target < root.val else root.right
         return closest

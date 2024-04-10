@@ -23,11 +23,11 @@
 
 class Solution:
     def add_binary(self, a: str, b: str) -> str:
-        """ Time complexity: O().
-            Space complexity: O().
+        """ Time complexity: O(|a| + |b|).
+            Space complexity: O(|a| + |b|).
         """
         # constants
-        ZERO = "0
+        ZERO = "0"
         ONE = "1"
 
         # find out which string is longer

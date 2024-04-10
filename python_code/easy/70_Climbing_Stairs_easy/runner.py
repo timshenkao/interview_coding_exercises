@@ -14,25 +14,22 @@
 # limitations under the License.
 ##############################################################################
 
-from python_code.helper.binary_trees import generate_binary_tree
 from solution import Solution
 
 
 def main():
     solution = Solution()
 
-    # root = generate_binary_tree([4, 2, 5, 1, 3])
-    # target = 3.714286
-    # print(solution.closest_value(root, target))
-    #
-    # root = generate_binary_tree([1])
-    # target = 4.428571
-    # print(solution.closest_value(root, target))
-
-    root = generate_binary_tree([4, 2, 5, 1, 3])
-    target = 4.5
-    print(solution.closest_value(root, target))
-
+    tests = {
+        1: 2,
+        2: 3
+    }
+    for _, test in tests.items():
+        print("n= ", test)
+        print("climb_stairs ", solution.climb_stairs(test))
+        print("climb_stairs2 ", solution.climb_stairs2(test))
+        print("climb_stairs3 ", solution.climb_stairs3(test))
+        print(" ")
 
 
 if __name__ == "__main__":
