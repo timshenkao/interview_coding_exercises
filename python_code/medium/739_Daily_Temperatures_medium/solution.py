@@ -46,7 +46,6 @@ class Solution:
             else:
                 result[first_pointer] = second_pointer - first_pointer
             first_pointer += 1
-
         return result
 
     def daily_temperatures_monotonic_stack(self, temperatures: List[int]) -> List[int]:

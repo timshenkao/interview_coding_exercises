@@ -14,35 +14,42 @@
 # limitations under the License.
 ##############################################################################
 
+# 540. Single Element in a Sorted Array https://leetcode.com/problems/single-element-in-a-sorted-array/
+# You are given a sorted array consisting of only integers where every element appears exactly twice, except for one
+# element which appears exactly once.
+# Return the single element that appears only once.
+# Your solution must run in O(log n) time and O(1) space.
+# 1 <= nums.length <= 10^5
+# 0 <= nums[i] <= 10^5
+
+
 class Solution:
-    def singleNonDuplicate(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
+    def single_non_duplicate(self, nums):
+        """ Time complexity: O(logn).
+            Space complexity: O(1).
         """
         left, right = 0, len(nums)-1
-        while left<=right:
-            mid = (left+right)//2
-            if mid+1<len(nums) and nums[mid] == nums[mid+1]:
-                if mid % 2 == 0: left = mid+2
-                else: right = mid-1
-            elif mid-1>=0 and nums[mid] == nums[mid-1]:
-                if mid % 2 == 0: right = mid-2
-                else: left = mid+1
-            else: return nums[mid]
+        while left <= right:
+            mid = (left + right) // 2
+            if mid + 1 <len(nums) and nums[mid] == nums[mid + 1]:
+                if mid % 2 == 0:
+                    left = mid + 2
+                else:
+                    right = mid - 1
+            elif mid - 1 >= 0 and nums[mid] == nums[mid - 1]:
+                if mid % 2 == 0:
+                    right = mid - 2
+                else:
+                    left = mid + 1
+            else:
+                return nums[mid]
 
-
-binary search
-Time: O(logn)
-Space: O(1)
-
-
-
-class Solution:
-    def singleNonDuplicate(self, nums: List[int]) -> int:
+    def single_non_duplicate2(self, nums):
+        """ Time complexity: O(logn).
+            Space complexity: O(1).
+        """
         l = 0
         r = len(nums) - 1
-
         while l < r:
             m = (l + r) // 2
             if m % 2 == 1:
@@ -51,5 +58,4 @@ class Solution:
                 l = m + 2
             else:
                 r = m
-
         return nums[l]
