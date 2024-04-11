@@ -14,65 +14,65 @@
 # limitations under the License.
 ##############################################################################
 
+# 17. Letter Combinations of a Phone Number https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+# Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could
+# represent. Return the answer in any order.
+# A mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any
+# letters.
+# 0 <= digits.length <= 4
+# digits[i] is a digit in the range ['2', '9'].
+
+
 class Solution:
-    def letterCombinations(self, digits):
-        dic, res = { '2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl', '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz'}, [""]
+    def letter_combinations(self, digits):
+        """ Time complexity: O().
+            Space complexity: O().
+        """
+        dic = { '2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl', '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz'}
+        res = [""]
         for dig in digits:
             tmp = []
             for y in res:
-                for x in dic[dig]: tmp.append(y + x)
+                for x in dic[dig]:
+                    tmp.append(y + x)
             res = tmp
         return res if any(res) else []
 
-
-Approach 1: DFS
-Time: O(n4^n)
-Space: O(4^n)
-
-
-
-class Solution:
-    def letterCombinations(self, digits: str) -> List[str]:
-        if not digits:
-            return []
-
-        digitToLetters = ["", "", 'abc', 'def', 'ghi',
-                          'jkl', 'mno', 'pqrs', 'tuv', 'wxyz']
-        ans = []
-
-        def dfs(i: int, path: List[chr]) -> None:
+    def letter_combinations2(self, digits):
+        """ Time complexity: O(n4^n).
+            Space complexity: O(n4^n).
+        """
+        def dfs(i: int, path):
             if i == len(digits):
                 ans.append("".join(path))
                 return
-
-            for letter in digitToLetters[ord(digits[i]) - ord('0')]:
+            for letter in digit_to_letters[ord(digits[i]) - ord('0')]:
                 path.append(letter)
                 dfs(i + 1, path)
                 path.pop()
 
+        if not digits:
+            return []
+        digit_to_letters = ["", "", 'abc', 'def', 'ghi',
+                            'jkl', 'mno', 'pqrs', 'tuv', 'wxyz']
+        ans = []
         dfs(0, [])
         return ans
 
-Approach 2: Iterative
-Time: O(n4^n)
-Space: O(4^n)
-
-
-
-class Solution:
-    def letterCombinations(self, digits: str) -> List[str]:
+    def letter_combinations3(self, digits):
+        """ Time complexity: O(n4^n).
+            Space complexity: O(n4^n).
+        """
         if not digits:
             return []
-
         ans = [""]
-        digitToLetters = ["", "", 'abc', 'def', 'ghi',
+        digit_to_letters = ["", "", 'abc', 'def', 'ghi',
                           'jkl', 'mno', 'pqrs', 'tuv', 'wxyz']
 
         for d in digits:
             temp = []
             for s in ans:
-                for c in digitToLetters[ord(d) - ord('0')]:
+                for c in digit_to_letters[ord(d) - ord('0')]:
                     temp.append(s + c)
             ans = temp
-
         return ans

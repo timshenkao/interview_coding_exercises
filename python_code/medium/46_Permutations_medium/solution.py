@@ -14,20 +14,27 @@
 # limitations under the License.
 ##############################################################################
 
+# 46. Permutations  https://leetcode.com/problems/permutations/
+# Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any
+# order.
+# 1 <= nums.length <= 6
+# -10 <= nums[i] <= 10
+# All the integers of nums are unique.
+
+
 class Solution:
-    def permute(self, nums): return list(itertools.permutations(nums))
+    def permute(self, nums):
+        """ Time complexity: O(n * n!).
+            Space complexity: O(n * n!).
+        """
+        import itertools
+        return list(itertools.permutations(nums))
 
-backtracking
-Time: O(n⋅n!)
-Space: O(n⋅n!)
-
-
-class Solution:
-    def permute(self, nums: List[int]) -> List[List[int]]:
-        ans = []
-        used = [False] * len(nums)
-
-        def dfs(path: List[int]) -> None:
+    def permute2(self, nums):
+        """ Time complexity: O(n * n!).
+            Space complexity: O(n * n!).
+        """
+        def dfs(path):
             if len(path) == len(nums):
                 ans.append(path.copy())
                 return
@@ -41,5 +48,7 @@ class Solution:
                 path.pop()
                 used[i] = False
 
+        ans = []
+        used = [False] * len(nums)
         dfs([])
         return ans

@@ -14,27 +14,33 @@
 # limitations under the License.
 ##############################################################################
 
+# 47. Permutations II  https://leetcode.com/problems/permutations-ii/
+# Given a collection of numbers, nums, that might contain duplicates, return all possible unique permutations in any
+# order.
+# 1 <= nums.length <= 8
+# -10 <= nums[i] <= 10
+
+
 class Solution:
-    def permuteUnique(self, nums):
+    def permute_unique(self, nums):
+        """ Time complexity: O(n * n!).
+            Space complexity: O(n * n!).
+        """
+        import itertools
         dic = set()
         for p in itertools.permutations(nums):
             if p not in dic:
                 dic.add(p)
         return list(dic)
 
-Time: O(n⋅n!)
-Space: O(n⋅n!)
-
-class Solution:
-    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
-        ans = []
-        used = [False] * len(nums)
-
-        def dfs(path: List[int]) -> None:
+    def permute_unique2(self, nums):
+        """ Time complexity: O(n * n!).
+            Space complexity: O(n * n!).
+        """
+        def dfs(path):
             if len(path) == len(nums):
                 ans.append(path.copy())
                 return
-
             for i, num in enumerate(nums):
                 if used[i]:
                     continue
@@ -46,6 +52,8 @@ class Solution:
                 path.pop()
                 used[i] = False
 
+        ans = []
+        used = [False] * len(nums)
         nums.sort()
         dfs([])
         return ans

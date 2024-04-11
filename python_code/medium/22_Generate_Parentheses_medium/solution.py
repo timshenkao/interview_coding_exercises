@@ -14,22 +14,24 @@
 # limitations under the License.
 ##############################################################################
 
+# 22. Generate Parentheses  https://leetcode.com/problems/generate-parentheses/
+# Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+# 1 <= n <= 8
+
 class Solution:
-    def generateParenthesis(self, n: int) -> List[str]:
+    def generate_parenthesis(self, n):
+        """ Time complexity: O(2^2n).
+            Space complexity: O(n).
+        """
         bfs = [(0, 0, "")]
         for c in range(n * 2):
             bfs = [(l + 1, r, s + '(') for l, r, s in bfs if l + 1 <= n] + [(l, r + 1, s + ')') for l, r, s in bfs if l - r]
         return [s for l, r, s in bfs]
 
-Time: O(2^2n)
-Space: O(n)
-
-
-Dynamic Programming
-class Solution:
-    def generateParenthesis(self, n):
-        ans = []
-
+    def generate_parenthesis2(self, n):
+        """ Time complexity: O(2^2n).
+            Space complexity: O(n).
+        """
         def dfs(l: int, r: int, s: str) -> None:
             if l == 0 and r == 0:
                 ans.append(s)
@@ -38,5 +40,6 @@ class Solution:
             if l < r:
                 dfs(l, r - 1, s + ')')
 
+        ans = []
         dfs(n, n, "")
         return ans
