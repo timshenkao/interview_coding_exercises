@@ -14,22 +14,21 @@
 # limitations under the License.
 ##############################################################################
 
-# 55. Jump Game  https://leetcode.com/problems/jump-game/
-# You are given an integer array nums. You are initially positioned at the array's first index, and each element in the
-# array represents your maximum jump length at that position.
-# Return true if you can reach the last index, or false otherwise.
-# 1 <= nums.length <= 10^4
-# 0 <= nums[i] <= 10^5
+from solution import Solution
 
 
-class Solution:
-    def can_jump(self, nums):
-        """ Time complexity: O(n).
-            Space complexity: O(1).
-        """
-        i = mx = 0
-        while i < len(nums) and i <= mx:
-            if nums[i] + i >= len(nums) - 1:
-                return True
-            mx, i = max(mx, i + nums[i]), i + 1
-        return False
+def main():
+    solution = Solution()
+
+    tests = {
+        1: [2,3,1,1,4],
+        2: [3,2,1,0,4]
+    }
+    for _, test in tests.items():
+        print("array: ", test)
+        print("can_jump ", solution.can_jump(test))
+        print(" ")
+
+
+if __name__ == "__main__":
+    main()
