@@ -14,43 +14,41 @@
 # limitations under the License.
 ##############################################################################
 
-# Definition for an interval.
-# class Interval:
-#     def __init__(self, s=0, e=0):
-#         self.start = s
-#         self.end = e
+# 56. Merge Intervals  https://leetcode.com/problems/merge-intervals/
+# Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array
+# of the non-overlapping intervals that cover all the intervals in the input.
+# 1 <= intervals.length <= 10^4
+# intervals[i].length == 2
+# 0 <= starti <= endi <= 10^4
+
 
 class Solution:
     def merge(self, intervals):
-        """
-        :type intervals: List[Interval]
-        :rtype: List[Interval]
+        """ Time complexity: O(nlogn).
+            Space complexity: O(n).
         """
         res = []
-        intervals.sort(key = lambda x: x.end)
+        # TC: O(nlogn) SC: O(1)
+        intervals.sort(key = lambda x: x[1])
         for intr in intervals:
-            if not re:
-                res.append([intr.start, intr.end])
+            if not res:
+                res.append([intr[0], intr[1]])
             else:
-                s = intr.start
-                while res and res[-1][1] >= intr.start:
+                s = intr[0]
+                while res and res[-1][1] >= intr[0]:
                     s = min(s, res.pop()[0])
-                res.append([s, intr.end])
+                res.append([s, intr[1]])
         return res
 
-Time: O(sort)
-Space: O(n)
-
-
-
-class Solution:
-    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+    def merge2(self, intervals):
+        """ Time complexity: O(nlogn).
+            Space complexity: O(n).
+        """
         ans = []
-
+        # TC: O(nlogn) SC: O(n)
         for interval in sorted(intervals):
             if not ans or ans[-1][1] < interval[0]:
                 ans.append(interval)
             else:
                 ans[-1][1] = max(ans[-1][1], interval[1])
-
         return ans

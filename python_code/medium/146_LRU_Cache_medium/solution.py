@@ -14,36 +14,52 @@
 # limitations under the License.
 ##############################################################################
 
+# 146. LRU Cache  https://leetcode.com/problems/lru-cache/description/
+# Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
+# Implement the LRUCache class:
+# LRUCache(int capacity) Initialize the LRU cache with positive size capacity.
+# int get(int key) Return the value of the key if the key exists, otherwise return -1.
+# void put(int key, int value) Update the value of the key if the key exists. Otherwise, add the key-value pair to the
+# cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.
+# The functions get and put must each run in O(1) average time complexity.
+# 1 <= capacity <= 3000
+# 0 <= key <= 10^4
+# 0 <= value <= 10^5
+# At most 2 * 10^5 calls will be made to get and put.
+
+
 class Node:
     def __init__(self, key, value):
         self.key = key
-        self.val = value
-        self.next = self.pre = None
-        self.pre = None
+        self.value = value
+        self.next = None
+        self.prev = None
+        
+
 class LRUCache:
-    def remove(self, node):
-        node.pre.next, node.next.pre = node.next, node.pre
-        self.dic.pop(node.key)
-
-    def add(self, node):
-        node.pre = self.tail.pre
-        node.next = self.tail
-        self.tail.pre.next = self.tail.pre = node
-        self.dic[node.key] = node
-
     def __init__(self, capacity):
         self.dic = {}
         self.n = capacity
         self.head = self.tail = Node(0, 0)
         self.head.next = self.tail
-        self.tail.pre = self.head
+        self.tail.prev = self.head
+
+    def remove(self, node):
+        node.prev.next, node.next.prev = node.next, node.prev
+        self.dic.pop(node.key)
+
+    def add(self, node):
+        node.prev = self.tail.prev
+        node.next = self.tail
+        self.tail.prev.next = self.tail.prev = node
+        self.dic[node.key] = node
 
     def get(self, key):
         if key in self.dic:
             node = self.dic[key]
             self.remove(node)
             self.add(node)
-            return node.val
+            return node.value
         return -1
 
     def put(self, key, value):
@@ -55,56 +71,46 @@ class LRUCache:
             self.remove(self.head.next)
 
 
-Approach 1: Node w/ prev and next pointers
-Time: get(key: int), put(key: int, value: int): O(1)
-Space: O(capacity)
-
-class Node:
-    def __init__(self, key: int, value: int):
-        self.key = key
-        self.value = value
-        self.prev = None
-        self.next = None
-
-
-class LRUCache:
+class LRUCache2:
+    """ Time complexity: get(key: int), put(key: int, value: int): O(1).
+        Space complexity: O(n).
+    """
     def __init__(self, capacity: int):
         self.capacity = capacity
-        self.keyToNode = {}
+        self.dic = {}
         self.head = Node(-1, -1)
         self.tail = Node(-1, -1)
         self.join(self.head, self.tail)
 
     def get(self, key: int) -> int:
-        if key not in self.keyToNode:
+        if key not in self.dic:
             return -1
-
-        node = self.keyToNode[key]
+        node = self.dic[key]
         self.remove(node)
-        self.moveToHead(node)
+        self.move_to_head(node)
         return node.value
 
     def put(self, key: int, value: int) -> None:
-        if key in self.keyToNode:
-            node = self.keyToNode[key]
+        if key in self.dic:
+            node = self.dic[key]
             node.value = value
             self.remove(node)
-            self.moveToHead(node)
+            self.move_to_head(node)
             return
 
-        if len(self.keyToNode) == self.capacity:
-            lastNode = self.tail.prev
-            del self.keyToNode[lastNode.key]
-            self.remove(lastNode)
+        if len(self.dic) == self.capacity:
+            last_node = self.tail.prev
+            del self.dic[last_node.key]
+            self.remove(last_node)
 
-        self.moveToHead(Node(key, value))
-        self.keyToNode[key] = self.head.next
+        self.move_to_head(Node(key, value))
+        self.dic[key] = self.head.next
 
     def join(self, node1: Node, node2: Node):
         node1.next = node2
         node2.prev = node1
 
-    def moveToHead(self, node: Node):
+    def move_to_head(self, node: Node):
         self.join(node, self.head.next)
         self.join(self.head, node)
 
