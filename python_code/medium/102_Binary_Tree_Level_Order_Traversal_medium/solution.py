@@ -14,39 +14,41 @@
 # limitations under the License.
 ##############################################################################
 
+import collections
+
+# 102. Binary Tree Level Order Traversal https://leetcode.com/problems/binary-tree-level-order-traversal/description/
+# Given the root of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right,
+# level by level).
+#The number of nodes in the tree is in the range [0, 2000].
+# -1000 <= Node.val <= 1000
+
+
 # Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
+class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
 
 class Solution:
-    def levelOrder(self, root):
-        """
-        :type root: TreeNode
-        :rtype: List[List[int]]
+    def levelOrder_bfs(self, root):
+        """ Time complexity: O(n)
+            Space complexity: O(n)
         """
         q, res = [root], []
         while any(q):
             res.append([i.val for i in q])
-            q = [kid for node in q for kid in (node.left, node.right) if kid]
+            q = [child for node in q for child in (node.left, node.right) if child]
         return res
 
-
-BFS
-Time: O(n)
-Space: O(n)
-
-
-class Solution:
-    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+    def levelOrder_bfs2(self, root: Optional[TreeNode]) -> List[List[int]]:
+        """ Time complexity: O(n)
+            Space complexity: O(n)
+        """
         if not root:
             return []
-
         ans = []
         q = collections.deque([root])
-
         while q:
             currLevel = []
             for _ in range(len(q)):
@@ -57,5 +59,4 @@ class Solution:
                 if node.right:
                     q.append(node.right)
             ans.append(currLevel)
-
         return ans

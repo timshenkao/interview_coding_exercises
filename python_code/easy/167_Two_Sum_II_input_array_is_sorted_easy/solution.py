@@ -35,10 +35,9 @@ class Solution:
         # iterate through array once
         while left_index <= right_index:
             if arr[left_index] + arr[right_index] == target:
-                break
+                return [left_index + 1, right_index + 1]
             elif arr[left_index] + arr[right_index] > target:
                 right_index -= 1
             elif arr[left_index] + arr[right_index] < target:
                 left_index += 1
-
-        return [left_index + 1, right_index + 1]
+        return []

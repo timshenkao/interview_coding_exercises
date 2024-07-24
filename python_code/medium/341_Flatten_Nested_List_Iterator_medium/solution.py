@@ -14,13 +14,31 @@
 # limitations under the License.
 ##############################################################################
 
-Approach 1: Recursive (Queue)
-Time: O(n)
-Space: O(n)
+import collections
+
+# 341. Flatten Nested List Iterator https://leetcode.com/problems/flatten-nested-list-iterator/description/
+# You are given a nested list of integers nestedList. Each element is either an integer or a list whose elements may
+# also be integers or other lists. Implement an iterator to flatten it.
+# Implement the NestedIterator class:
+#       NestedIterator(List<NestedInteger> nestedList) Initializes the iterator with the nested list nestedList.
+#       int next() Returns the next integer in the nested list.
+#       boolean hasNext() Returns true if there are still some integers in the nested list and false otherwise.
+# Your code will be tested with the following pseudocode:
+# initialize iterator with nestedList
+# res = []
+# while iterator.hasNext()
+#     append iterator.next() to the end of res
+# return res
+# If res matches the expected flattened list, then your code will be judged as correct.
+# 1 <= nestedList.length <= 500
+# The values of the integers in the nested list is in the range [-10^6, 10^6].
 
 
-
-class NestedIterator:
+class NestedIteratorDeque:
+    """ Time complexity: O(n)
+        Space complexity: O(n)
+        Recursive approach
+    """
     def __init__(self, nestedList: List[NestedInteger]):
         self.q = collections.deque()
         self.addInteger(nestedList)
@@ -38,11 +56,11 @@ class NestedIterator:
             else:
                 self.addInteger(ni.getList())
 
-Approach 2: Stack
-Time: O(n)
-Space: O(n)
 
-class NestedIterator:
+class NestedIteratorStack:
+    """ Time complexity: O(n)
+        Space complexity: O(n)
+    """
     def __init__(self, nestedList: List[NestedInteger]):
         self.stack: List[NestedInteger] = []
         self.addInteger(nestedList)
@@ -55,9 +73,6 @@ class NestedIterator:
             self.addInteger(self.stack.pop().getList())
         return self.stack
 
-    # addInteger([1, [4, [6]]]) . stack = [[4, [6]], 1]
-    # addInteger([4, [6]]) . stack = [[6], 4]
-    # addInteger([6]) . stack = [6]
     def addInteger(self, nestedList: List[NestedInteger]) -> None:
         for n in reversed(nestedList):
             self.stack.append(n)

@@ -14,39 +14,39 @@
 # limitations under the License.
 ##############################################################################
 
+import collections
+
+#
+
+
 # Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
+class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
 
 class Solution:
     def rightSideView(self, root):
-        """
-        :type root: TreeNode
-        :rtype: List[int]
+        """ Time complexity: O(n)
+            Space complexity: O(n)
+            BFS
         """
         q, res = [root], []
         while any(q):
             res.append(q[-1].val)
-            q = [kid for node in q for kid in (node.left, node.right) if kid]
+            q = [child for node in q for child in (node.left, node.right) if child]
         return res
 
-
-Approach 1: BFS
-Time: O(n)
-Space: O(n)
-
-
-class Solution:
-    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+    def rightSideView2(self, root: Optional[TreeNode]) -> List[int]:
+        """ Time complexity: O(n)
+            Space complexity: O(n)
+            BFS
+        """
         if not root:
             return []
-
         ans = []
         q = collections.deque([root])
-
         while q:
             size = len(q)
             for i in range(size):
@@ -57,23 +57,17 @@ class Solution:
                     q.append(root.left)
                 if root.right:
                     q.append(root.right)
-
         return ans
 
-
-Approach 2: DFS
-Time: O(n)
-Space: O(h)
-
-
-class Solution:
-    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+    def rightSideView3(self, root: Optional[TreeNode]) -> List[int]:
+        """ Time complexity: O(n)
+            Space complexity: O(n)
+            Recursive DFS
+        """
         ans = []
-
         def dfs(root: Optional[TreeNode], depth: int) -> None:
             if not root:
                 return
-
             if depth == len(ans):
                 ans.append(root.val)
             dfs(root.right, depth + 1)
@@ -81,6 +75,3 @@ class Solution:
 
         dfs(root, 0)
         return ans
-
-
-

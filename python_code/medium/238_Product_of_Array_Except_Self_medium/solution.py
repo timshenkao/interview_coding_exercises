@@ -28,10 +28,14 @@ from typing import List
 
 class Solution:
     def product_except_self(self, nums):
+        """ Time complexity: O(N).
+            Space complexity: O(N).
+        """
         m, res = 1, []
         for i in range(len(nums)):
             res.append(m)
             m *= nums[i]
+
         m = 1
         for i in range(len(nums)-1,-1,-1):
             res[i] *= m
@@ -53,7 +57,7 @@ class Solution:
 
     def product_except_self3(self, nums: List[int]) -> List[int]:
         """ Time complexity: O(N).
-            Space complexity: O(1).
+            Space complexity: O(N).
         """
         n = len(nums)
         ans = [1] * n

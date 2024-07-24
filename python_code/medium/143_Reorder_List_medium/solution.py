@@ -14,64 +14,69 @@
 # limitations under the License.
 ##############################################################################
 
+# 143. Reorder List https://leetcode.com/problems/reorder-list/
+# You are given the head of a singly linked-list. The list can be represented as:
+# L0 → L1 → … → Ln - 1 → Ln
+# Reorder the list to be on the following form:
+# L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
+# You may not modify the values in the list's nodes. Only nodes themselves may be changed.
+# The number of nodes in the list is in the range [1, 5 * 10^4].
+# 1 <= Node.val <= 1000
+
 # Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+
 class Solution(object):
     def reorderList(self, head):
+        """ Time complexity: O(n)
+            Space complexity: O(n)
+        """
         if head:
             arr = []
             while head:
                 arr += head,
                 head = head.next
             l, r, prev = 0, len(arr) - 1, ListNode(0)
-            while l < r: prev.next, arr[l].next, prev, l, r = arr[l], arr[r], arr[r], l + 1, r - 1
-            if l == r: prev.next = arr[l]
+            while l < r:
+                prev.next, arr[l].next, prev, l, r = arr[l], arr[r], arr[r], l + 1, r - 1
+            if l == r:
+                prev.next = arr[l]
             arr[l].next = None
 
-Time: O(n)
-Space: O(1)
+    def reorderList2(self, head: ListNode) -> None:
+        """ Time complexity: O(n)
+            Space complexity: O(1)
+        """
+        # use slow and fast pointer to reach the middle and end in O(n)
+        # we actually need slow pointer later
+        slow, fast = head, head.next
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
 
+        # pointer in the beginning of the 2nd half
+        head_fast = slow.next
+        # disconnect first half from second half
+        slow.next = None
+        prev = None
 
-class Solution:
-    def reorderList(self, head: ListNode) -> None:
-        def findMid(head: ListNode):
-            prev = None
-            slow = head
-            fast = head
+        # invert second half in O(n)
+        while head_fast:
+            tmp = head_fast.next
+            head_fast.next = prev
+            prev = head_fast
+            head_fast = tmp
 
-            while fast and fast.next:
-                prev = slow
-                slow = slow.next
-                fast = fast.next.next
-            prev.next = None
+        # pointers to the heads of halves
+        first, second = head, prev
+        # merge 2 halves in O(n)
+        while second:
+            tmp1, tmp2 = first.next, second.next
 
-            return slow
-
-        def reverse(head: ListNode) -> ListNode:
-            prev = None
-            curr = head
-
-            while curr:
-                next = curr.next
-                curr.next = prev
-                prev = curr
-                curr = next
-
-            return prev
-
-        def merge(l1: ListNode, l2: ListNode) -> None:
-            while l2:
-                next = l1.next
-                l1.next = l2
-                l1 = l2
-                l2 = next
-
-        if not head or not head.next:
-            return
-
-        mid = findMid(head)
-        reversed = reverse(mid)
-        merge(head, reversed)
+            first.next = second
+            second.next = tmp1
+            first, second = tmp1, tmp2

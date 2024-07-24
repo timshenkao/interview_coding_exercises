@@ -14,24 +14,19 @@
 # limitations under the License.
 ##############################################################################
 
+
+# 128. Longest Consecutive Sequence https://leetcode.com/problems/longest-consecutive-sequence/description/
+# Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
+# You must write an algorithm that runs in O(n) time.
+# 0 <= nums.length <= 105
+# -109 <= nums[i] <= 109
+
+
 class Solution:
     def longestConsecutive(self, nums):
-        res, items = 0, set(nums)
-        for num in items:
-            if num - 1 not in items:
-                cur = 1
-                while num + 1 in items:
-                    num, cur = num + 1, cur + 1
-                if cur > res: res = cur
-        return res
-
-Union Find
-Time: O(n)
-Space: O(n)
-
-
-class Solution:
-    def longestConsecutive(self, nums: List[int]) -> int:
+        """ Time complexity: O(n).
+            Space complexity: O(n).
+        """
         ans = 0
         seen = set(nums)
 
@@ -44,5 +39,4 @@ class Solution:
                 num += 1
                 length += 1
             ans = max(ans, length)
-
         return ans

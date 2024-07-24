@@ -14,6 +14,43 @@
 # limitations under the License.
 ##############################################################################
 
+import collections
+import heapq
+from typing import List
+
+
+# 642. Design Search Autocomplete System https://leetcode.com/problems/design-search-autocomplete-system/
+# Design a search autocomplete system for a search engine. Users may input a sentence (at least one word and end with a
+# special character '#').
+# You are given a string array sentences and an integer array times both of length n where sentences[i] is a previously
+# typed sentence and times[i] is the corresponding number of times the sentence was typed.
+# For each input character except '#', return the top 3 historical hot sentences that have the same prefix as the part
+# of the sentence already typed.
+# Here are the specific rules:
+#       The hot degree for a sentence is defined as the number of times a user typed the exactly same sentence before.
+#       The returned top 3 hot sentences should be sorted by hot degree (The first is the hottest one). If several
+#       sentences have the same hot degree, use ASCII-code order (smaller one appears first).
+#       If less than 3 hot sentences exist, return as many as you can.
+#       When the input is a special character, it means the sentence ends, and in this case, you need to return an empty
+#       list.
+# Implement the AutocompleteSystem class:
+# AutocompleteSystem(String[] sentences, int[] times) Initializes the object with the sentences and times arrays.
+# List<String> input(char c) This indicates that the user typed the character c.
+#       Returns an empty array [] if c == '#' and stores the inputted sentence in the system.
+#       Returns the top 3 historical hot sentences that have the same prefix as the part of the sentence already typed.
+#       If there are fewer than 3 matches, return them all.
+# n == sentences.length
+# n == times.length
+# 1 <= n <= 100
+# 1 <= sentences[i].length <= 100
+# 1 <= times[i] <= 50
+# c is a lowercase English letter, a hash '#', or space ' '.
+# Each tested sentence will be a sequence of characters c that end with the character '#'.
+# Each tested sentence will have a length in the range [1, 200].
+# The words in each input sentence are separated by single spaces.
+# At most 5000 calls will be made to input.
+
+
 class AutocompleteSystem:
 
     def __init__(self, sentences: List[str], times: List[int]):
@@ -62,29 +99,22 @@ class AutocompleteSystem:
             self.move(c)
             return self.search()
 
-
-
-# Your AutocompleteSystem object will be instantiated and called as such:
-# obj = AutocompleteSystem(sentences, times)
-# param_1 = obj.input(c)
-
-Time: Constructor: O(Σ∣sentences[i]∣), input(c: chr): O(1)
-Space: O(Σ∣sentences[i]∣)
+#############
 
 
 class TrieNode:
     def __init__(self):
-        self.children: Dict[str, TrieNode] = {}
-        self.s: Optional[str] = None
+        self.children = {}
+        self.s = None
         self.time = 0
-        self.top3: List[TrieNode] = []
+        self.top3 = []
 
     def __lt__(self, other):
         if self.time == other.time:
             return self.s < other.s
         return self.time > other.time
 
-    def update(self, node) -> None:
+    def update(self, node):
         if node not in self.top3:
             self.top3.append(node)
         self.top3.sort()
@@ -92,31 +122,31 @@ class TrieNode:
             self.top3.pop()
 
 
-class AutocompleteSystem:
+class AutocompleteSystemTrie:
+    """ Time complexity: Constructor: O(sum of lengths ∣sentences[i]∣), input(c): O(1)
+        Space complexity: O(sum of lengths ∣sentences[i]∣)
+    """
     def __init__(self, sentences: List[str], times: List[int]):
         self.root = TrieNode()
         self.curr = self.root
-        self.s: List[chr] = []
-
+        self.s = []
         for sentence, time in zip(sentences, times):
             self._insert(sentence, time)
 
-    def input(self, c: str) -> List[str]:
+    def input(self, c):
         if c == "#":
             self._insert("".join(self.s), 1)
             self.curr = self.root
             self.s = []
             return []
-
         self.s.append(c)
-
         if self.curr:
             self.curr = self.curr.children.get(c, None)
         if not self.curr:
             return []
-        return [node.s for node in self.curr.top3]
+        return [node.s for node in self.curr.top3]  # O(3)
 
-    def _insert(self, sentence: str, time: int) -> None:
+    def _insert(self, sentence, time):
         node = self.root
         for c in sentence:
             node = node.children.setdefault(c, TrieNode())
@@ -124,7 +154,7 @@ class AutocompleteSystem:
         node.time += time
 
         leaf = node
-        node: TrieNode = self.root
+        node = self.root
         for c in sentence:
             node = node.children[c]
             node.update(leaf)

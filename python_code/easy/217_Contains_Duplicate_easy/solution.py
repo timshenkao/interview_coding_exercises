@@ -40,6 +40,18 @@ class Solution:
                 return True
         return False
 
+    def contains_duplicate_set(self, nums: List[int]) -> bool:
+        """ Time complexity: O(n).
+            Space complexity: O(n).
+        """
+        # keep dictionary
+        elem_set = set()
+        for elem in nums:
+            if elem in elem_set:
+                return True
+            elem_set.add(elem)
+        return False
+
     def contains_duplicate_sorting(self, nums: List[int]) -> bool:
         """ Time complexity: O(n log n).
             Space complexity: O(1) if sorting is in-place.

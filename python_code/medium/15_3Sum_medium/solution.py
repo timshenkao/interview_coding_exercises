@@ -14,7 +14,7 @@
 # limitations under the License.
 ##############################################################################
 
-from typing import List, Set
+from typing import List
 
 # 15. 3Sum https://leetcode.com/problems/3sum/
 # Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that
@@ -91,3 +91,35 @@ class Solution:
                         result.add(tuple(sorted((nums[i], nums[j], target))))
                     seen[nums[j]] = i
         return [list(elem) for elem in result]
+
+    def three_sum3(self, nums):
+        """ Time complexity: O(N ^ 2).
+            Space complexity: O(N).
+        """
+        if len(nums) < 3:
+            return []
+        ans = []
+        nums.sort() # TC (n log n) SC O(1)
+
+        for i in range(len(nums) - 2):
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+            # Choose nums[i] as the first number in the triplet, then search the
+            # remaining numbers in [i + 1, n - 1].
+            l = i + 1
+            r = len(nums) - 1
+            while l < r:
+                summ = nums[i] + nums[l] + nums[r]
+                if summ == 0:
+                    ans.append((nums[i], nums[l], nums[r]))
+                    l += 1
+                    r -= 1
+                    while nums[l] == nums[l - 1] and l < r:
+                        l += 1
+                    while nums[r] == nums[r + 1] and l < r:
+                        r -= 1
+                elif summ < 0:
+                    l += 1
+                else:
+                    r -= 1
+        return ans

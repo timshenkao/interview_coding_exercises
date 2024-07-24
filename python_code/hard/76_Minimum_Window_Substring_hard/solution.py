@@ -14,8 +14,24 @@
 # limitations under the License.
 ##############################################################################
 
+import collections
+
+# 76. Minimum Window Substring https://leetcode.com/problems/minimum-window-substring/description/
+# Given two strings s and t of lengths m and n respectively, return the minimum window
+# substring #  of s such that every character in t (including duplicates) is included in the window.
+# If there is no such substring, return the empty string "".
+# The testcases will be generated such that the answer is unique.
+# m == s.length
+# n == t.length
+# 1 <= m, n <= 105
+# s and t consist of uppercase and lowercase English letters.
+
+
 class Solution:
     def minWindow(self, s, t):
+        """ Time complexity: O(m + n)
+            Space complexity: O(128) = O(1)
+        """
         cnt_s, cnt_t, n, left, r = {}, {}, len(s), set(t), -1
         for c in t:
             cnt_t[c] = cnt_t.get(c, 0) + 1
@@ -39,13 +55,11 @@ class Solution:
             r += 1
         return s[L: R + 1]
 
-    
-Time: O(m+n)
-Space: O(128)=O(1)
-Hash table
-Sliding Window
-class Solution:
-    def minWindow(self, s: str, t: str) -> str:
+    def minWindow2(self, s: str, t: str) -> str:
+        """ Time complexity: O(m + n)
+            Space complexity: O(128) = O(1)
+            Sliding Window
+        """
         count = collections.Counter(t)
         required = len(t)
         bestLeft = -1
@@ -66,3 +80,39 @@ class Solution:
                 l += 1
 
         return "" if bestLeft == -1 else s[bestLeft: bestLeft + minLength]
+
+    def minWindow3(self, s: str, t: str) -> str:
+        """ Time complexity: O(m + n)
+            Space complexity: O(128) = O(1)
+        """
+        if len(t) > len(s):
+            return ""
+        if len(t) == 0:
+            return ""
+        if s == t:
+            return s
+
+        l = 0
+        res = (-1, -1)
+        min_length = float('inf')
+        t_count = collections.Counter(t)
+        window_count = {}
+
+        for r in range(len(s)):
+            window_count[s[r]] = 1 + window_count.get(s[r], 0)
+            flag = True
+
+            while flag:
+                flag = False
+                for item in t_count.keys():
+                    if t_count[item] > window_count.get(item, 0):
+                        break
+                else:
+                    flag = True
+                    if (r - l + 1) <=  min_length:
+                        res = (l, r)
+                        min_length = r - l + 1
+                    window_count[s[l]] = window_count.get(s[l], 0) - 1
+                    l += 1
+        l, r = res
+        return s[l:r + 1] if l != -1 else ""

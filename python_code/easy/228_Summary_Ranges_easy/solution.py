@@ -35,7 +35,7 @@ class Solution:
 
     def summary_ranges(self, nums: List[int]) -> List[str]:
         """ Time complexity: O(n).
-            Space complexity: O(1).
+            Space complexity: O(n).
         """
         # if array is empty, return empty list
         result = list()
