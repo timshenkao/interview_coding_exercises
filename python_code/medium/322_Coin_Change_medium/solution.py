@@ -16,25 +16,15 @@
 
 class Solution:
     def coinChange(self, coins, amount):
-        """
-        :type coins: List[int]
-        :type amount: int
-        :rtype: int
-        """
         dp = [0] + [float('inf')] * amount
         for i in range(1, amount + 1): dp[i] = min([dp[i - c] if i - c >= 0 else float('inf') for c in coins]) + 1
         return dp[amount] if dp[amount] != float('inf') else -1
 
-DP
-BFS
-Approach 1: Combinations
-Time: O(∣coins∣∣amount∣)
-Space: O(∣amount∣)
-
-
-
-class Solution:
-    def coinChange(self, coins: List[int], amount: int) -> int:
+    def coinChange2(self, coins: List[int], amount: int) -> int:
+        """ Combinations. Dynamic Programming
+        Time complexity: O(∣coins∣∣amount∣)
+        Space complexity: O(∣amount∣)
+        """
         # dp[i] := the minimum number Of coins to make up i
         dp = [0] + [amount + 1] * amount
 

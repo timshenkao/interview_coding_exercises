@@ -69,7 +69,7 @@ class TrieNode:
         self.isWord = False
 
 
-class Trie:
+class Trie2:
     def __init__(self):
         self.root = TrieNode()
 

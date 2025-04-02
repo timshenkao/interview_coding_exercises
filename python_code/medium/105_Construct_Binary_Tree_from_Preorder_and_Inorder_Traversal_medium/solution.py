@@ -23,26 +23,11 @@ class Solution(object):
             root.right = self.buildTree(preorder, inorder[ind+1:])
             return root
 
-
-Time:
-�
-(
-    �
-)
-O(n)
-Space:
-�
-(
-    �
-)
-O(n)
-
-Divide and Conquer
-Hash Table
-Binary tree
-
-class Solution:
-    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+    def buildTree2(self, preorder, inorder):
+        """Divide and Conquer
+         Time complexity: O(n).
+         Space complexity: O(1).
+        """
         inToIndex = {num: i for i, num in enumerate(inorder)}
 
         def build(preStart: int, preEnd: int, inStart: int, inEnd: int) -> Optional[TreeNode]:

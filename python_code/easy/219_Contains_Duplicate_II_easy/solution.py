@@ -24,7 +24,7 @@ from typing import List
 class Solution:
     def contains_nearby_duplicate(self, nums: List[int], k: int) -> bool:
         """ Time complexity: O(n).
-            Space complexity: O(min(n, k)). The extra space required depends on the number of items stored in the hash
+            Space complexity: O(min(n, k)). The extra space depends on the number of items stored in the hash
                               table, which is the size of the sliding window, min(n,k).
         """
         # if there is less than 2 elements, then there is no duplicates
@@ -44,7 +44,7 @@ class Solution:
 
     def contains_nearby_duplicate_optimized(self, nums: List[int], k: int) -> bool:
         """ Time complexity: O(n).
-            Space complexity: O(min(n, k)). The extra space required depends on the number of items stored in the hash
+            Space complexity: O(min(n, k)). The extra space depends on the number of items stored in the hash
                               table, which is the size of the sliding window, min(n,k).
         """
         # if there is less than 2 elements, then there is no duplicates
@@ -53,8 +53,9 @@ class Solution:
         # keep dictionary as a counter
         table = dict()
         for i in range(len(nums)):
-            # keep just 1 (last) indice per value
+            # keep just 1 (last) index per value
             if nums[i] in table:
+                # i > table[nums[i]] as we saw table[nums[i]] earlier
                 if i - table[nums[i]] <= k:
                     return True
             table[nums[i]] = i

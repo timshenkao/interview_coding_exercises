@@ -32,12 +32,11 @@ class Solution:
         return self.res
 
 
-Approach 1: Binary Search
-Time: O(n^2)
-Space: O(h)
-
-
-class Solution:
+class Solution2:
+    """Binary Search
+    Time complexity: O(n^2).
+    Space complexity: O(h).
+    """
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
         def countNodes(root: Optional[TreeNode]) -> int:
             if not root:
@@ -52,12 +51,12 @@ class Solution:
             return self.kthSmallest(root.left, k)
         return self.kthSmallest(root.right, k - 1 - leftCount)  # leftCount < k
 
-Approach 2: Inorder Traversal
-Time: O(n)
-Space: O(h)
 
-
-class Solution:
+class Solution3:
+    """Inorder Traversal
+    Time complexity: O(n).
+    Space complexity: O(h).
+    """
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
         rank = 0
         ans = 0
@@ -79,12 +78,11 @@ class Solution:
         return ans
 
 
-Approach 3: Stack
-Time: O(n)
-Space: O(h)
-
-
-class Solution:
+class Solution4:
+    """Stack
+    Time complexity: O(n).
+    Space complexity: O(h).
+    """
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
         stack = []
 
@@ -100,5 +98,3 @@ class Solution:
                 root = root.left
 
         return stack[-1].val
-
-

@@ -14,6 +14,9 @@
 # limitations under the License.
 ##############################################################################
 
+import collections
+
+
 class Solution:
     def pacificAtlantic(self, matrix):
         pac, atl, m, n = set(), set(), len(matrix), len(matrix and matrix[0])
@@ -30,56 +33,54 @@ class Solution:
             if i < m and (i, n - 1) not in atl: explore(i, n - 1, atl)
         return [[x, y] for x, y in pac & atl]
 
+    def pacificAtlantic2(self, heights: List[List[int]]) -> List[List[int]]:
+        """BFS
+         Time complexity: O(m*n).
+         Space complexity: O(m*n).
+        """
+        dirs = ((0, 1), (1, 0), (0, -1), (-1, 0))
+        m = len(heights)
+        n = len(heights[0])
+        qP = collections.deque()
+        qA = collections.deque()
+        seenP = [[False] * n for _ in range(m)]
+        seenA = [[False] * n for _ in range(m)]
 
-class Solution:
-Approach 1: BFS
-Time: O(mn)
-Space: O(mn)
-def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
-    dirs = ((0, 1), (1, 0), (0, -1), (-1, 0))
-    m = len(heights)
-    n = len(heights[0])
-    qP = collections.deque()
-    qA = collections.deque()
-    seenP = [[False] * n for _ in range(m)]
-    seenA = [[False] * n for _ in range(m)]
+        for i in range(m):
+            qP.append((i, 0))
+            qA.append((i, n - 1))
+            seenP[i][0] = True
+            seenA[i][n - 1] = True
 
-    for i in range(m):
-        qP.append((i, 0))
-        qA.append((i, n - 1))
-        seenP[i][0] = True
-        seenA[i][n - 1] = True
+        for j in range(n):
+            qP.append((0, j))
+            qA.append((m - 1, j))
+            seenP[0][j] = True
+            seenA[m - 1][j] = True
 
-    for j in range(n):
-        qP.append((0, j))
-        qA.append((m - 1, j))
-        seenP[0][j] = True
-        seenA[m - 1][j] = True
+        def bfs(q: deque, seen: List[List[bool]]):
+            while q:
+                i, j = q.popleft()
+                h = heights[i][j]
+                for dx, dy in dirs:
+                    x = i + dx
+                    y = j + dy
+                    if x < 0 or x == m or y < 0 or y == n:
+                        continue
+                    if seen[x][y] or heights[x][y] < h:
+                        continue
+                    q.append((x, y))
+                    seen[x][y] = True
 
-    def bfs(q: deque, seen: List[List[bool]]):
-        while q:
-            i, j = q.popleft()
-            h = heights[i][j]
-            for dx, dy in dirs:
-                x = i + dx
-                y = j + dy
-                if x < 0 or x == m or y < 0 or y == n:
-                    continue
-                if seen[x][y] or heights[x][y] < h:
-                    continue
-                q.append((x, y))
-                seen[x][y] = True
+        bfs(qP, seenP)
+        bfs(qA, seenA)
+        return [[i, j] for i in range(m) for j in range(n) if seenP[i][j] and seenA[i][j]]
 
-    bfs(qP, seenP)
-    bfs(qA, seenA)
-
-    return [[i, j] for i in range(m) for j in range(n) if seenP[i][j] and seenA[i][j]]
-
-Approach 2: DFS¶
-Time: O(mn)
-Space: O(mn)
-class Solution:
-    def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
+    def pacificAtlantic3(self, heights: List[List[int]]) -> List[List[int]]:
+        """DFS
+         Time complexity: O(m*n).
+         Space complexity: O(m*n).
+        """
         m = len(heights)
         n = len(heights[0])
         seenP = [[False] * n for _ in range(m)]

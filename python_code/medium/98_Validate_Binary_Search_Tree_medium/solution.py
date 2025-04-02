@@ -33,15 +33,12 @@ class Solution:
             return validate(node.left,mn,node.val-1) and validate(node.right,node.val+1,mx)
         return validate(root, -float("inf"),float("inf"))
 
-DFS
-Approach 1: Recursive
-Time: O(n)
-Space: O(n)
-
-class Solution:
-    def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        def isValidBST(root: Optional[TreeNode],
-                       minNode: Optional[TreeNode], maxNode: Optional[TreeNode]) -> bool:
+    def isValidBST2(self, root) -> bool:
+        """ DFS Recursive
+        Time complexity: O(n). 
+        Space complexity: O(n).
+        """        
+        def isValidBST(root, minNode, maxNode) -> bool:
             if not root:
                 return True
             if minNode and root.val <= minNode.val:
@@ -54,14 +51,11 @@ class Solution:
 
         return isValidBST(root, None, None)
 
-Approach 2: Iterative (stack)
-Time: O(n)
-Space: O(n)
-
-
-
-class Solution:
-    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+    def isValidBST3(self, root) -> bool:
+        """ Iterative Stack
+        Time complexity: O(n).
+        Space complexity: O(n).
+        """
         stack = []
         pred = None
 

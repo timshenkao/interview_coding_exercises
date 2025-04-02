@@ -42,7 +42,7 @@ class Solution:
 
         # second, iterate to the middle of the list
         # inverse links while iterating
-        # this way, we have 2 lists: from middle back to original head and and from middle to the end of the list
+        # this way, we have 2 lists: from middle back to original head and from middle to the end of the list
         curr = head
         prev = None
         middle = node_count // 2

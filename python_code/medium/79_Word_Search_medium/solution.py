@@ -29,6 +29,7 @@ from typing import List
 
 VISITED = '+'
 
+
 class Solution:
     def _backtrack(self, row: int, col: int, board: List[List[str]], suffix: str) -> bool:
         # recursion end case: we find match for each letter in the word

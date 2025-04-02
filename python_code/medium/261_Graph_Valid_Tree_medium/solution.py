@@ -14,6 +14,9 @@
 # limitations under the License.
 ##############################################################################
 
+import collections
+
+
 class Solution:
     def validTree(self, n, edges):
         visited, adj = [0] * n, collections.defaultdict(set)
@@ -28,13 +31,11 @@ class Solution:
             return True
         return dfs(0, -1) and sum(visited) == n
 
-
-Approach 1: BFS
-Time: O(n)
-Space: O(n)
-
-class Solution:
-    def validTree(self, n: int, edges: List[List[int]]) -> bool:
+    def validTree2(self, n: int, edges: List[List[int]]) -> bool:
+        """ BFS
+         Time complexity: O(n).
+         Space complexity: O(n).
+        """
         if n == 0 or len(edges) != n - 1:
             return False
 
@@ -55,11 +56,6 @@ class Solution:
 
         return len(seen) == n
 
-
-
-Approach 2: UF
-Time: O(nlog∗n)
-Space: O(n)
 
 class UnionFind:
     def __init__(self, n: int):
@@ -87,8 +83,12 @@ class UnionFind:
         return self.id[u]
 
 
-class Solution:
-    def validTree(self, n: int, edges: List[List[int]]) -> bool:
+class Solution2:
+    """ Union Find
+     Time complexity: O(n * log n).
+     Space complexity: O(n).
+    """
+def validTree(self, n: int, edges: List[List[int]]) -> bool:
         if n == 0 or len(edges) != n - 1:
             return False
 

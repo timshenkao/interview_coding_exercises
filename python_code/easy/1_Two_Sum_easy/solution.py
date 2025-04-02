@@ -48,7 +48,8 @@ class Solution:
                 right_index -= 1
             else:
                 left_index += 1
-
+        if right_index <= left_index:
+            return 'No Solution'
         # TC: O(N) SC: O(1)
         result = []
         for i in range(len(arr)):
@@ -72,3 +73,4 @@ class Solution:
                 # so this code always executes
                 return [i, lookup[target - arr[i]]]
             lookup[arr[i]] = i
+        return 'No solution'

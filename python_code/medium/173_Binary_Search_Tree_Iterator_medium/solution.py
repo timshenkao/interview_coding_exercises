@@ -15,7 +15,7 @@
 ##############################################################################
 
 class BSTIterator:
-    def __init__(self, root: TreeNode):
+    def __init__(self, root):
         self.stack = []
         self.pushAll(root)
 
@@ -24,7 +24,7 @@ class BSTIterator:
         self.pushAll(cur.right)
         return cur.val
 
-    def hasNext(self) -> bool:
+    def hasNext(self):
         return self.stack
 
     def pushAll(self, node):
@@ -33,13 +33,12 @@ class BSTIterator:
             node = node.left
 
 
-Approach 1: Recursive
-Time: Constructor: O(n), next(): O(1), hasNext(): O(1)
-Space: O(n)
-
-
-class BSTIterator:
-    def __init__(self, root: Optional[TreeNode]):
+class BSTIterator2:
+    """ Recursive
+     Time complexity: Constructor: O(n), next(): O(1), hasNext(): O(1).
+     Space complexity: O(n).
+    """
+    def __init__(self, root):
         self.i = 0
         self.vals = []
         self._inorder(root)
@@ -51,19 +50,20 @@ class BSTIterator:
     def hasNext(self) -> bool:
         return self.i < len(self.vals)
 
-    def _inorder(self, root: Optional[TreeNode]) -> None:
+    def _inorder(self, root):
         if not root:
             return
         self._inorder(root.left)
         self.vals.append(root.val)
         self._inorder(root.right)
 
-Approach 2: Iterative
-Time: Constructor: O(h), next(): O(h), hasNext(): O(1)
-Space: O(h)
 
-class BSTIterator:
-    def __init__(self, root: Optional[TreeNode]):
+class BSTIterator3:
+    """ Iterative
+     Time complexity: Constructor: O(h), next(): O(h), hasNext(): O(1).
+     Space complexity: O(h).
+    """
+    def __init__(self, root):
         self.stack = []
         self._pushLeftsUntilNull(root)
 
@@ -72,10 +72,10 @@ class BSTIterator:
         self._pushLeftsUntilNull(root.right)
         return root.val
 
-    def hasNext(self) -> bool:
+    def hasNext(self):
         return self.stack
 
-    def _pushLeftsUntilNull(self, root: Optional[TreeNode]) -> None:
+    def _pushLeftsUntilNull(self, root):
         while root:
             self.stack.append(root)
             root = root.left

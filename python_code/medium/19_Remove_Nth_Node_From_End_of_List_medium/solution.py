@@ -14,6 +14,9 @@
 # limitations under the License.
 ##############################################################################
 
+from python_code.helper.linked_lists import ListNode
+
+
 class Solution:
     def removeNthFromEnd(self, head, n):
         dummy = ListNode(0)
@@ -27,13 +30,10 @@ class Solution:
         pre.next = pre.next.next
         return dummy.next
 
-Time: O(n)
-Space: O(1)
-
-
-
-class Solution:
-    def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
+    def removeNthFromEnd2(self, head: ListNode, n: int) -> ListNode:
+        """ Time complexity: O(n). We iterate through the list
+            Space complexity: O(1).
+        """
         slow = head
         fast = head
 

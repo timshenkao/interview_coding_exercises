@@ -27,6 +27,7 @@ from typing import List
 
 DUMMY_NUMBER = 0
 
+
 class Solution:
     def find_duplicates_cycle_sort(self, nums: List[int]) -> List[int]:
         """ Time complexity: O(n).

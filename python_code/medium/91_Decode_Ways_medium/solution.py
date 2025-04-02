@@ -23,15 +23,11 @@ class Solution:
             dp1, dp2 = [dp2, dp1] if s[i] == "0" else [dp2, dp2 + dp1] if "10" <= s[i -1: i + 1] <= "26" else [dp2, dp2]
         return dp2
 
-
-DP
-Time: O(n)
-Space: O(n)
-
-
-
-class Solution:
-    def numDecodings(self, s: str) -> int:
+    def numDecodings2(self, s: str) -> int:
+        """Dynamic Programming
+        Time complexity: O(n).
+        Space complexity: O(n).
+        """
         n = len(s)
         # dp[i] := the number of ways to decode s[i..n)
         dp = [0] * n + [1]

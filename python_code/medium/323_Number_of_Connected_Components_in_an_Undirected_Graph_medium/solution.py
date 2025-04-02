@@ -14,6 +14,9 @@
 # limitations under the License.
 ##############################################################################
 
+import collections
+
+
 class Solution:
     def countComponents(self, n, edges):
         visited, res, adj = set(), 0, collections.defaultdict(set)
@@ -31,46 +34,11 @@ class Solution:
                 dfs(i)
         return res
 
-    Approach 1: BFS
-    Time:     O(∣V∣+∣E∣)
-    Space:     O(∣V∣+∣E∣)
-
-
-    class Solution:
-        def countComponents(self, n: int, edges: List[List[int]]) -> int:
-            ans = 0
-            graph = [[] for _ in range(n)]
-            seen = set()
-
-            for u, v in edges:
-                graph[u].append(v)
-                graph[v].append(u)
-
-            def bfs(node: int, seen: Set[int]) -> None:
-                q = collections.deque([node])
-                seen.add(node)
-
-                while q:
-                    u = q.pop()
-                    for v in graph[u]:
-                        if v not in seen:
-                            q.append(v)
-                            seen.add(v)
-
-            for i in range(n):
-                if i not in seen:
-                    bfs(i, seen)
-                    ans += 1
-
-            return ans
-
-
-Approach 2: DFS
-Time: O(∣V∣+∣E∣)
-Space: O(∣V∣+∣E∣)
-
-class Solution:
-    def countComponents(self, n: int, edges: List[List[int]]) -> int:
+    def countComponents2(self, n: int, edges):
+        """BFS
+        Time complexity: O(∣V∣+∣E∣)
+        Space complexity: O(∣V∣+∣E∣)
+        """
         ans = 0
         graph = [[] for _ in range(n)]
         seen = set()
@@ -79,7 +47,38 @@ class Solution:
             graph[u].append(v)
             graph[v].append(u)
 
-        def dfs(u: int, seen: Set[int]) -> None:
+        def bfs(node: int, seen) -> None:
+            q = collections.deque([node])
+            seen.add(node)
+
+            while q:
+                u = q.pop()
+                for v in graph[u]:
+                    if v not in seen:
+                        q.append(v)
+                        seen.add(v)
+
+        for i in range(n):
+            if i not in seen:
+                bfs(i, seen)
+                ans += 1
+
+        return ans
+
+    def countComponents3(self, n: int, edges):
+        """DFS
+        Time complexity: O(∣V∣+∣E∣)
+        Space complexity: O(∣V∣+∣E∣)
+        """
+        ans = 0
+        graph = [[] for _ in range(n)]
+        seen = set()
+
+        for u, v in edges:
+            graph[u].append(v)
+            graph[v].append(u)
+
+        def dfs(u: int, seen):
             for v in graph[u]:
                 if v not in seen:
                     seen.add(v)
@@ -90,12 +89,8 @@ class Solution:
                 seen.add(i)
                 dfs(graph, i, seen)
                 ans += 1
-
         return ans
 
-Approach 3: UF
-Time: O(∣V∣+∣E∣)
-Space: O(∣V∣+∣E∣)
 
 class UnionFind:
     def __init__(self, n: int):
@@ -123,13 +118,16 @@ class UnionFind:
         return self.id[u]
 
 
-class Solution:
-    def countComponents(self, n: int, edges: List[List[int]]) -> int:
+class Solution2:
+    """Union Find
+    Time complexity: O(∣V∣+∣E∣)
+    Space complexity: O(∣V∣+∣E∣)
+    """
+
+    def countComponents(self, n: int, edges):
         uf = UnionFind(n)
 
         for u, v in edges:
             uf.unionByRank(u, v)
 
         return uf.count
-
-    

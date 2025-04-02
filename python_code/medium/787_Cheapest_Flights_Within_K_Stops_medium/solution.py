@@ -14,6 +14,10 @@
 # limitations under the License.
 ##############################################################################
 
+import collections
+import heapq
+
+
 class Solution:
     def findCheapestPrice(self, n, flights, src, dst, K):
         flight = collections.defaultdict(list)
@@ -29,16 +33,10 @@ class Solution:
                     heapq.heappush(heap, (price + p, c, stop - 1))
         return -1
 
-    DP
-    DFS
-    BFS
-    Heap
-Time: O((∣V∣+∣E∣)log∣V∣)
-Space: O(∣E∣+∣V∣)
-
-
-class Solution:
-    def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
+    def findCheapestPrice2(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
+        """ Time complexity: O((∣V∣+∣E∣)log∣V∣)
+            Space complexity: O(∣E∣+∣V∣)
+        """
         graph = [[] for _ in range(n)]
 
         for u, v, w in flights:
@@ -64,4 +62,3 @@ class Solution:
                     heapq.heappush(minHeap, (dist[v][stops - 1], v, stops - 1))
 
         return -1
-

@@ -22,13 +22,11 @@ class Solution(object):
                 dp[i] += dp[i - coin]
         return dp[-1]
 
-DP
-Time: O(∣coins∣⋅amount)
-Space: O(amount)
-
-
-class Solution:
-    def change(self, amount: int, coins: List[int]) -> int:
+    def change2(self, amount: int, coins: List[int]) -> int:
+        """Dynamic programming
+         Time complexity: O(∣coins∣⋅amount)
+         Space complexity: O(amount)
+        """
         dp = [1] + [0] * amount
 
         for coin in coins:

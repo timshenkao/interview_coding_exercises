@@ -41,7 +41,7 @@ class Solution:
             q = [child for node in q for child in (node.left, node.right) if child]
         return res
 
-    def levelOrder_bfs2(self, root: Optional[TreeNode]) -> List[List[int]]:
+    def levelOrder_bfs2(self, root):
         """ Time complexity: O(n)
             Space complexity: O(n)
         """

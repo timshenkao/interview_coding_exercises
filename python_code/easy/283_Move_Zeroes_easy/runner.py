@@ -29,6 +29,26 @@ def main():
     solution.move_zeros(nums)
     print(nums)
 
+    nums = [1, 2, 3]
+    print(nums)
+    solution.move_zeros(nums)
+    print(nums)
+
+    nums = []
+    print(nums)
+    solution.move_zeros(nums)
+    print(nums)
+
+    nums = [0, 0, 0]
+    print(nums)
+    solution.move_zeros(nums)
+    print(nums)
+
+    nums = [0, 0, 0, 0, 12]
+    print(nums)
+    solution.move_zeros(nums)
+    print(nums)
+
 
 if __name__ == "__main__":
     main()

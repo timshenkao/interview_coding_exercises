@@ -15,7 +15,7 @@
 ##############################################################################
 
 class Solution:
-    def connect(self, root: "Node") -> "Node":
+    def connect(self, root):
         if root == None:
             return root
         q, prev = [(root, 1)], None
@@ -30,13 +30,11 @@ class Solution:
                 q.append((curr.right, pos + 1))
         return root
 
-
-Approach 1: Recursive¶
-Time: O(n)
-Space: O(h)
-
-class Solution:
-    def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
+    def connect2(self, root) :
+        """ Recursive
+        Time complexity: O(n).
+        Space complexity: O(h).
+        """
         if not root:
             return None
 
@@ -51,12 +49,12 @@ class Solution:
         connectTwoNodes(root.left, root.right)
         return root
 
-Approach 2: Iterative¶
-Time: O(n)
-Space: O(1)
+    def connect3(self, root):
+        """ Iterative
+        Time complexity: O(n).
+        Space complexity: O(1).
+        """
 
-class Solution:
-    def connect(self, root: 'Node') -> 'Node':
         node = root  # the node that is above the current needling
 
         while node and node.left:

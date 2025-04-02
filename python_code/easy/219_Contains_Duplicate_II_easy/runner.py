@@ -21,16 +21,27 @@ def main():
 
     nums = [1, 2, 3, 1]
     k = 3
-    print(solution.contains_nearby_duplicate(nums, k))
+    print(solution.contains_nearby_duplicate_optimized(nums, k))
 
     nums = [1, 2, 3, 4]
     k = 1
-    print(solution.contains_nearby_duplicate(nums, k))
+    print(solution.contains_nearby_duplicate_optimized(nums, k))
 
     nums = [1, 1, 1, 3, 3, 4, 3, 2, 4, 2]
     k = 2
-    print(solution.contains_nearby_duplicate(nums, k))
+    print(solution.contains_nearby_duplicate_optimized(nums, k))
 
+    nums = [1, 1, 1, 3, 3, 4, 3, 2, 4, 2]
+    k = 0
+    print(solution.contains_nearby_duplicate_optimized(nums, k))
+
+    nums = [1, 2, 3, 4]
+    k = 5
+    print(solution.contains_nearby_duplicate_optimized(nums, k))
+
+    nums = [1, 2, 3, 1]
+    k = 5
+    print(solution.contains_nearby_duplicate_optimized(nums, k))
 
 if __name__ == "__main__":
     main()

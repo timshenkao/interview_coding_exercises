@@ -14,6 +14,10 @@
 # limitations under the License.
 ##############################################################################
 
+import collections
+
+from python_code.helper.binary_trees import TreeNode
+
 class Codec:
 
     def serialize(self, root):
@@ -45,13 +49,11 @@ class Codec:
         return root
 
 
-Approach 1: BFS
-Time: O(n)
-Space: O(n)
-
-
-
-class Codec:
+class Codec2:
+    """Approach 1: BFS
+    Time: O(n)
+    Space: O(n)
+    """
     def serialize(self, root: "TreeNode") -> str:
         """Encodes a tree to a single string."""
         if not root:
@@ -92,12 +94,11 @@ class Codec:
         return root
 
 
-Approach 2: DFS
-Time: O(n)
-Space:  O(n)
-
-
-class Codec:
+class Codec3:
+    """Approach 2: DFS
+    Time: O(n)
+    Space:  O(n)
+    """
     def serialize(self, root: "TreeNode") -> str:
         """Encodes a tree to a single string."""
         s = []

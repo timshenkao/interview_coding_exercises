@@ -38,7 +38,7 @@ class Solution:
             q = [child for node in q for child in (node.left, node.right) if child]
         return res
 
-    def rightSideView2(self, root: Optional[TreeNode]) -> List[int]:
+    def rightSideView2(self, root):
         """ Time complexity: O(n)
             Space complexity: O(n)
             BFS
@@ -59,13 +59,13 @@ class Solution:
                     q.append(root.right)
         return ans
 
-    def rightSideView3(self, root: Optional[TreeNode]) -> List[int]:
+    def rightSideView3(self, root):
         """ Time complexity: O(n)
             Space complexity: O(n)
             Recursive DFS
         """
         ans = []
-        def dfs(root: Optional[TreeNode], depth: int) -> None:
+        def dfs(root, depth: int) -> None:
             if not root:
                 return
             if depth == len(ans):

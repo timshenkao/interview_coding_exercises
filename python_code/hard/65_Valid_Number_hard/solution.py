@@ -37,12 +37,11 @@ class Solution:
             else:
                 return False
         return numberSeen and numberAfterE
-    
-Time: O(n)
-Space: O(1)
 
-class Solution:
-    def isNumber(self, s: str) -> bool:
+    def isNumber2(self, s: str) -> bool:
+        """ Time complexity: O(n).
+            Space complexity: O(1).
+        """
         s = s.strip()
         if not s:
             return False

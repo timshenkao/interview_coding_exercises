@@ -23,13 +23,11 @@ class Solution:
                 dp[i][j] = dp[i - 1][j - 1] + 1 if a[i - 1] == b[j - 1] else max(dp[i][j - 1], dp[i - 1][j])
         return dp[-1][-1]
 
-DP
-Time: O(mn)
-Space: O(mn)
-
-
-class Solution:
-    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+    def longestCommonSubsequence2(self, text1: str, text2: str) -> int:
+        """Dynamic programming
+         Time complexity: O(m*n)
+         Space complexity: O(m*n)
+        """
         m = len(text1)
         n = len(text2)
         # dp[i][j] := the length of LCS(text1[0..i), text2[0..j))

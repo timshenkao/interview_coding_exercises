@@ -14,6 +14,8 @@
 # limitations under the License.
 ##############################################################################
 
+import collections
+import random
 
 class RandomizedSet:
 
@@ -61,11 +63,8 @@ class RandomizedSet:
 # param_2 = obj.remove(val)
 # param_3 = obj.getRandom()
 
-Time: O(1)
-Space: O(n)
 
-
-class RandomizedSet:
+class RandomizedSet2:
     def __init__(self):
         self.vals = []
         self.valToIndex = collections.defaultdict(int)  # {val: index in vals}

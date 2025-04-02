@@ -14,6 +14,9 @@
 # limitations under the License.
 ##############################################################################
 
+import collections
+
+
 class Solution:
     def numIslands(self, grid):
         res, n, m = 0, len(grid), len(grid[0]) if grid else 0
@@ -28,15 +31,11 @@ class Solution:
                 if grid[i][j] == "1": explore(i, j); res += 1
         return res
 
-
-    Approach 1: BFS
-    Time:    O(mn)
-    Space:     O(min(m,n))
-
-
-
-    class Solution:
-        def numIslands(self, grid: List[List[str]]) -> int:
+    def numIslands2(self, grid):
+            """ BFS
+            Time complexity: O(m*n)
+            Space complexity: O(min(m, n))
+            """
             dirs = ((0, 1), (1, 0), (0, -1), (-1, 0))
             m = len(grid)
             n = len(grid[0])
@@ -66,14 +65,11 @@ class Solution:
 
             return ans
 
-
-Approach 2: DFS
-Time: O(mn)
-Space: O(mn)
-
-
-class Solution:
-    def numIslands(self, grid: List[List[str]]) -> int:
+    def numIslands3(self, grid):
+        """ DFS
+        Time complexity: O(m*n)
+        Space complexity: O(m *n)
+        """
         m = len(grid)
         n = len(grid[0])
 
