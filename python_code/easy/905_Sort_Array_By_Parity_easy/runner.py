@@ -27,6 +27,18 @@ def main():
     print(nums)
     print(solution.sort_array_by_parity(nums))
 
+    nums = [2, 4, 6, 8]
+    print(nums)
+    print(solution.sort_array_by_parity(nums))
+
+    nums = [2, 4, 6, 9]
+    print(nums)
+    print(solution.sort_array_by_parity(nums))
+
+    nums = [2, 4, 9, 10]
+    print(nums)
+    print(solution.sort_array_by_parity(nums))
+
 
 if __name__ == "__main__":
     main()

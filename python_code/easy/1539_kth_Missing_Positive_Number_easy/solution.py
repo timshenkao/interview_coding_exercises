@@ -24,8 +24,9 @@
 
 class Solution:
     def find_kth_positive(self, arr, k):
-        """ Time complexity: O(logn).
-            Space complexity: O(1).
+        """ Binary Search
+        Time complexity: O(log n).
+        Space complexity: O(1).
         """
         l = 0
         r = len(arr)

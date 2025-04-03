@@ -16,6 +16,7 @@
 
 from solution import Solution
 
+
 def main():
     solution = Solution()
 
