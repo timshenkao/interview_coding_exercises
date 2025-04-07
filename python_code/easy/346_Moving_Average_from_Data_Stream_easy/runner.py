@@ -18,10 +18,14 @@ from solution import MovingAverage
 
 def main():
     solution = MovingAverage(3)
-    stream = [1, 10, 3, 5]
 
+    stream = [1, 10, 3, 5, -1]
     for elem in stream:
-        print(solution.next(elem))
+        print(elem, '    ', solution.next(elem))
+
+    stream = []
+    for elem in stream:
+        print(elem, '    ', solution.next(elem))
 
 
 if __name__ == "__main__":

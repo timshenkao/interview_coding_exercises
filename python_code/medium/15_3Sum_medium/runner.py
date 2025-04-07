@@ -22,12 +22,13 @@ def main():
     tests = {
         1: [],
         2: [-1, 0, 1, 2, -1, -4],
-        3: [0]
+        3: [0],
+        4: [-1, 0, 1]
     }
     for _, test in tests.items():
         print("array: ", test)
         print("three sum: ", solution.three_sum(test.copy()))
-        print("three sum no sort: ", solution.three_sum_no_sort(test.copy()))
+        print("three sum3: ", solution.three_sum3(test.copy()))
         print(" ")
 
 

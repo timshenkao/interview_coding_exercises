@@ -23,8 +23,8 @@
 
 class MovingAverage:
     """ Time complexity: O(1) if operations of the oldest element  removal or new element addition take O(1).
-                         O(n) otherwise.
-        Space complexity: O(n). We create additional array / list to keep values
+                         O(window size) otherwise.
+        Space complexity: O(window size). We create additional array / list to keep values.
     """
     def __init__(self, size: int):
         self.windows_size = size
@@ -32,12 +32,12 @@ class MovingAverage:
         self.current_sum = 0
 
     def next(self, val: int) -> float:
-        # if there is values less than window size, than just add new value to the list and calculate average
+        # if there is fewer values than window size, then just add new value to the list and calculate average
         if len(self.current_elems) < self.windows_size:
             self.current_elems.append(val)
             self.current_sum += val
             return self.current_sum / len(self.current_elems)
-        # if there is values more or equal than window size, than remove the oldest value to the list
+        # if there is more or equal values than the window size, then remove the oldest value to the list
         # and calculate average
         else:
             oldest_value = self.current_elems.pop(0)

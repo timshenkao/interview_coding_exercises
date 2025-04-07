@@ -59,9 +59,10 @@ class Solution:
         if not nums:
             return result
 
-        nums.sort()
+        nums.sort()  # O(n log n)
         for i in range(len(nums)):
             # no sense to continue the loop as sum will be > 0
+            # actually we iterate through non-positive elements
             if nums[i] > 0:
                 break
             # we pass result list, so we don't create additional list every time
@@ -70,56 +71,65 @@ class Solution:
 
         return result
 
-    def three_sum_no_sort(self, nums: List[int]) -> List[List[int]]:
-        """ Time complexity: O(N ^ 2). We have 2 nested loops.
-            Space complexity: O(N). We create output array, sets, dictionary.
-        """
-        result = set()
-        no_duplicates = set()
-        seen = dict()
-        # empty list
-        if not nums:
-            return list()
-
-        for i in range(len(nums)):
-            # skip duplicate element
-            if nums[i] not in no_duplicates:
-                no_duplicates.add(nums[i])
-                for j in range(len(nums[i+1:])):
-                    target = -nums[i] - nums[j]
-                    if target in seen and seen[target] == i:
-                        result.add(tuple(sorted((nums[i], nums[j], target))))
-                    seen[nums[j]] = i
-        return [list(elem) for elem in result]
+    # def three_sum_no_sort(self, nums: List[int]) -> List[List[int]]:
+    #     """ Time complexity: O(N ^ 2). We have 2 nested loops.
+    #         Space complexity: O(N). We create output array, sets, dictionary.
+    #     """
+    #     result = set()
+    #     no_duplicates = set()
+    #     seen = dict()
+    #     # empty list
+    #     if not nums:
+    #         return list()
+    #
+    #     for i in range(len(nums)):
+    #         # skip duplicate element
+    #         if nums[i] not in no_duplicates:
+    #             no_duplicates.add(nums[i])
+    #             for j in range(len(nums[i+1:])):
+    #                 target = -nums[i] - nums[j]
+    #                 if target in seen and seen[target] == i:
+    #                     result.add(tuple(sorted((nums[i], nums[j], target))))
+    #                 seen[nums[j]] = i
+    #     return [list(elem) for elem in result]
 
     def three_sum3(self, nums):
         """ Time complexity: O(N ^ 2).
             Space complexity: O(N).
         """
-        if len(nums) < 3:
-            return []
         ans = []
-        nums.sort() # TC (n log n) SC O(1)
+        if len(nums) >= 3:
+            nums.sort()  # TC (n log n) SC O(1)
 
-        for i in range(len(nums) - 2):
-            if i > 0 and nums[i] == nums[i - 1]:
-                continue
-            # Choose nums[i] as the first number in the triplet, then search the
-            # remaining numbers in [i + 1, n - 1].
-            l = i + 1
-            r = len(nums) - 1
-            while l < r:
-                summ = nums[i] + nums[l] + nums[r]
-                if summ == 0:
-                    ans.append((nums[i], nums[l], nums[r]))
-                    l += 1
-                    r -= 1
-                    while nums[l] == nums[l - 1] and l < r:
+            for i in range(len(nums) - 2):
+                # no sense to continue the loop as sum will be > 0, the other 2 elements in triplet are also > 0
+                # actually we iterate through non-positive elements
+                if nums[i] > 0:
+                    break
+                # skip consecutive duplicate element as solution set must not contain duplicate triplets.
+                if i > 0 and nums[i] == nums[i - 1]:
+                    continue
+                # Choose nums[i] as the first number in the triplet, then search the
+                # remaining numbers in [i + 1, n - 1].
+                l = i + 1
+                r = len(nums) - 1
+                while l < r:
+                    summ = nums[i] + nums[l] + nums[r]
+                    # we found necessary combination of triplets
+                    if summ == 0:
+                        ans.append([nums[i], nums[l], nums[r]])
                         l += 1
-                    while nums[r] == nums[r + 1] and l < r:
                         r -= 1
-                elif summ < 0:
-                    l += 1
-                else:
-                    r -= 1
+                        # skip consecutive duplicate element as solution set must not contain duplicate triplets.
+                        while nums[l] == nums[l - 1] and l < r:
+                            l += 1
+                        # skip consecutive duplicate element as solution set must not contain duplicate triplets.
+                        while nums[r] == nums[r + 1] and l < r:
+                            r -= 1
+                    # try to increase sum
+                    elif summ < 0:
+                        l += 1
+                    # try to decrease sum
+                    else:
+                        r -= 1
         return ans

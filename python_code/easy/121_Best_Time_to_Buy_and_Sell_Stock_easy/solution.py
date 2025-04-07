@@ -29,6 +29,9 @@ class Solution:
         """ Time complexity: O(n). We iterate through prices once.
             Space complexity: O(n). We create additional list of profits.
         """
+        if not prices:
+            return 0
+
         # we iterate backwards
         curr_max = prices[-1]
         # generate list of profits
@@ -43,15 +46,32 @@ class Solution:
         """ Time complexity: O(n). We iterate through prices once.
             Space complexity: O(1).
         """
-        min_price = inf
         max_profit = 0
+        if prices:
+            min_price = prices[0]
+            for price in prices:
+                # check if current price is less than previously seen prices
+                if price < min_price:
+                    min_price = price
+                # current price is not smallest seen so far
+                # check and update maximum possible profit
+                elif price - min_price > max_profit:
+                    max_profit = price - min_price
+        return max_profit
 
-        for price in prices:
-            # check if current price is less than previously seen prices
-            if price < min_price:
-                min_price = price
-            # current price is not smallest seen so far
-            # check and update maximum possible profit
-            elif price - min_price > max_profit:
-                max_profit = price - min_price
+    def max_profit_max(self, prices: List[int]) -> int:
+        """ Time complexity: O(n). We iterate through prices once.
+            Space complexity: O(1).
+            This is analogous to max_profit() but max price instead of min price.
+            Iteration backwards is slower in Python than iteration  forward.
+        """
+        # we iterate backwards when using max
+        max_profit = 0
+        if prices:
+            curr_max = prices[-1]
+            for price in reversed(prices):
+                if price > curr_max:
+                    curr_max = max(curr_max, price)
+                else:
+                    max_profit = max(max_profit, curr_max - price)
         return max_profit
