@@ -33,7 +33,7 @@ class Solution:
         left_index = 0
         right_index = len(arr) - 1
         # iterate through array once
-        while left_index <= right_index:
+        while left_index < right_index:
             if arr[left_index] + arr[right_index] == target:
                 return [left_index + 1, right_index + 1]
             elif arr[left_index] + arr[right_index] > target:

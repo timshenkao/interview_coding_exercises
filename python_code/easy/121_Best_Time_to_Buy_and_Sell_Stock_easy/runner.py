@@ -22,17 +22,22 @@ def main():
     prices = [7, 1, 5, 3, 6, 4]
     print(solution.max_profit_additional_array(prices))
     print(solution.max_profit(prices))
-    print(solution.max_profit_max(prices))
+    print(solution.max_profit_max(prices), '\n')
 
     prices = [7, 6, 4, 3, 1]
     print(solution.max_profit_additional_array(prices))
     print(solution.max_profit(prices))
-    print(solution.max_profit_max(prices))
+    print(solution.max_profit_max(prices), '\n')
 
     prices = []
     print(solution.max_profit_additional_array(prices))
     print(solution.max_profit(prices))
-    print(solution.max_profit_max(prices))
+    print(solution.max_profit_max(prices), '\n')
+
+    prices = [-7, -1, -5, -3, -6, -4]
+    print(solution.max_profit_additional_array(prices))
+    print(solution.max_profit(prices))
+    print(solution.max_profit_max(prices), '\n')
 
 
 if __name__ == "__main__":

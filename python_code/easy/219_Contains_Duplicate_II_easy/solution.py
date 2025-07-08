@@ -28,7 +28,7 @@ class Solution:
                               table, which is the size of the sliding window, min(n,k).
         """
         # if there is less than 2 elements, then there is no duplicates
-        if len(nums) < 2:
+        if len(nums) < 2 or k < 0:
             return False
 
         # keep dictionary as a counter
@@ -37,7 +37,7 @@ class Solution:
             # keep list of indices per each value
             _ = table.setdefault(nums[i], [])
             table[nums[i]].append(i)
-            # return immediately if 2 last indices, i.e. closest indices, within distance k
+            # return immediately if 2 last indices, i.e. the closest indices, within distance k
             if len(table[nums[i]]) > 1 and table[nums[i]][-1] - table[nums[i]][-2] <= k:
                 return True
         return False
@@ -48,7 +48,7 @@ class Solution:
                               table, which is the size of the sliding window, min(n,k).
         """
         # if there is less than 2 elements, then there is no duplicates
-        if len(nums) < 2:
+        if len(nums) < 2 or k < 0:
             return False
         # keep dictionary as a counter
         table = dict()

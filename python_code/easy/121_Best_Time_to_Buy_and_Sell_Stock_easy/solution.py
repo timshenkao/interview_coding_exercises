@@ -37,9 +37,9 @@ class Solution:
         # generate list of profits
         profits = [0 for _ in prices]
         for i in reversed(range(len(prices))):
-            curr_max = max(curr_max, prices[i])
-            profits[i] = curr_max - prices[i]
-
+            if prices[i] >= 0:
+                curr_max = max(curr_max, prices[i])
+                profits[i] = curr_max - prices[i]
         return max(profits)
 
     def max_profit(self, prices: List[int]) -> int:
@@ -51,12 +51,13 @@ class Solution:
             min_price = prices[0]
             for price in prices:
                 # check if current price is less than previously seen prices
-                if price < min_price:
-                    min_price = price
-                # current price is not smallest seen so far
-                # check and update maximum possible profit
-                elif price - min_price > max_profit:
-                    max_profit = price - min_price
+                if price > 0:
+                    if price < min_price:
+                        min_price = price
+                    # current price is not smallest seen so far
+                    # check and update maximum possible profit
+                    elif price - min_price > max_profit:
+                        max_profit = price - min_price
         return max_profit
 
     def max_profit_max(self, prices: List[int]) -> int:
@@ -70,8 +71,9 @@ class Solution:
         if prices:
             curr_max = prices[-1]
             for price in reversed(prices):
-                if price > curr_max:
-                    curr_max = max(curr_max, price)
-                else:
-                    max_profit = max(max_profit, curr_max - price)
+                if price > 0:
+                    if price > curr_max:
+                        curr_max = price
+                    else:
+                        max_profit = max(max_profit, curr_max - price)
         return max_profit

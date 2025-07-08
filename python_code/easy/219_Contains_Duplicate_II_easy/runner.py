@@ -43,5 +43,22 @@ def main():
     k = 5
     print(solution.contains_nearby_duplicate_optimized(nums, k))
 
+    nums = []
+    k = 0
+    print(solution.contains_nearby_duplicate_optimized(nums, k))
+
+    nums = [1]
+    k = 0
+    print(solution.contains_nearby_duplicate_optimized(nums, k))
+
+    nums = [1, -1]
+    k = 1
+    print(solution.contains_nearby_duplicate_optimized(nums, k))
+
+    nums = [1, 1]
+    k = 0
+    print(solution.contains_nearby_duplicate_optimized(nums, k))
+
+
 if __name__ == "__main__":
     main()

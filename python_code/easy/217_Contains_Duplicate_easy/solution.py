@@ -44,7 +44,7 @@ class Solution:
         """ Time complexity: O(n).
             Space complexity: O(n).
         """
-        # keep dictionary
+        # keep lookup
         elem_set = set()
         for elem in nums:
             if elem in elem_set:
@@ -55,7 +55,7 @@ class Solution:
     def contains_duplicate_sorting(self, nums: List[int]) -> bool:
         """ Time complexity: O(n log n).
             Space complexity: O(1) if sorting is in-place.
-                              O(n) if sorting is NOT in-place.
+                              O(n) if sorting is NOT in-place. In Python, Powersort uses additional space under the hood
         """
         # if there is less than 2 elements, then there is no duplicates
         if len(nums) < 2:
