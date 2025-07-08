@@ -24,10 +24,12 @@ def main():
         2: [6, [3, 2, 4]],
         3: [6, [3, 3]],
         4: [-8, [-1, -2, -3, -4, -5]],
-        5: [-8, [-1, -2, -3, -4, -9]]
+        5: [-8, [-1, -2, -3, -10, -9]],
+        6: [6, [4, 1]],
              }
     for _, test in tests.items():
         print("array: ", test[1], "target: ", test[0])
+        print("brute force ", solution.two_sum_brute(test[1], test[0]))
         print("sorting ", solution.two_sum_sorting(test[1], test[0]))
         print("optimal ", solution.two_sum_optimal(test[1], test[0]))
         print(" ")

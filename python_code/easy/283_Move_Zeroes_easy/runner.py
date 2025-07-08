@@ -22,32 +22,42 @@ def main():
     nums = [0, 1, 0, 3, 12]
     print(nums)
     solution.move_zeros(nums)
+    print(nums, '\n')
+
+    nums = [0, 1, 0, 3, 0, -9, 0, 12]
     print(nums)
+    solution.move_zeros(nums)
+    print(nums, '\n')
 
     nums = [0]
     print(nums)
     solution.move_zeros(nums)
-    print(nums)
+    print(nums, '\n')
 
     nums = [1, 2, 3]
     print(nums)
     solution.move_zeros(nums)
-    print(nums)
+    print(nums, '\n')
 
     nums = []
     print(nums)
     solution.move_zeros(nums)
-    print(nums)
+    print(nums, '\n')
 
     nums = [0, 0, 0]
     print(nums)
     solution.move_zeros(nums)
-    print(nums)
+    print(nums, '\n')
 
     nums = [0, 0, 0, 0, 12]
     print(nums)
     solution.move_zeros(nums)
+    print(nums, '\n')
+
+    nums = [1, 2, 0, 0, 3]
     print(nums)
+    solution.move_zeros(nums)
+    print(nums, '\n')
 
 
 if __name__ == "__main__":

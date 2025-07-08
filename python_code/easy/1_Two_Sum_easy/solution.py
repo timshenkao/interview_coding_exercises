@@ -28,14 +28,16 @@ class Solution:
             Space complexity: O(1).
         """
         for i in range(len(arr)):
-            for j in range(len(arr)):
+            for j in range(i+1, len(arr)):
                 if arr[i] + arr[j] == target:
                     return [i, j]
+        return []
 
-    def two_sum_sorting(self, arr: List[int], target: int) -> List[int]:
+    def two_sum_sorting(self, arr, target):
         """ Time complexity: O(N * log N). We sort array and iterate through it.
             Space complexity: O(N). We create copy of array and sorting may require O(N) as well.
         """
+        result = []
         left_index = 0
         right_index = len(arr) - 1
 
@@ -43,21 +45,20 @@ class Solution:
         # TC: O(N * log N) SC: O(N)
         arr_copy = sorted(arr)
         # TC: O(N) SC: O(1)
-        while arr_copy[left_index] + arr_copy[right_index] != target:
+        while arr_copy[left_index] + arr_copy[right_index] != target and right_index > left_index:
             if arr_copy[left_index] + arr_copy[right_index] > target:
                 right_index -= 1
             else:
                 left_index += 1
         if right_index <= left_index:
-            return 'No Solution'
+            return result  # empty list by now
         # TC: O(N) SC: O(1)
-        result = []
         for i in range(len(arr)):
             if arr[i] == arr_copy[left_index] or arr[i] == arr_copy[right_index]:
                 result.append(i)
         return result
 
-    def two_sum_optimal(self, arr: List[int], target: int) -> List[int]:
+    def two_sum_optimal(self, arr, target):
         """ Time complexity: O(N). We iterate through array.
             Space complexity: O(N). We create lookup dictionary.
         """
@@ -71,6 +72,6 @@ class Solution:
                 # exercise description says:
                 # "You may assume that each input would have exactly one solution"
                 # so this code always executes
-                return [i, lookup[target - arr[i]]]
+                return [lookup[target - arr[i]], i]
             lookup[arr[i]] = i
-        return 'No solution'
+        return []
