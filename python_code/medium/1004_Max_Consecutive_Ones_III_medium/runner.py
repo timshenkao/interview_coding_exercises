@@ -26,7 +26,7 @@ def main():
     }
     for _, test in tests.items():
         print("array: ", test[1], "k: ", test[0])
-        print("longest ones ", solution.longest_ones(test[1], test[0]))
+        # print("longest ones ", solution.longest_ones(test[1], test[0]))
         print("longest ones optimal ", solution.longest_ones_optimal(test[1], test[0]))
         print(" ")
 

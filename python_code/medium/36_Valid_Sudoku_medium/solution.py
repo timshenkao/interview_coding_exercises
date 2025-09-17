@@ -32,8 +32,8 @@ from typing import List
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
         """ Time complexity: O(9 * 9) = O(1).
-            Space complexity: O(9) = O(1).
-            For this specific case, TC and SC are O(1). In general, TC (n^2) and SC O(n)
+            Space complexity: O(9*9) = O(1).
+            For this specific case, TC and SC are O(1). In general, TC (n^2) and SC O(n^2)
         """
         # iterate through the sudoku and create a list of all the occupied positions.if 2 positions are the same,
         # return false.
@@ -44,4 +44,5 @@ class Solution:
                     # elem, j and  i, c are in this order to distinguish the row and columns (ex : ('4', 4) and (4,
                     # '4').)
                     seen += [(elem, j), (i, elem), (i//3, j//3, elem)]
+                    print(type(seen), id(seen), size(seen))
         return len(seen) == len(set(seen))

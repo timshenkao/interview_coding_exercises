@@ -27,7 +27,7 @@ def main():
         print("array: ", test)
         print("product_except_self ", solution.product_except_self(test))
         print("product_except_self2 ", solution.product_except_self2(test))
-        print("product_except_self3 ", solution.product_except_self3(test))
+        print("product_except_self_optimal ", solution.product_except_self_optimal(test))
         print(" ")
 
 

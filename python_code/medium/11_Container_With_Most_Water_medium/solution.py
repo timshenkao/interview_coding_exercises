@@ -38,6 +38,9 @@ class Solution:
         while left < right:
             water_capacity = min(height[left], height[right]) * (right - left)
             max_water = max(max_water, water_capacity)
+            # we are decreasing width each iteration
+            # Moving the shorter line might increase the height, potentially increasing the area, while moving the
+            # taller line cannot increase the area (since the height is limited by the shorter line).
             if height[left] < height[right]:
                 left += 1
             else:

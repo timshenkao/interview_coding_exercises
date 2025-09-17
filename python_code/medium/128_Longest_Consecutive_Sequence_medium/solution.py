@@ -27,14 +27,23 @@ class Solution:
         """ Time complexity: O(n).
             Space complexity: O(n).
         """
+        # we can't sort array as O(n) is required
         ans = 0
         seen = set(nums)
 
         for num in nums:
-            # `num` is the start of a sequence.
+            # check if `num` is the start of a sequence.
+            # Since each number is only checked once as part of its sequence, and hash set operations
+            # are O(1) on average, the total time is O(n).
             if num - 1 in seen:
+                # skip current element as it's not start of a sequence
+                # it is either already handled or would be handled as a part of some sequence
                 continue
+            # no previous integer in lookup set, i.e. current element is the start of new sequence
             length = 0
+            # Count consecutive numbers
+            # tricky moment: we iterate through set (not original array)
+            # but such iteration happens for start of sequence only
             while num in seen:
                 num += 1
                 length += 1

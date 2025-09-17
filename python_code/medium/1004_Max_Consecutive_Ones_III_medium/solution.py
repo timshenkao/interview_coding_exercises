@@ -39,14 +39,18 @@ class Solution:
         # Space complexity: O(1)
         # enumerate() returns iterator
         ans = 0
-        j = 0
-        for r, num in enumerate(nums):
+        left = 0
+        # sliding window with left and right pointers
+        # right pointer moves on and window expands
+        for right, num in enumerate(nums):
             if num == 0:
                 k -= 1
+            # shrink window, move left pointer to the right
             while k < 0:
-                if nums[j] == 0:
+                # if we meet 0, then "unflip" it
+                if nums[left] == 0:
                     k += 1
-                j += 1
-            ans = max(ans, r - j + 1)
-
+                left += 1
+            # update answer with current window size
+            ans = max(ans, right - left + 1)
         return ans

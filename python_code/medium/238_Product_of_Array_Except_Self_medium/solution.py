@@ -23,7 +23,6 @@ from typing import List
 # You must write an algorithm that runs in O(n) time and without using the division operation.
 # 2 <= nums.length <= 10^5
 # -30 <= nums[i] <= 30
-# The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
 
 
 class Solution:
@@ -55,9 +54,10 @@ class Solution:
             suffix[i] = suffix[i + 1] * nums[i + 1]
         return [prefix[i] * suffix[i] for i in range(n)]
 
-    def product_except_self3(self, nums: List[int]) -> List[int]:
+    def product_except_self_optimal(self, nums: List[int]) -> List[int]:
         """ Time complexity: O(N).
-            Space complexity: O(N).
+            Space complexity: O(N) if we count answer array as an additional array / space.
+                              O(1) if we DON't count answer array as an additional array / space.
         """
         n = len(nums)
         ans = [1] * n
