@@ -43,8 +43,10 @@ class Solution:
         """ Time complexity: O(n).
             Space complexity: O(1).
         """
-        slow_pointer = 1
+        if len(nums) == 0:
+            return 0
 
+        slow_pointer = 1
         for fast_pointer in range(1, len(nums)):
             if nums[fast_pointer] != nums[fast_pointer - 1]:
                 nums[slow_pointer] = nums[fast_pointer]

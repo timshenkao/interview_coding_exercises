@@ -30,18 +30,35 @@ class Solution:
         # "pointer" to the current first zero element
         first_zero_index = -1
         # number of zeros seen - 1
-        skipped_zeros = 0
+        skipped_consecutive_zeros = 0
 
         for i in range(len(arr)):
             # we already saw zero element
             if first_zero_index > -1:
                 # another zero element, just increase counter of skipped zeros
                 if arr[i] == 0:
-                    skipped_zeros += 1
+                    skipped_consecutive_zeros += 1
                 # "exchange" current non-zero element with current zero element
-                elif arr[i] != 0:
+                else:
                     arr[first_zero_index], arr[i] = arr[i], 0
-                    first_zero_index = i - skipped_zeros
+                    first_zero_index = first_zero_index + 1
+                    # first_zero_index = i - skipped_consecutive_zeros
             # we haven't seen zero element yet
             elif arr[i] == 0:
                 first_zero_index = i
+
+    def move_zeros_subtle(self, arr: List[int]) -> None:
+        """ Time complexity: O(n). We iterate through the list
+            Space complexity: O(1).
+        """
+        # despite simplicity, it's very subtle solution
+        # we don't need to keep track of number of skipped consecutive zeroes
+        # we have 2 pointers; they point to the same element initially
+        # if there is no zeroes yet, pointers continue to point to the same element on each iteration
+        # if there was zero, left pointer points to the first zero element; right goes on
+        # iteration
+        l = 0
+        for r in range(len(arr)):
+            if arr[r]:
+                arr[l], arr[r] = arr[r], arr[l]
+                l +=1

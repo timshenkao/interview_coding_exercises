@@ -51,7 +51,7 @@ class Solution:
             min_price = prices[0]
             for price in prices:
                 # check if current price is less than previously seen prices
-                if price > 0:
+                if price >= 0:
                     if price < min_price:
                         min_price = price
                     # current price is not smallest seen so far
@@ -71,7 +71,7 @@ class Solution:
         if prices:
             curr_max = prices[-1]
             for price in reversed(prices):
-                if price > 0:
+                if price >= 0:
                     if price > curr_max:
                         curr_max = price
                     else:

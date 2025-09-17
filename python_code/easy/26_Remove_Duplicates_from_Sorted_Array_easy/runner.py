@@ -28,6 +28,9 @@ def main():
     nums = [1]
     print(solution.remove_duplicates(nums))
 
+    nums = []
+    print(solution.remove_duplicates(nums))
+
 
 if __name__ == "__main__":
     main()

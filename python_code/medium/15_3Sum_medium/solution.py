@@ -17,7 +17,7 @@
 from typing import List
 
 # 15. 3Sum https://leetcode.com/problems/3sum/
-# Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that
+# Given an integer array nums, return ALL the triplets [nums[i], nums[j], nums[k]] such that
 # i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
 # Notice that the solution set must not contain duplicate triplets.
 # 0 <= nums.length <= 3000
@@ -102,6 +102,7 @@ class Solution:
             nums.sort()  # TC (n log n) SC O(1)
 
             for i in range(len(nums) - 2):
+                # array is sorted by now
                 # no sense to continue the loop as sum will be > 0, the other 2 elements in triplet are also > 0
                 # actually we iterate through non-positive elements
                 if nums[i] > 0:
@@ -113,6 +114,7 @@ class Solution:
                 # remaining numbers in [i + 1, n - 1].
                 l = i + 1
                 r = len(nums) - 1
+                # See task 167
                 while l < r:
                     summ = nums[i] + nums[l] + nums[r]
                     # we found necessary combination of triplets
