@@ -23,7 +23,9 @@ def main():
     tests = {
         1: [1,2,3],
         2: [3,2,1],
-        3:  [1,1,5]
+        3: [1,1,5],
+        4: [1, 2, 3, 3],
+        5: [4, 3, 2, 1, 1]
     }
     for _, test in tests.items():
         print("array: ", test)
@@ -32,7 +34,7 @@ def main():
         print("next permutation ", num1)
 
         num2 = test.copy()
-        solution.next_permutation(num2)
+        solution.next_permutation_optimal(num2)
         print("next permutation optimal ", num2)
         print(" ")
 

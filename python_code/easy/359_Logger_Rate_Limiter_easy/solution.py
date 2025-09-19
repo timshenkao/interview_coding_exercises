@@ -23,18 +23,24 @@
 #     Logger() Initializes the logger object.
 #     bool shouldPrintMessage(int timestamp, string message) Returns true if the message should be printed in the given
 #     timestamp, otherwise returns false.
+# 0 <= timestamp <= 10^9
+# Every timestamp will be passed in non-decreasing order (chronological order).
+# 1 <= message.length <= 30
+# At most 10^4 calls will be made to shouldPrintMessage.
 
 
 class Logger:
     """ Time complexity: O(N). We iterate through list of messages once
-        Space complexity: O(1). We create additional list (logger) which is no more than 10 elements
+        Space complexity: O(N). We create additional list (logger) which is no more than 10 elements.
+        But each element (set) may contain O(N) strings
     """
     def __init__(self):
         self.time_lag_seconds = 10
-        self.logger = []
+        self.logger = []  # list of sets
         self.latest_timestamp = -1
 
     def _update_logger(self, timestamp: int = None, message: str = None, append: bool = False) -> None:
+        # add new set for new timestamp
         if append:
             self.logger.append(set())
         if message is not None:
@@ -88,17 +94,17 @@ class Logger:
                 return False
 
 
-# class LoggerAnother:
-#     """ Time complexity: O(N). We iterate through list of messages once
-#         Space complexity: O(N). We create additional dictionary which may contain N elements in worst case.
-#         Logger is not "cleaned".
-#     """
-#     def __init__(self):
-#         self.record = {}
-#
-#     def shouldPrintMessage(self, timestamp: int, message: str) -> bool:
-#         if message not in self.record or timestamp >= self.record[message] + 10:
-#             self.record[message] = timestamp
-#             return True
-#         else:
-#             return False
+class LoggerAnother:
+    """ Time complexity: O(N). We iterate through list of messages once
+        Space complexity: O(N). We create additional dictionary which may contain N elements in worst case.
+        Logger is not "cleaned".
+    """
+    def __init__(self):
+        self.record = {}
+
+    def shouldPrintMessage(self, timestamp: int, message: str) -> bool:
+        if message not in self.record or timestamp >= self.record[message] + 10:
+            self.record[message] = timestamp
+            return True
+        else:
+            return False

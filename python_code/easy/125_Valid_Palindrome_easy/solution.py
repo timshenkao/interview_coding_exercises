@@ -20,7 +20,7 @@
 # non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and
 # numbers.
 # Given a string s, return true if it is a palindrome, or false otherwise.
-# 1 <= s.length <= 2 * 105
+# 1 <= s.length <= 2 * 10^5
 # s consists only of printable ASCII characters.
 
 
@@ -50,4 +50,21 @@ class Solution:
             # if characters are not the same
             else:
                 return False
+        return True
+
+    def is_palindrome2(self, s):
+        n = len(s)
+        if n < 2:
+            return True
+        l = 0
+        r = n - 1
+        while l <= r:
+            while l < r and not s[l].isalnum():
+                l += 1
+            while l < r and not s[r].isalnum():
+                r -= 1
+            if s[l].lower() != s[r].lower() and s[l].isalnum() and s[r].isalnum():
+                return False
+            l += 1
+            r -= 1
         return True

@@ -21,7 +21,7 @@
 # An input string is valid if:
 #     Open brackets must be closed by the same type of brackets.
 #     Open brackets must be closed in the correct order.
-# 1 <= s.length <= 104
+# 1 <= s.length <= 10^4
 # s consists of parentheses only '()[]{}'.
 
 CLOSING = {")": "(", "}": "{", "]": "["}

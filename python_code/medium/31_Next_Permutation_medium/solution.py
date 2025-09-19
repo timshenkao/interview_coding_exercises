@@ -27,7 +27,8 @@ from typing import List
 # ascending order).
 # For example, the next permutation of arr = [1,2,3] is [1,3,2].
 # Similarly, the next permutation of arr = [2,3,1] is [3,1,2].
-# While the next permutation of arr = [3,2,1] is [1,2,3] because [3,2,1] does not have a lexicographical larger rearrangement.
+# While the next permutation of arr = [3,2,1] is [1,2,3] because [3,2,1] does not have a lexicographical larger
+# rearrangement.
 # Given an array of integers nums, find the next permutation of nums.
 # The replacement must be in place and use only constant extra memory.
 # 1 <= nums.length <= 100
@@ -54,21 +55,12 @@ class Solution:
             # sorting
             nums.sort()
 
-    def _reverse(self, nums: List[int], l: int, r: int) -> None:
-        """ Time complexity: O(N).
-            Space complexity: O(1).
-        """
-        while l < r:
-            nums[l], nums[r] = nums[r], nums[l]
-            l += 1
-            r -= 1
-
     def next_permutation_optimal(self, nums: List[int]) -> None:
         """ Time complexity: O(N).
             Space complexity: O(1).
         """
         n = len(nums)
-        # From back to front, find the first number < nums[i + 1].
+        # From back to front, find the first numb[i] < nums[i + 1] (find pivot)
         # TC O(n) SC O(1)
         i = n - 2
         while i >= 0:
@@ -76,7 +68,8 @@ class Solution:
                 break
             i -= 1
 
-        # From back to front, find the first number > nums[i], swap it with nums[i].
+        # From back to front, find the first num[j] > nums[i], swap it with nums[i].
+        # exchange rightmost greater element with pivot
         # TC O(n) SC O(1)
         if i >= 0:
             for j in range(n - 1, i, -1):
@@ -84,5 +77,11 @@ class Solution:
                     nums[i], nums[j] = nums[j], nums[i]
                     break
 
-        # Reverse nums[i + 1..n - 1].
-        self._reverse(nums, i + 1, len(nums) - 1)
+        # Reverse suffix nums[i + 1..n - 1]. Suffix is the whole array if i = -1
+        # TC O(n) SC O(1)
+        l = i + 1
+        r = n - 1
+        while l < r:
+            nums[l], nums[r] = nums[r], nums[l]
+            l += 1
+            r -= 1

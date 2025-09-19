@@ -16,7 +16,8 @@
 
 # 242. Valid Anagram  https://leetcode.com/problems/valid-anagram/
 # Given two strings s and t, return true if t is an anagram of s, and false otherwise.
-
+# 1 <= s.length, t.length <= 5 * 10^4
+# s and t consist of lowercase English letters.
 
 class Solution:
     def is_anagram(self, s: str, t: str) -> bool:
@@ -46,4 +47,24 @@ class Solution:
             if v[0] != v[1]:
                 return False
 
+        return True
+    def is_anagram2(self, s, t):
+        """ Time complexity: O(N).
+            Space complexity: O(1) because number of possible letters is fixed
+        """
+        s_dict = dict()
+        for elem in s:
+            _ = s_dict.setdefault(elem, 0)
+            s_dict[elem] += 1
+
+        for elem in t:
+            if elem not in s_dict:
+                return False
+            if s_dict[elem] < 1:
+                return False
+            s_dict[elem] -= 1
+
+        for key, value in s_dict.items():
+            if value > 0:
+                return False
         return True
