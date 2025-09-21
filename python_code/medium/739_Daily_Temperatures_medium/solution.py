@@ -55,13 +55,13 @@ class Solution:
         """
         # create output array
         result = [0] * len(temperatures)
-        monotonic_stack = list()
+        monotonic_stack = list()  # keep track of indices
         for i in range(len(temperatures)):
             # Pop until the current day's temperature is not
             # warmer than the temperature at the top of the stack
             while monotonic_stack and temperatures[monotonic_stack[-1]] < temperatures[i]:
-                past_index = monotonic_stack.pop()
-                result[past_index] = i - past_index
+                last_index = monotonic_stack.pop()
+                result[last_index] = i - last_index
             monotonic_stack.append(i)
         return result
 
@@ -71,7 +71,7 @@ class Solution:
         """
         # create output array
         result = [0] * len(temperatures)
-        highest_temperature = 0
+        highest_temperature = 0  # by definition 30 <= temperatures[i] <= 100
         i = len(temperatures) - 1
         # iterate backwards
         while i >= 0:
@@ -84,9 +84,9 @@ class Solution:
                 continue
             # it's not the highest temperature; there is higher temperature in future
             skip_days = 1
+            # how does this loop affect TC? O(N^2) ???
             while temperatures[i + skip_days] <= temperatures[i]:
                 skip_days += result[i + skip_days]
             result[i] = skip_days
-            print(i, result)
             i -= 1
         return result

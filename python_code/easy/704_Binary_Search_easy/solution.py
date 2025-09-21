@@ -59,3 +59,24 @@ class Solution:
             else:
                 left_index = middle + 1
         return -1
+
+    def search_iteration2(self, nums: List[int], target: int) -> int:
+        n = len(nums)
+        if n == 0:
+            return -1
+        left, right = 0, n - 1
+        if nums[left] == target:
+            return 0
+        if nums[left] > target or nums[right] < target:
+            return -1
+
+        # midpoint is always strictly between left and right
+        while right - left > 1:
+            mid = (left + right) // 2
+            if nums[mid] < target:
+                left = mid
+            else:
+                right = mid
+        if nums[right] == target:
+            return right
+        return -1

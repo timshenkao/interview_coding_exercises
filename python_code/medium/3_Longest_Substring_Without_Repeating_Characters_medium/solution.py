@@ -58,15 +58,21 @@ class Solution:
         """ Time complexity: O(n).
             Space complexity: O(128) = O(256) = O(1).
         """
+        if len(s) == 1:
+            return 1
         ans = 0
-        # The substring s[j + 1..i] has no repeating characters.
-        j = -1
-        # last_seen[c] := the index of the last time c appeared
+        # window sliding
+        # The substring s[left...right] has no repeating characters.
+        left = 0
+        # last_seen: key --> character
+        #            value --> the index of the last time character appeared
         last_seen = {}
 
-        for i, c in enumerate(s):
-            # Update j to last_seen[c], so the window must start from j + 1.
-            j = max(j, last_seen.get(c, -1))
-            ans = max(ans, i - j)
-            last_seen[c] = i
+        for right, ch in enumerate(s):
+            # In case of duplicate character,
+            # Update left to last_seen[ch] + 1, so new window starts from left + 1.
+            if ch in last_seen and last_seen[ch] >= left:
+                left = last_seen[ch] + 1
+            ans = max(ans, right - left + 1)
+            last_seen[ch] = right
         return ans

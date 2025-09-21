@@ -23,9 +23,9 @@
 #     void pop() removes the element on the top of the stack.
 #     int top() gets the top element of the stack.
 #     int getMin() retrieves the minimum element in the stack.
-# -231 <= val <= 231 - 1
+# -2^31 <= val <= 2^31 - 1
 # Methods pop, top and getMin operations will always be called on non-empty stacks.
-# At most 3 * 104 calls will be made to push, pop, top, and getMin.
+# At most 3 * 10^4 calls will be made to push, pop, top, and getMin.
 
 
 class MyStack:

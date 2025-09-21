@@ -19,7 +19,7 @@ import collections
 # 424. Longest Repeating Character Replacement https://leetcode.com/problems/longest-repeating-character-replacement/
 # You are given a string s and an integer k. You can choose any character of the string and change it to any other
 # uppercase English character. You can perform this operation at most k times.
-# Return the length of the longest substring containing the same letter you can get after performing the above
+# Return the LENGTH of the longest substring containing the same letter you can get after performing the above
 # operations.
 # 1 <= s.length <= 10^5
 # s consists of only uppercase English letters.
@@ -51,9 +51,9 @@ class Solution:
         max_count = 0
         count = collections.Counter()
         l = 0
-        for r, c in enumerate(s):
-            count[c] += 1
-            max_count = max(max_count, count[c])
+        for r, ch in enumerate(s):
+            count[ch] += 1
+            max_count = max(max_count, count[ch])
             while max_count + k < r - l + 1:
                 count[s[l]] -= 1
                 # be careful here with TC
@@ -62,18 +62,20 @@ class Solution:
         return ans
 
     def replace_character3(self, s: str, k: int) -> int:
-        """ Time complexity: O(n).
+        """ Time complexity: O(n) = O(2*n) because of sliding window
             Space complexity: O(26) = 1.
         """
         max_count = 0
         count = collections.Counter()
-        # l and r track the maximum window instead of the valid window.
-        l = 0
-        r = 0
-        for r, c in enumerate(s):
-            count[c] += 1
-            max_count = max(max_count, count[c])
-            while max_count + k < r - l + 1:
-                count[s[l]] -= 1
-                l += 1
-        return r - l + 1
+        # maximum window instead of the valid window
+        left = 0
+        right = 0
+        for right, ch in enumerate(s):
+            count[ch] += 1
+            # calculate for current character
+            max_count = max(max_count, count[ch])
+            # shrink window
+            while max_count + k < right - left + 1:
+                count[s[left]] -= 1
+                left += 1
+        return right - left + 1

@@ -44,12 +44,13 @@ class Solution:
         """
         n = len(nums)
         ans = [-1] * n
-        stack = []  # a decreasing stack storing indices
+        stack = []  # decreasing stack to store indices
 
         for i in range(n * 2):
             num = nums[i % n]
             while stack and nums[stack[-1]] < num:
                 ans[stack.pop()] = num
+            # add elements to stack during the first pass only
             if i < n:
                 stack.append(i)
         return ans

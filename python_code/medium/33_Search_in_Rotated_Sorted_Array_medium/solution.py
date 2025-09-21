@@ -46,7 +46,7 @@ class Solution:
         return -1
 
     def search2(self, nums, target):
-        """ Time complexity: O(logn).
+        """ Time complexity: O(log n).
             Space complexity: O(1).
         """
         l = 0
@@ -56,12 +56,16 @@ class Solution:
             m = (l + r) // 2
             if nums[m] == target:
                 return m
+            # Check if left half is sorted
             if nums[l] <= nums[m]:  # nums[l..m] are sorted.
+                # Check if target is in sorted left half
                 if nums[l] <= target < nums[m]:
                     r = m - 1
                 else:
                     l = m + 1
+            # Right half is sorted
             else:  # nums[m..n - 1] are sorted.
+                # Check if target is in sorted right half
                 if nums[m] < target <= nums[r]:
                     l = m + 1
                 else:

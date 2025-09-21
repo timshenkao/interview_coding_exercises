@@ -52,10 +52,14 @@ class Solution:
         r = len(nums) - 1
         while l < r:
             m = (l + r) // 2
+            # In a valid pair, nums[i] == nums[i+1] for even i (0-based index). The single element shifts
+            # subsequent pairs to odd-even indices.
+            # Switch mid point to the first element of a pair
             if m % 2 == 1:
                 m -= 1
+            # Check if mid and mid+1 form a pair
             if nums[m] == nums[m + 1]:
-                l = m + 2
+                l = m + 2  # Single element is in right half
             else:
-                r = m
+                r = m  # Single element is in left half or at mid
         return nums[l]

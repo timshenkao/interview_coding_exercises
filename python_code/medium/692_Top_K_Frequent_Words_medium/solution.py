@@ -25,7 +25,7 @@ from typing import List
 # 1 <= words.length <= 500
 # 1 <= words[i].length <= 10
 # words[i] consists of lowercase English letters.
-# k is in the range [1, The number of unique words[i]]
+# k is in the range [1, The number of unique words]
 
 
 class Solution:
@@ -33,22 +33,27 @@ class Solution:
         """ Time complexity: O(N log N).
             Space complexity: O(N).
         """
-        return [w for w, v in sorted(collections.Counter(words).items(), key = lambda x: (-x[1], x[0])) [:k]]
+        return [w for w, v in sorted(collections.Counter(words).items(), key=lambda x: (-x[1], x[0]))[:k]]
 
 
     def topKFrequent_bucket(self, words: List[str], k: int) -> List[str]:
         """ Time complexity: O(N log N).
-            Space complexity: O(N log N).
+            Space complexity: O(N).
             Bucket Sort approach
         """
         ans = []
         bucket = [[] for _ in range(len(words) + 1)]
 
+        # TC: O(N) SC: O(N)
         for word, freq in collections.Counter(words).items():
+            # put words with the same frequency into the same bucket
             bucket[freq].append(word)
 
+        # TC: O(N log N)
         for b in reversed(bucket):
-            for word in sorted(b): # in worst case, O(N log N)
+            # sort the strings within the bucket; in worst case, when all words are unique and fall into the same
+            # bucket O(N log N)
+            for word in sorted(b):
                 ans.append(word)
                 if len(ans) == k:
                     return ans
@@ -56,6 +61,7 @@ class Solution:
     def topKFrequent_heap(self, words: List[str], k: int) -> List[str]:
         """ Time complexity: O(N log k).
             Space complexity: O(N log k).
+            Use this approach when N is huge and number of unique words is large
         """
         ans = []
         heap = []

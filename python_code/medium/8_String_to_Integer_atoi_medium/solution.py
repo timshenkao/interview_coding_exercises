@@ -14,7 +14,6 @@
 # limitations under the License.
 ##############################################################################
 
-import re
 # 8. String to Integer (atoi) https://leetcode.com/problems/string-to-integer-atoi/
 # Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer (similar to
 # C/C++'s atoi function).
@@ -43,18 +42,22 @@ class Solution:
         """ Time complexity: O(n).
             Space complexity: O(1).
         """
+        # lstrip() creates a new string, but Python’s string slicing is considered O(1) extra space for fixed-size
+        # operations (not storing the full string again)
+        # s.length <= 200
         s = s.strip()
         if not s:
             return 0
         sign = -1 if s[0] == '-' else 1
+        start = 0
         if s[0] in {'-', '+'}:
-            s = s[1:]
+            start = 1
 
         num = 0
-        for c in s:
-            if not c.isdigit():
+        for i in range(start, len(s)):
+            if not s[i].isdigit():
                 break
-            num = num * 10 + ord(c) - ord('0')
+            num = num * 10 + ord(s[i]) - ord('0')
             if sign * num <= -2**31:
                 return -2**31
             if sign * num >= 2**31 - 1:

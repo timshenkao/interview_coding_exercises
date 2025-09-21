@@ -30,7 +30,6 @@ from typing import List
 #     and is empty operations are valid.
 #     Depending on your language, the stack may not be supported natively. You may simulate a stack using a list
 #     or deque (double-ended queue) as long as you use only a stack's standard operations.
-
 # Follow-up: Can you implement the queue such that each operation is amortized O(1) time complexity?
 # In other words, performing n operations will take overall O(n) time even if one of those operations may take longer.
 
@@ -38,8 +37,8 @@ from typing import List
 class MyQueue:
     """ Time complexity: peek() --> O(1).
                          empty() --> O(1).
-                         pop() --> O(N).
-                         push() --> O(N).
+                         pop() --> O(N). Not amortized
+                         push() --> O(N). Not amortized
         Space complexity: O(N). We use two lists as stacks.
     """
     def __init__(self):
@@ -84,3 +83,37 @@ class MyQueue:
 
     def empty(self) -> bool:
         return self._size == 0
+
+
+class MyQueue2:
+    """ Time complexity: peek() --> O(1). Amortized. Worst: O(N)
+                         empty() --> O(1).
+                         pop() --> O(1). Amortized. Worst: O(N)
+                         push() --> O(1).
+        Space complexity: O(N). We use two lists as stacks.
+        Amortized O(1) is achieved because the costly transfer is spread over multiple pop/peek operations
+    """
+    def __init__(self):
+        self._stack = list()
+        self._reversed_stack = list()
+
+    def push(self, x: int) -> None:
+        self._stack.append(x)
+
+    def pop(self) -> int:
+        if not self._reversed_stack:
+            self._transfer()
+        return self._reversed_stack.pop()
+
+    def peek(self) -> int:
+        if not self._reversed_stack:
+            self._transfer()
+        return self._reversed_stack[-1]
+
+    def empty(self) -> bool:
+        return not self._stack and not self._reversed_stack
+
+    def _transfer(self):
+        # TC: O(N)
+        while self._stack:
+            self._reversed_stack.append(self._stack.pop())

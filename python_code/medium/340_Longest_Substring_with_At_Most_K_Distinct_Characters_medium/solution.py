@@ -50,11 +50,14 @@ class Solution:
         distinct = 0
         count = collections.Counter()
 
+        # window sliding
         l = 0
-        for r, c in enumerate(s):
-            count[c] += 1
-            if count[c] == 1:
+        for r, ch in enumerate(s):
+            count[ch] += 1
+            # new unseen character
+            if count[ch] == 1:
                 distinct += 1
+            # move left pointer to the right if number of distinct characters > k
             while distinct == k + 1:
                 count[s[l]] -= 1
                 if count[s[l]] == 0:

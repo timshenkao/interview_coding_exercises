@@ -20,19 +20,19 @@ def main():
     solution = Solution()
 
     temperatures = [73, 74, 75, 71, 69, 72, 75, 73]
-    print(solution.daily_temperatures_brute(temperatures))
+    # print(solution.daily_temperatures_brute(temperatures))
     print(solution.daily_temperatures_monotonic_stack(temperatures))
-    print(solution.daily_temperatures_no_stack(temperatures))
+    # print(solution.daily_temperatures_no_stack(temperatures))
 
     temperatures = [30, 40, 50, 60]
-    print(solution.daily_temperatures_brute(temperatures))
+    # print(solution.daily_temperatures_brute(temperatures))
     print(solution.daily_temperatures_monotonic_stack(temperatures))
-    print(solution.daily_temperatures_no_stack(temperatures))
+    # print(solution.daily_temperatures_no_stack(temperatures))
 
     temperatures = [30, 60, 90]
-    print(solution.daily_temperatures_brute(temperatures))
+    # print(solution.daily_temperatures_brute(temperatures))
     print(solution.daily_temperatures_monotonic_stack(temperatures))
-    print(solution.daily_temperatures_no_stack(temperatures))
+    # print(solution.daily_temperatures_no_stack(temperatures))
 
 
 if __name__ == "__main__":

@@ -32,17 +32,23 @@
 
 class Solution:
     def find_min(self, nums):
-        """ Time complexity: O(logn).
+        """ Time complexity: O(log n).
             Space complexity: O(1).
         """
         l = 0
         r = len(nums) - 1
 
+        # binary search
+        # In a rotated sorted array, one half (left or right of mid) is always sorted, and the minimum lies in the
+        # unsorted half  or at the pivot.
         while l < r:
             m = (l + r) // 2
-            if nums[m] < nums[r]:
-                r = m
-            else:
+            # middle element is greater than right-most element, i.e. unrotated part and minimum element
+            # are to the right of middle element
+            if nums[m] > nums[r]:
                 l = m + 1
+            # vice versa
+            else:
+                r = m
 
         return nums[l]

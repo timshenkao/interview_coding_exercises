@@ -32,9 +32,11 @@ class Solution:
             Space complexity: O(k).
         """
         l = 0
-        r = len(arr) - k
+        r = len(arr) - 1 - (k-1)  # Binary search over starting index of window
         while l < r:
             m = (l + r) // 2
+            # x is between arr[mid] and arr[mid+k-1]
+            # Compare distances: |arr[mid] - x| vs |arr[mid+k] - x|
             if x - arr[m] <= arr[m + k] - x:
                 r = m
             else:
