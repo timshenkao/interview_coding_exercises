@@ -25,7 +25,7 @@ from python_code.helper.linked_lists import ListNode
 
 class Solution:
     def merge_two_lists(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        """ Time complexity: O(n). We iterate through linked list once
+        """ Time complexity: O(n + m). We iterate through linked lists once
             Space complexity: O(1).
         """
         # if one of the lists is empty, return the other one (possibly non-empty).

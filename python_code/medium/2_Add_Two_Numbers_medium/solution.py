@@ -45,7 +45,7 @@ class Solution:
         return transfer, output_curr_node, output_prev_node
 
     def add_two_numbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        """ Time complexity: O(N). We iterate through linked lists. N = max(length og l1, length of l2)
+        """ Time complexity: O(N). We iterate through linked lists. N = max(length of l1, length of l2)
             Space complexity: O(N). We create output linked list.
         """
         # pointers within 2 lists
@@ -87,3 +87,37 @@ class Solution:
             del output_curr_node
 
         return output_head
+
+
+class Solution2:
+    def add_two_numbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        """ N = max(length of l1, length of l2)
+            Time complexity: O(N). We iterate through linked lists.
+            Space complexity: O(N). We create output linked list.
+            Is it possible to have SC O(1)? Reuse l1 and save output into l1?
+        """
+        out_sentinel = ListNode()  # Dummy head for the result list; it does not contain data
+        out_current = out_sentinel
+        out_carry = 0
+
+        while l1 or l2 or out_carry:
+            # Get out_current digits, treat None as 0
+            val1 = l1.val if l1 else 0
+            val2 = l2.val if l2 else 0
+
+            # Compute sum and update out_carry
+            total = val1 + val2 + out_carry
+            out_carry = total // 10
+            digit = total % 10
+
+            # Create new node and advance out_current
+            out_current.next = ListNode(digit)
+            out_current = out_current.next
+
+            # Advance pointers if they exist
+            if l1:
+                l1 = l1.next
+            if l2:
+                l2 = l2.next
+
+        return out_sentinel.next  # Return the head of the result list

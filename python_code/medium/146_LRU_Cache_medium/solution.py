@@ -33,10 +33,18 @@ class Node:
         self.key = key
         self.value = value
         self.next = None
-        self.prev = None
+        self.prev = None  # double linked list
         
 
 class LRUCache:
+    """ TC:
+            __init__: O(1), initializes empty structures.
+            get: O(1)
+            put: O(1)
+            All operations are O(1) average and worst-case.
+        SC: O(n), where n - cache capacity
+
+    """
     def __init__(self, capacity):
         self.dic = {}
         self.n = capacity
@@ -47,6 +55,7 @@ class LRUCache:
     def remove(self, node):
         node.prev.next, node.next.prev = node.next, node.prev
         self.dic.pop(node.key)
+        node.next = node.prev = None
 
     def add(self, node):
         node.prev = self.tail.prev

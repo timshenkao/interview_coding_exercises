@@ -37,8 +37,9 @@ class Solution(object):
         """
         if head:
             arr = []
+            # put all nodes into array
             while head:
-                arr += head,
+                arr += head
                 head = head.next
             l, r, prev = 0, len(arr) - 1, ListNode(0)
             while l < r:
@@ -62,9 +63,9 @@ class Solution(object):
         head_fast = slow.next
         # disconnect first half from second half
         slow.next = None
-        prev = None
 
         # invert second half in O(n)
+        prev = None
         while head_fast:
             tmp = head_fast.next
             head_fast.next = prev

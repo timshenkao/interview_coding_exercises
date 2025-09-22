@@ -25,9 +25,10 @@ from python_code.helper.linked_lists import ListNode
 
 
 class Solution:
-    def reverse_list(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def reverse_list_iteration(self, head: Optional[ListNode]) -> Optional[ListNode]:
         """ Time complexity: O(N).
             Space complexity: O(1).
+            Iterative approach --> reverse singly linked list from head to tail
         """
         # if list is empty, do not do anything
         if not head:
@@ -42,3 +43,18 @@ class Solution:
             prev = curr
             curr = next
         return prev
+
+    def reverse_list_recursion(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        """ Time complexity: O(N).
+            Space complexity: O(N) because of recursion stack
+            Recursive approach --> reverse singly linked list from tail to head
+        """
+        # Base case: empty or single node
+        if not head or not head.next:
+            return head
+        # Recursive call to reach the end
+        new_head = self.reverse_list_recursion(head.next)
+        # Reverse the link: head.next.next points back to head
+        head.next.next = head
+        head.next = None  # Break the original link
+        return new_head

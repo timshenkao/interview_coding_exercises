@@ -32,7 +32,29 @@ import collections
 # If res matches the expected flattened list, then your code will be judged as correct.
 # 1 <= nestedList.length <= 500
 # The values of the integers in the nested list is in the range [-10^6, 10^6].
+#
+# This is the interface that allows for creating nested lists.
+# You should not implement it, or speculate about its implementation
+#
+#class NestedInteger:
+#    def isInteger(self) -> bool:
+#        """
+#        @return True if this NestedInteger holds a single integer, rather than a nested list.
+#        """
+#
+#    def getInteger(self) -> int:
+#        """
+#        @return the single integer that this NestedInteger holds, if it holds a single integer
+#        Return None if this NestedInteger holds a nested list
+#        """
+#
+#    def getList(self) -> [NestedInteger]:
+#        """
+#        @return the nested list that this NestedInteger holds, if it holds a nested list
+#        Return None if this NestedInteger holds a single integer
+#        """
 
+from typing import List
 
 class NestedIteratorDeque:
     """ Time complexity: O(n)
@@ -62,17 +84,36 @@ class NestedIteratorStack:
         Space complexity: O(n)
     """
     def __init__(self, nestedList: List[NestedInteger]):
-        self.stack: List[NestedInteger] = []
-        self.addInteger(nestedList)
+        # Initialize stack with input list in reverse order
+        # TC O(N)     SC O(N)
+        self.stack = nestedList[::-1]
 
     def next(self) -> int:
+        # TC O(1)
+        # Assumes hasNext() is true, so top of stack is an integer
         return self.stack.pop().getInteger()
 
     def hasNext(self) -> bool:
+        # TC O(1) amortized
+        # Worst case O(m) when popping a list with m elements
+        # each element is pushed/popped at most once across all calls.
+        # Total work for flattening O(N)
+        # Keep processing until top is an integer or stack is empty
         while self.stack and not self.stack[-1].isInteger():
-            self.addInteger(self.stack.pop().getList())
-        return self.stack
+            # Pop the nested list and push its elements in reverse
+            nested_list = self.stack.pop().getList()
+            self.stack.extend(nested_list[::-1])
+        return len(self.stack) > 0
 
-    def addInteger(self, nestedList: List[NestedInteger]) -> None:
-        for n in reversed(nestedList):
-            self.stack.append(n)
+
+def __init__(self, nl):
+    self.stack = nl[::-1]
+
+def next(self):
+    return self.stack.pop().getInteger()
+
+def hasNext(self):
+    if self.stack and not self.stack[-1].isInteger:
+        temp = self.stack.pop().getList()
+        self.stack.extend(temp[::-1])
+    return len(self.stack) > 0
