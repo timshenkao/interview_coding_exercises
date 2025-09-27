@@ -36,6 +36,7 @@ class Solution:
             if not remnant:
                 zero_counter += 1
             else:
+                # rightmost bit is 1
                 if remnant & bitmask:
                     if zero_counter:
                         result = result << zero_counter
@@ -55,8 +56,10 @@ class Solution:
             Space complexity: O(1).
         """
         result = 0
+        # 32 bit integer: powers of 2 from 0 to 31
         power = 31
         while n:
+            # apply mask and shift rightmost bit to the left "power" times and add to result
             result += (n & 1) << power
             n = n >> 1
             power -= 1

@@ -25,6 +25,8 @@ from collections import Counter
 # It is guaranteed that the answer is unique.
 # Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
 
+from typing import List
+
 
 class Solution:
     def top_k_frequent(self, nums, k):
@@ -35,22 +37,49 @@ class Solution:
         """
         return [key for (key,val) in Counter(nums).most_common(k)]
 
-    def top_k_frequent2(self, nums, k):
+    def top_k_frequent_bucket(self, nums, k):
         """ Time complexity: O(n)
             Space complexity: O(n).
         """
         count = {}
+        # calculate frequencies of integers
         for num in nums:
             count[num] = 1 + count.get(num, 0)
+        # hand made priority queue
+        # array of lists where index i stores elements with frequency i.
         pq = [[] for i in range(len(nums) + 1)]
         for key, value in count.items():
             pq[value].append(key)
 
         result = []
-        for i in range(len(pq) - 1, 0, -1):
+        for i in range(len(pq) - 1, 0, -1):  # iterate backwards
             values = pq[i]
             for val in values:
                 result.append(val)
                 if len(result) == k:
                     return result
-        return [None]
+        return []
+
+    def topKFrequent_heap(self, nums: List[int], k: int) -> List[int]:
+        """ Time complexity: O(n + m log k) where m - number of unique elements.
+                             In worst case, when m = n and k = n O(n log n)
+            Space complexity: O(n) = O(m + k).
+            This approach is better when m << n and k << n
+        """
+        from heapq import heappush, heappop
+        # Count frequency of each element
+        freq_dict= {}
+        for num in nums:
+            freq_dict[num] = freq_dict.get(num, 0) + 1
+        # Use min-heap to keep k most frequent elements
+        # Building heap: O(m log k), where m is unique elements (m ≤ n). Each of m insertions is O(log k),
+        # and up to m-k pops are O(log k).
+        heap = []
+        for num, frequency in freq_dict.items():
+            heappush(heap, (frequency, num))
+            if len(heap) > k:
+                heappop(heap)
+
+        # Extract elements from heap
+        # O(k) to iterate heap.
+        return [num for _, num in heap]

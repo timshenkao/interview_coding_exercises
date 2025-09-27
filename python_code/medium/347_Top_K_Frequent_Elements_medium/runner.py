@@ -28,7 +28,7 @@ def main():
         print("array: ", test[1])
         print("k: ", test[0])
         print("top_k_frequent ", solution.top_k_frequent(test[1], test[0]))
-        print("top_k_frequent2 ", solution.top_k_frequent2(test[1], test[0]))
+        print("top_k_frequent2 ", solution.top_k_frequent_bucket(test[1], test[0]))
         print(" ")
 
 

@@ -26,8 +26,18 @@ class Solution:
         """ Time complexity: O(n).
             Space complexity: O(1).
         """
-        # actual sum of elements in array
+        # actual sum of elements in array O(n)
         actual_sum = sum(nums)
         # Gauss formula a_0 = 0, a_n = n and n+1 elements
         theoretical_sum = int(len(nums) * (len(nums) + 1) / 2)
         return theoretical_sum - actual_sum
+
+    def missingNumber_xor(self, nums: List[int]) -> int:
+        result = 0
+        for i in range(len(nums)):
+            # XOR
+            result ^= i
+            result ^= nums[i]
+        # (n+1) numbers from 0 to n
+        result ^= len(nums)
+        return result

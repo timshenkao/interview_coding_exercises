@@ -23,6 +23,10 @@ from python_code.helper.binary_trees import TreeNode
 # structure and node values of subRoot and false otherwise.
 # A subtree of a binary tree tree is a tree that consists of a node in tree and all of this node's descendants.
 # The tree tree could also be considered as a subtree of itself.
+# The number of nodes in the root tree is in the range [1, 2000].
+# The number of nodes in the subRoot tree is in the range [1, 1000].
+# -10^4 <= root.val <= 10^4
+# -10^4 <= subRoot.val <= 10^4
 
 
 class Solution:
@@ -42,9 +46,9 @@ class Solution:
             return False
 
     def is_subtree(self, root: Optional[TreeNode], sub_root: Optional[TreeNode]) -> bool:
-        """ Time complexity: O(N). We check / visit every node
+        """ Time complexity: O(N * M) Repeatedly check subtrees in the worst case (N nodes in root, M nodes in subRoot)
             Space complexity: if we don't count recursion stack then O(1).
-                              Else O(log N) in case of balanced tree or O(N) in case of unbalanced tree.
+                              Else O(log N) in case of balanced trees or O(N) in case of unbalanced trees.
         """
         # empty tree is subtree of any tree
         if not sub_root:

@@ -23,6 +23,8 @@ from python_code.helper.binary_trees import TreeNode
 # The diameter of a binary tree is the length of the longest path between any two nodes in a tree.
 # This path may or may not pass through the root.
 # The length of a path between two nodes is represented by the number of edges between them.
+# The number of nodes in the tree is in the range [1, 10^4].
+# -100 <= Node.val <= 100
 
 
 class Solution:
@@ -37,9 +39,14 @@ class Solution:
             if not node:
                 return 0
             nonlocal diameter
+            # Recursive Depth First Search
+            # the difficulty is that we do 2 things simultaneously:
+            #   calculate paths' lengths for subtrees
+            #   keep track and calculate diameter
             left_path = longest_path(node.left)
             right_path = longest_path(node.right)
 
+            # if diameter > left_path + right_path, then diameter is not through the root
             diameter = max(diameter, left_path + right_path)
 
             # return the longest one between left_path and right_path;

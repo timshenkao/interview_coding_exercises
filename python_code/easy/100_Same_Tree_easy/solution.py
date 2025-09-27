@@ -21,7 +21,8 @@ from python_code.helper.binary_trees import TreeNode
 # 100. Same Tree  https://leetcode.com/problems/same-tree/
 # Given the roots of two binary trees p and q, write a function to check if they are the same or not.
 # Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.
-
+# The number of nodes in both trees is in the range [0, 100].
+# -10^4 <= Node.val <= 10^4
 
 class Solution:
     def is_same_tree_recursion(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
@@ -43,9 +44,9 @@ class Solution:
 
     def is_same_tree_iteration(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         """ Time complexity: O(N). We check / visit every node
-            Space complexity: O(log N) in case of balanced tree or O(N) in case of unbalanced tree.
+            Space complexity: O(N). The last level with leaves may contain N/2 nodes in case of balanced tree
         """
-        # use stack for DFS
+        # use stack for iterative DFS
         stack = [(p, q)]
         while stack:
             (p, q) = stack.pop()

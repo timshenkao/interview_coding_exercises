@@ -31,16 +31,17 @@ class Solution:
         """ Time complexity: O(1). n is a 32-bit integer, number of iterations is upper bounded.
             Space complexity: O(1).
         """
+        # checks if the rightmost bit is 1
         bitmask = 1
         # used as a "flag" whether there are still bits to handle
         remnant = n
         count = 0
         # iterate if there is at least one bit set to 1
-        # bitmask is updated on each iteration
+        # remnant is updated on each iteration
         while remnant:
             if bitmask & remnant:
                 count += 1
-            # update "flag", remove rightmost bit
+            # update "flag", remove rightmost bit / shift right
             remnant = remnant >> 1
         return count
 
@@ -54,5 +55,7 @@ class Solution:
         while remnant:
             count += 1
             # update "flag", flip rightmost 1-bit
+            # AND
+            # Brian Kernighan's Algorithm (Bit Trick)
             remnant &= (remnant - 1)
         return count

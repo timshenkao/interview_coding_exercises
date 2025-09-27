@@ -31,5 +31,8 @@ class Solution:
 
         mask = 0
         for i in range(len(nums)):
+            # XOR all elements in the array. Since XOR is associative and commutative, and XORing a number with itself
+            # cancels out to 0 (a ^ a = 0), while XORing with 0 leaves the number unchanged (a ^ 0 = a), the result
+            # will be the single number.
             mask ^= nums[i]
         return mask

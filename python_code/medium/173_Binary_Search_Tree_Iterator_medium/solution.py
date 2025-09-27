@@ -14,21 +14,40 @@
 # limitations under the License.
 ##############################################################################
 
+# 173. Binary Search Tree Iterator https://leetcode.com/problems/binary-search-tree-iterator/description/
+# Implement the BSTIterator class that represents an iterator over the in-order traversal of a binary search tree (BST):
+#    BSTIterator(TreeNode root) Initializes an object of the BSTIterator class. The root of the BST is given as part
+#        of the constructor. The pointer should be initialized to a non-existent number smaller than any element in the
+#       BST.
+#    boolean hasNext() Returns true if there exists a number in the traversal to the right of the pointer,
+#       otherwise returns false.
+#    int next() Moves the pointer to the right, then returns the number at the pointer.
+# Notice that by initializing the pointer to a non-existent smallest number, the first call to next() will return the
+# smallest element in the BST.
+# You may assume that next() calls will always be valid. That is, there will be at least a next number in the
+# in-order traversal when next() is called.
+# # The number of nodes in the tree is in the range [1, 10^5].
+# 0 <= Node.val <= 10^6
+# At most 10^5 calls will be made to hasNext, and next.
+# Follow up: Could you implement next() and hasNext() to run in average O(1) time and use O(h) memory,
+# where h is the height of the tree?
+
+
 class BSTIterator:
     def __init__(self, root):
         self.stack = []
-        self.pushAll(root)
+        self.push_all(root)
 
     def next(self) -> int:
         cur = self.stack.pop()
-        self.pushAll(cur.right)
+        self.push_all(cur.right)
         return cur.val
 
     def hasNext(self):
         return self.stack
 
-    def pushAll(self, node):
-        while node != None:
+    def push_all(self, node):
+        while node:
             self.stack += (node,)
             node = node.left
 
@@ -60,7 +79,11 @@ class BSTIterator2:
 
 class BSTIterator3:
     """ Iterative
-     Time complexity: Constructor: O(h), next(): O(h), hasNext(): O(1).
+     Time complexity:
+        Constructor: O(h)
+         next(): O(h)  Amortized O(1) average per call, since across all next() calls (up to n), each node is pushed
+            and popped exactly once, totaling O(n) work. Worst-case per next() is O(h) if pushing a deep left subtree.
+         hasNext(): O(1).
      Space complexity: O(h).
     """
     def __init__(self, root):

@@ -34,14 +34,14 @@ class Solution:
         if not root:
             return 0
 
+        # Depth First Search
         depth_left = self.max_depth_recursion(root.left)
         depth_right = self.max_depth_recursion(root.right)
         return max(depth_left, depth_right) + 1
 
     def max_depth_iteration(self, root: Optional[TreeNode]) -> int:
         """ Time complexity: O(N). We check / visit every node
-            Space complexity: if we don't count recursion stack then O(1).
-                              Else O(log N) in case of balanced tree or O(N) in case of unbalanced tree.
+            Space complexity: O(N). The last level with leaves may contain N/2 nodes in case of balanced tree
         """
         # empty tree
         if not root:

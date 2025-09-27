@@ -30,6 +30,7 @@ class Solution:
     def _subtree_height(self, root: Optional[TreeNode]) -> int:
         if not root:
             return 0
+        # Recursive Depth First Search
         # left subtree height
         left_height = self._subtree_height(root.left)
         # right subtree height
@@ -56,3 +57,85 @@ class Solution:
             return True
 
         return self._subtree_height(root) >= 0
+
+    def is_balanced_iteration_stack(self, root: Optional[TreeNode]) -> bool:
+        """ Time complexity: O(N). We check / visit every node
+            Space complexity: O(log N) in case of balanced tree or O(N) in case of unbalanced tree.
+        """
+        # tree is empty
+        if not root:
+            return True
+
+        # Stack stores (node, state) where state: 0=initial, 1=processed left, 2=processed right, 3=done
+        stack = [(root, 0)]
+        # Dictionary to store heights of nodes
+        heights = {None: 0}  # Height of None is 0
+        # Track if tree is balanced
+        is_balanced = True
+
+        while stack and is_balanced:
+            node, state = stack.pop()
+            if state == 0:
+                # Initial state: push node back with state 1, process left child
+                stack.append((node, 1))
+                if node.left:
+                    stack.append((node.left, 0))
+            elif state == 1:
+                # Processed left: push node back with state 2, process right child
+                stack.append((node, 2))
+                if node.right:
+                    stack.append((node.right, 0))
+            elif state == 2:
+                # Processed both children: compute height and check balance
+                left_height = heights.get(node.left, 0)
+                right_height = heights.get(node.right, 0)
+                # Check if node is balanced
+                if abs(left_height - right_height) > 1:
+                    is_balanced = False
+                # Store height of current node
+                heights[node] = max(left_height, right_height) + 1
+                # Push node back with state 3 (done)
+                stack.append((node, 3))
+            else:  # state == 3
+                # Node is fully processed, continue with parent
+                pass
+
+        return is_balanced
+
+    def is_balanced_iteration_queue(self, root: Optional[TreeNode]) -> bool:
+        """ Time complexity: O(N). We check / visit every node
+            Space complexity: O(N)
+                              BFS phase: Each node is enqueued and dequeued once, O(N).
+                              Reverse processing phase: Each node is processed once, O(N).
+        """
+        from collections import deque
+        # tree is empty
+        if not root:
+            return True
+
+        # Step 1: Use BFS to collect all nodes in level-order
+        queue = deque([root])
+        nodes = []
+        while queue:
+            node = queue.popleft()
+            nodes.append(node)
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+
+        # Step 2: Process nodes in reverse order to compute heights bottom-up
+        heights = {None: 0}  # Height of None is 0
+        is_balanced = True
+        for node in reversed(nodes):
+            # Get heights of left and right children
+            left_height = heights.get(node.left, 0)
+            right_height = heights.get(node.right, 0)
+            # Check if node is balanced
+            if abs(left_height - right_height) > 1:
+                is_balanced = False
+                break
+            # Compute and store height of current node
+            heights[node] = max(left_height, right_height) + 1
+
+        return is_balanced
