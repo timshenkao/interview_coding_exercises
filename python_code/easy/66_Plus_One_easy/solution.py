@@ -45,7 +45,7 @@ class Solution:
 
     def plus_one_in_place(self, digits: List[int]) -> List[int]:
         """ Time complexity: O(n). We iterate through the array once.
-            Space complexity: O(1). We append 1 to the end of the array and then iterate backwards to move 1 t
+            Space complexity: O(1). We append 1 to the end of the array and then iterate backwards to move 1
                                     to the first position
         """
         transfer = 1

@@ -14,6 +14,16 @@
 # limitations under the License.
 ##############################################################################
 
+# 230. Kth Smallest Element in a BST  https://leetcode.com/problems/kth-smallest-element-in-a-bst/
+# Given the root of a binary search tree, and an integer k, return the kth smallest value (1-indexed) of all the
+# values of the nodes in the tree.
+# The number of nodes in the tree is n.
+# 1 <= k <= n <= 10^4
+# 0 <= Node.val <= 10^4
+# Follow up: If the BST is modified often (i.e., we can do insert and delete operations) and you need to find the kth
+# smallest frequently, how would you optimize?
+
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, x):
@@ -24,16 +34,20 @@
 class Solution:
     def __init__(self):
         self.k, self.res = 0, None
-    def kthSmallest(self, root, k):
-        if self.k < k and root.left: self.kthSmallest(root.left, k)
+
+    def kthSmallest_recursive(self, root, k):
+        if self.k < k and root.left:
+            self.kthSmallest_recursive(root.left, k)
         self.k += 1
-        if self.k == k: self.res = root.val
-        if self.k < k and root.right: self.kthSmallest(root.right, k)
+        if self.k == k:
+            self.res = root.val
+        if self.k < k and root.right:
+            self.kthSmallest_recursive(root.right, k)
         return self.res
 
 
 class Solution2:
-    """Binary Search
+    """Recursive Binary Search
     Time complexity: O(n^2).
     Space complexity: O(h).
     """

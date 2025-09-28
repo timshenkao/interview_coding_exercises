@@ -33,20 +33,37 @@ class Solution:
                              transpose and reflect.
             Space complexity: O(1).
         """
-        # columns and rows are from 0 to (n-1) in Python
-        n = len(matrix) - 1
+        def rotate(matrix: list[list[int]]) -> None:
+            n = len(matrix)
 
-        # if matrix dimension is odd, then include "central" row
-        if len(matrix) % 2 == 1:
-            num_rows = len(matrix) // 2 + 1
-        # if matrix dimension is even, then include half of rows
-        else:
-            num_rows = len(matrix) // 2
+            # Transpose the matrix (swap elements across the main diagonal)
+            for i in range(n):
+                for j in range(i, n):
+                    matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
 
-        # include half of columns
-        num_cols = len(matrix) // 2
+            # Reverse each row
+            for i in range(n):
+                matrix[i].reverse()
 
-        for i in range(num_rows):
-            for j in range(num_cols):
-                matrix[j][n - i], matrix[n - i][n - j], matrix[n - j][i], matrix[i][j] \
-                    = matrix[i][j], matrix[j][n - i], matrix[n - i][n - j], matrix[n - j][i]
+        def rotate_cyclic(self, matrix: List[List[int]]) -> None:
+            """ Time complexity: O(N ^ 2). We move each element at once. Exchange / rotate groups of
+                                    4 elements directly
+                Space complexity: O(1).
+            """
+            # columns and rows are from 0 to (n-1) in Python
+            n = len(matrix) - 1
+
+            # if matrix dimension is odd, then include "central" row
+            if len(matrix) % 2 == 1:
+                num_rows = len(matrix) // 2 + 1
+            # if matrix dimension is even, then include half of rows
+            else:
+                num_rows = len(matrix) // 2
+
+            # include half of columns
+            num_cols = len(matrix) // 2
+
+            for i in range(num_rows):
+                for j in range(num_cols):
+                    matrix[j][n - i], matrix[n - i][n - j], matrix[n - j][i], matrix[i][j] \
+                        = matrix[i][j], matrix[j][n - i], matrix[n - i][n - j], matrix[n - j][i]

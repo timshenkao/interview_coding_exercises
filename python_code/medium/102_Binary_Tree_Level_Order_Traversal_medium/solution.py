@@ -19,7 +19,7 @@ import collections
 # 102. Binary Tree Level Order Traversal https://leetcode.com/problems/binary-tree-level-order-traversal/description/
 # Given the root of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right,
 # level by level).
-#The number of nodes in the tree is in the range [0, 2000].
+# The number of nodes in the tree is in the range [0, 2000].
 # -1000 <= Node.val <= 1000
 
 
@@ -32,8 +32,8 @@ class TreeNode:
 
 class Solution:
     def levelOrder_bfs(self, root):
-        """ Time complexity: O(n)
-            Space complexity: O(n)
+        """ Time complexity: O(n) We check each node
+            Space complexity: O(n) We create queue and output list
         """
         q, res = [root], []
         while any(q):

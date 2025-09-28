@@ -23,22 +23,25 @@
 
 
 class Solution:
-    def my_sqrt(self, n: int) -> int:
-        """ Time complexity: O(log N).
+    def my_sqrt(self, x: int) -> int:
+        """ Time complexity: O(log x).
+                The search space is reduced by half each iteration. Since x can be up to 2^31 - 1, the maximum
+                number of iterations is log2(x).
             Space complexity: O(1).
         """
         # 0 and 1
-        if n < 2:
-            return n
+        if x < 2:
+            return x
 
         # use modification of binary search
         low = 0
-        high = n
+        high = x
         while low <= high:
             middle = low + (high - low) // 2
-            if middle * middle == n:
+            square = middle * middle
+            if square == x:
                 return middle
-            elif middle * middle < n:
+            elif square < x:
                 low = middle + 1
             else:
                 high = middle - 1

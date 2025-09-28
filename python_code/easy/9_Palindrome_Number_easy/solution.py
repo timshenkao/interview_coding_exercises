@@ -24,13 +24,15 @@ class Solution:
     def is_palindrome_string(self, x: int) -> bool:
         """ Time complexity: O(log x).
             Space complexity: O(log x). String representation of x requires log x.
+            Actually this is the fastest approach because of built-in string conversion and string comparison. No
+            divisions or other math operations
         """
         # convert to string
         # it requires O(log x) time and space
         x_str = str(x)
         left = 0
         right = len(x_str) - 1
-        # iterate from both ends
+        # iterate from both ends; TC O(log x)
         while left <= right:
             if x_str[left] != x_str[right]:
                 return False
@@ -79,9 +81,18 @@ class Solution:
         # when the original number is less than the reversed number, we processed half of the number digits.
         reverted_number = 0
         base = 10
+        # when number ends with 0, there is leading zero
+        if x % base == 0:
+            return False
         while x > reverted_number:
             reverted_number = reverted_number * base + x % base
             x //= base
 
-        # When the length is an odd number, we can get rid of the middle digit by reverted_number // 10
-        return (x == reverted_number) or (x == reverted_number // base)
+        # When number of digits is even
+        if x == reverted_number:
+            return True
+        # When number of digits is odd, we can get rid of the middle digit
+        elif x == reverted_number // base:
+            return True
+        else:
+            return False

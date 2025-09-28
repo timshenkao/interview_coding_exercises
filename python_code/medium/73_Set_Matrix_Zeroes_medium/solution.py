@@ -34,13 +34,26 @@ class Solution:
         """
         m = len(matrix)
         n = len(matrix[0])
+        # separate flag to see if there is zero in the first row
         first_row_zero = False
+        # separate flag to see if there is zero in the first column
+        first_column_zero = False
 
+        # Check if first row has any zero
+        for j in range(n):
+            if matrix[0][j] == 0:
+                first_row_zero = True
+                break
+
+        # Check if first column has any zero
+        for i in range(m):
+            if matrix[i][0] == 0:
+                first_column_zero = True
+                break
+
+        # Use first row and column as markers for zeros
         for i in range(1, m):
-            for j in range(n):
-                # separate flag to see if there is zero in the first row
-                if matrix[0][j] == 0:
-                    first_row_zero = True
+            for j in range(1, n):
                 if matrix[i][j] == 0:
                     matrix[i][0] = 0
                     matrix[0][j] = 0
@@ -52,9 +65,9 @@ class Solution:
                     matrix[i][j] = 0
         # set zeros in the first row if necessary
         if first_row_zero:
-            for j in range(1, n):
+            for j in range(n):
                 matrix[0][j] = 0
         # set zeros in the first column if necessary
-        if matrix[0][0] == 0:
+        if first_column_zero:
             for i in range(m):
                 matrix[i][0] = 0
